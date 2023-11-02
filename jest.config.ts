@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'org',
+  displayName: 'panel-label',
   preset: './jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: './coverage/org',
+  coverageDirectory: './coverage/panel-label',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

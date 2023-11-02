@@ -14,7 +14,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "org",
+            "prefix": "panel-label",
             "style": "camelCase"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "org",
+            "prefix": "panel-label",
             "style": "kebab-case"
           }
         ]

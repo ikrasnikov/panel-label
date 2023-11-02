@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'org-root',
+  selector: 'panel-label-constructor-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
