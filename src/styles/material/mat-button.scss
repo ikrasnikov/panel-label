@@ -1,0 +1,101 @@
+$button-default-theme: dark;
+$button-alternative-themes: darker dark-70 dark-70-light light primary primary-light danger success;
+
+$button-theme-colors: (
+  dark: $color-dark-50,
+  darker: $color-dark,
+  dark-70: $color-dark-70,
+  dark-70-light: $color-dark-70,
+  light: rgba(white, 0.8),
+  primary: $color-bg-primary,
+  primary-light: $color-bg-primary,
+  danger: $color-bg-danger,
+  success: $color-bg-success
+);
+
+$button-theme-backgrounds: (
+  dark: transparent,
+  darker: transparent,
+  dark-70: transparent,
+  dark-70-light: rgba($color-bg-primary, 0.1),
+  light: transparent,
+  primary: transparent,
+  primary-light: rgba($color-bg-primary, 0.1),
+  danger: transparent,
+  success: transparent
+);
+
+$button-theme-overlays: (
+  dark: $color-dark-50,
+  darker: $color-dark,
+  dark-70: $color-dark-70,
+  dark-70-light: $color-dark-70,
+  light: white,
+  primary: $color-bg-primary,
+  primary-light: rgba($color-bg-primary, 0.1),
+  danger: $color-bg-danger,
+  success: $color-bg-success
+);
+
+button.mdc-button {
+  @extend %layout-inline;
+  height: 42px !important;
+  padding: 10px 42px !important;
+  justify-content: center !important;
+}
+
+.mat-mdc-button {
+  &:not(:disabled):hover {
+    & > .mat-button-focus-overlay {
+      opacity: 1;
+    }
+  }
+
+  // default theme
+  &:not(:disabled) {
+    color: map-get($button-theme-colors, $button-default-theme) !important;
+  }
+
+  &:disabled {
+    color: rgba(map-get($button-theme-colors, $button-default-theme), 0.3) !important;
+  }
+
+  &:not(:disabled) > .mat-button-focus-overlay {
+    background-color: rgba(map-get($button-theme-overlays, $button-default-theme), 0.12) !important;
+  }
+
+  &:not(:disabled) .mat-ripple-element {
+    background-color: rgba(map-get($button-theme-overlays, $button-default-theme), 0.2) !important;
+  }
+}
+
+@each $theme-name in $button-alternative-themes {
+  .mat-mdc-button[theme="#{$theme-name}"] {
+    &:not(:disabled) {
+      color: map-get($button-theme-colors, $theme-name) !important;
+      background-color: map-get($button-theme-backgrounds, $theme-name) !important;
+    }
+
+    &:disabled {
+      color: rgba(map-get($button-theme-colors, $theme-name), 0.3) !important;
+    }
+
+    &:not(:disabled) > .mat-button-focus-overlay {
+      background-color: rgba(map-get($button-theme-overlays, $theme-name), 0.12) !important;
+    }
+
+    &:not(:disabled) .mat-ripple-element {
+      background-color: rgba(map-get($button-theme-overlays, $theme-name), 0.2) !important;
+    }
+  }
+}
+
+.mdc-button__label {
+  display: flex;
+  align-items: center;
+
+  & .material-symbols-outlined {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}

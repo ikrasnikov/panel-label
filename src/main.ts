@@ -1,6 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+
+import { PanelLabelConstructorModule } from './app/panel-label-constructor.module';
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule)
+  .bootstrapModule(PanelLabelConstructorModule)
   .catch((err) => console.error(err));

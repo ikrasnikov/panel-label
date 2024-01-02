@@ -1,0 +1,140 @@
+$inline-default-margin: 16px;
+
+$inline-item-widths: (
+        30px: 30px,
+        40px: 40px,
+        60px: 60px,
+        64px: 64px,
+        80px: 80px,
+        90px: 90px,
+        100px: 100px,
+        110px: 110px,
+        120px: 120px,
+        140px: 140px,
+        150px: 150px,
+        160px: 160px,
+        180px: 180px,
+        200px: 200px,
+        220px: 220px,
+        240px: 240px,
+        250px: 250px,
+        260px: 260px,
+        300px: 300px,
+        400px: 400px,
+        10per: 10%,
+        15per: 15%,
+        20per: 20%,
+        25per: 25%,
+        30per: 30%,
+        33per: 33%,
+        35per: 35%,
+        40per: 40%,
+        50per: 50%,
+        60per: 60%,
+        66per: 66%,
+        75per: 75%,
+        90per: 90%,
+);
+
+.layout-inline {
+  @extend %layout-inline;
+
+  &__item {
+    flex-shrink: 0;
+
+    &:not(:first-child) {
+      padding-left: $inline-default-margin;
+    }
+
+    &--expand {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden; // ensure that it does not expand over 100%
+    }
+
+    &--collapse {
+      flex-grow: 0;
+      flex-shrink: 1;
+      overflow: hidden;
+    }
+
+    &--flexible {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0px; // fix for IE
+      min-width: 0; // fix to make item fit available space
+    }
+
+    &--shrink {
+      flex-shrink: 1;
+      flex-basis: auto;
+      min-width: 0;
+    }
+
+    &--animated {
+      flex-basis: 0;
+      transition: flex 0.3s linear;
+    }
+
+    &--valign-center {
+      align-self: center;
+    }
+
+    &--valign-top {
+      align-self: flex-start;
+    }
+
+    &--valign-bottom {
+      align-self: flex-end;
+    }
+
+    @each $size-name, $size-width in $inline-item-widths {
+      &--#{$size-name} {
+        width: $size-width;
+      }
+    }
+  }
+
+  &--align-right {
+    justify-content: flex-end !important;
+  }
+
+  &--align-center {
+    justify-content: center !important;
+  }
+
+  &--valign-baseline {
+    align-items: baseline !important;
+  }
+
+  &--valign-stretch {
+    align-items: stretch !important;
+  }
+
+  &--valign-top {
+    align-items: flex-start !important;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+    margin-bottom: -8px;
+
+    .layout-inline__item {
+      margin-bottom: 8px;
+    }
+  }
+
+  &--stretch {
+    height: 100%;
+  }
+
+  &--expand {
+    width: 100%;
+  }
+
+  @each $margin in $layout-spacing-options {
+    &--#{$margin} > &__item:not(:first-child) {
+      padding-left: $margin;
+    }
+  }
+}

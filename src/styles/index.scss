@@ -1,0 +1,29 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: $color-dark-05;
+}
+
+.header {
+  position: fixed;
+  height: $header-height;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid $color-dark-10;
+  box-shadow: 0 0 2px 0 $color-dark-10, 0 2px 2px 0 $color-dark-05;
+  z-index: 20;
+}
+
+.header-content {
+  height: 100%;
+  max-width: $content-wide-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 24px;
+}
+
+.logo {
+  width: 200px;
+}

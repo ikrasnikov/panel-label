@@ -1,0 +1,46 @@
+$list-default-marign: 24px;
+$list-sub-item-padding: 10px;
+
+.layout-list {
+  @extend %layout-list;
+  width: 100%;
+
+  &__item {
+    flex-shrink: 0;
+
+    &:not(:last-child) {
+      padding-bottom: $list-default-marign;
+    }
+
+    &--expand {
+      flex-shrink: 0;
+      flex-grow: 1;
+    }
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-right {
+    align-items: flex-end;
+  }
+
+  &--valign-center {
+    justify-content: center;
+  }
+
+  &--sub-item {
+    padding-left: $list-sub-item-padding;
+  }
+
+  &--sub-sub-item {
+    padding-left: $list-sub-item-padding * 2;
+  }
+
+  @each $spacing in $layout-spacing-options {
+    &--#{$spacing} > &__item:not(:last-child) {
+      padding-bottom: $spacing;
+    }
+  }
+}

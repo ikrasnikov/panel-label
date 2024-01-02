@@ -1,0 +1,113 @@
+$icon-button-default-theme: dark;
+$icon-button-alternative-themes: danger light warning;
+
+$icon-button-theme-colors: (
+  dark: $color-dark-50,
+  danger: $color-bg-danger-50,
+  light: rgba(white, 0.8),
+  warning: $color-bg-warning,
+);
+
+$icon-button-theme-colors-disabled: (
+  dark: $color-dark-30,
+  danger: $color-bg-danger-30,
+  light: $color-dark-30,
+  warning: $color-bg-warning-30,
+);
+
+$icon-button-theme-backgrounds: (
+  dark: $color-dark,
+  danger: $color-bg-danger,
+  light: transparent,
+  warning: $color-bg-warning,
+);
+
+button.mat-mdc-icon-button.mat-mdc-button-base {
+  & > .mat-button-wrapper {
+    @extend %layout-center;
+    height: 100%;
+    width: 100%;
+  }
+
+  &:not(:disabled):hover {
+    & > .mat-button-focus-overlay {
+      opacity: 1;
+    }
+  }
+
+  // default theme
+  &:not(:disabled) {
+    color: map-get($icon-button-theme-colors, $icon-button-default-theme);
+  }
+
+  &:disabled {
+    color: map-get($icon-button-theme-colors-disabled, $icon-button-default-theme);
+  }
+
+  &:not(:disabled) > .mat-button-focus-overlay {
+    background-color: rgba(
+      map-get($icon-button-theme-backgrounds, $icon-button-default-theme),
+      0.1
+    ) !important;
+  }
+
+  &:not(:disabled) .mat-ripple-element {
+    background-color: rgba(
+      map-get($icon-button-theme-backgrounds, $icon-button-default-theme),
+      0.2
+    ) !important;
+  }
+
+  &:not(:disabled).mat-icon-button--active {
+    background-color: rgba(
+      map-get($icon-button-theme-backgrounds, $icon-button-default-theme),
+      0.3
+    ) !important;
+  }
+}
+
+@each $theme-name in $icon-button-alternative-themes {
+  .mat-mdc-icon-button[theme='#{$theme-name}'] {
+    &:not(:disabled) {
+      color: map-get($icon-button-theme-colors, $theme-name) !important;
+    }
+
+    &:disabled {
+      color: map-get($icon-button-theme-colors-disabled, $icon-button-default-theme) !important;
+    }
+
+    &:not(:disabled) > .mat-button-focus-overlay {
+      background-color: rgba(map-get($icon-button-theme-backgrounds, $theme-name), 0.1) !important;
+    }
+
+    &:not(:disabled) .mat-ripple-element {
+      background-color: rgba(map-get($icon-button-theme-backgrounds, $theme-name), 0.2) !important;
+    }
+
+    &:not(:disabled).mat-icon-button--active {
+      background-color: rgba(map-get($icon-button-theme-backgrounds, $theme-name), 0.3) !important;
+    }
+  }
+}
+
+.mat-mdc-icon-button[large] {
+  height: 52px !important;
+  width: 52px !important;
+  padding: 10px;
+
+  & .material-symbols-outlined {
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+}
+
+.mat-mdc-icon-button[small] {
+  height: 42px !important;
+  width: 42px !important;
+  padding: 10px;
+
+  & .material-symbols-outlined {
+    font-size: 22px !important;
+    line-height: 22px !important;
+  }
+}
