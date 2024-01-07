@@ -1,4 +1,4 @@
-<!--TODO: remove this piece of shit and write a custom sidebar. Then modules amount can be increased-->
+<!--TODO: remove this piece of shit and write a custom sidebar. Then breakers amount can be increased-->
 <mat-drawer-container autosize>
   <mat-drawer
     #drawer
@@ -28,8 +28,12 @@
           </panel-label-size>
 
           <panel-label-row
-            [moduleCount]="settings.moduleCount"
+            [breakerCount]="settings.breakerCount"
             [switcherRow]="row"
+            [fontFamily]="settings.font"
+            (addBreaker)="openBreakerDialog(row)"
+            (editBreaker)="openBreakerDialog(row, $event)"
+            (deleteBreaker)="deleteBreaker($event, row.id)"
           ></panel-label-row>
         </div>
 
@@ -38,6 +42,8 @@
             <button
               mat-button
               theme="warning"
+              type="button"
+              (click)="addRow()"
             >
               <div class="icon-container">
                 <span class="material-symbols-outlined">

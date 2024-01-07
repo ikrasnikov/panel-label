@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -13,7 +14,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
+import { BaseDialogComponent } from './helpers/base-dialog.component';
+import { BreakerDialogComponent } from './breaker-dialog/breaker-dialog.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConstructorPageService } from './services/constructor-page-service';
 import { ConstructorService } from './services/constructor-service';
+import {
+  CustomConfirmationDialogComponent
+} from './helpers/custom-confirmation-dialog/custom-confirmation-dialog.component';
+import { DialogOverlayComponent } from './helpers/dialog-overlay/dialog-overlay.component';
 import { PanelEmptyItemComponent } from './panel-empty-item/panel-empty-item.component';
 import { PanelLabelConstructorComponent } from './panel-label-constructor/panel-label-constructor.component';
 import { PanelLabelContentComponent } from './panel-label-content/panel-label-content.component';
@@ -33,6 +42,7 @@ import { SnackBarService } from './services/snackbar.service';
     FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
@@ -44,6 +54,11 @@ import { SnackBarService } from './services/snackbar.service';
     TranslateModule.forRoot(),
   ],
   declarations: [
+    BaseDialogComponent,
+    BreakerDialogComponent,
+    ConfirmationDialogComponent,
+    CustomConfirmationDialogComponent,
+    DialogOverlayComponent,
     PanelEmptyItemComponent,
     PanelLabelConstructorComponent,
     PanelLabelContentComponent,
@@ -55,6 +70,7 @@ import { SnackBarService } from './services/snackbar.service';
     SnackBarContentComponent,
   ],
   providers: [
+    ConstructorPageService,
     ConstructorService,
     SettingsService,
     SnackBarService,

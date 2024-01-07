@@ -1,0 +1,248 @@
+<custom-confirmation-dialog
+  [submitButtonLabel]="data.item ? 'Save' : 'Add'"
+  [cancelButtonLabel]="'Cancel'"
+  [action$]="action$"
+  [buttonType]="'warning'"
+  [large]="true"
+  (cancelled)="close()"
+  (success)="triggerSuccess()"
+  (error)="triggerError($event)"
+>
+  <div class="dialog-body-section">
+    <div class="layout-list">
+      <div class="layout-list__item">
+        <div class="dialog-header">
+          <div class="dialog-header__title">
+            {{ data.item ? 'Edit breaker' : 'Add new breaker' }}
+          </div>
+        </div>
+      </div>
+
+      <form [formGroup]="form">
+        <div class="layout-list__item">
+          <div class="layout-inline layout-inline--valign-top">
+            <div class="layout-inline__item">
+              <panel-label-item
+                [isInteractive]="false"
+                [switcherItem]="this.form.value"
+                [fontFamily]="data.fontFamily"
+              ></panel-label-item>
+            </div>
+
+            <div class="layout-inline__item layout-inline__item--expand">
+              <div class="layout-list layout-list--0px">
+                <div class="layout-list__item">
+                  <div class="layout-inline">
+                    <div class="layout-inline__item layout-inline__item--expand">
+                      <div class="breaker__form-field">
+                        <mat-form-field floatLabel="always">
+                          <mat-label>
+                            Type
+                          </mat-label>
+
+                          <mat-select
+                            formControlName="type"
+                            [hideSingleSelectionIndicator]="true"
+                          >
+                            <mat-option
+                              *ngFor="let type of BREAKER_TYPES"
+                              [value]="type"
+                            >
+                              {{ type | titlecase }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="layout-inline__item layout-inline__item--expand">
+                      <div class="breaker__form-field">
+                        <mat-form-field>
+                          <mat-label>
+                            Size
+                          </mat-label>
+
+                          <mat-select
+                            formControlName="breakerSize"
+                            [hideSingleSelectionIndicator]="true"
+                          >
+                            <mat-option
+                              *ngFor="let size of BREAKER_SIZES_MAP | keyvalue"
+                              [value]="size.value"
+                            >
+                              {{ size.key }}
+                            </mat-option>
+                          </mat-select>
+
+                          <mat-error
+                            *ngIf="form.controls['breakerSize'].hasError('max')"
+                          >
+                            {{ 'Only ' + data.freeSlots + ' free slots in this rail' }}
+                          </mat-error>
+                        </mat-form-field>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="layout-list__item">
+                  <div class="breaker__form-field">
+                    <mat-form-field floatLabel="always">
+                      <mat-label>
+                        Text
+                      </mat-label>
+
+                      <input
+                        matInput
+                        type="text"
+                        formControlName="label"
+                        [placeholder]="'Label text'"
+                      >
+
+                      <mat-error
+                        *ngIf="form.controls['label'].hasError('required')"
+                      >
+                        Can't be blank
+                      </mat-error>
+
+                      <mat-error
+                        *ngIf="
+                          form.controls['label'].hasError('max')
+                        "
+                      >
+                        Should be less than 72 character
+                      </mat-error>
+
+                      <mat-error
+                        *ngIf="
+                          form.controls['label'].hasError('pattern')
+                        "
+                      >
+                        Label is invalid. Examples: Lamps, Kitchen, Input
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="layout-list__item">
+                  <div class="layout-inline">
+                    <div class="layout-inline__item layout-inline__item--expand">
+                      <div class="breaker__form-field">
+                        <mat-form-field>
+                          <mat-label>
+                            Font Size
+                          </mat-label>
+
+                          <mat-select
+                            formControlName="fontSize"
+                            [hideSingleSelectionIndicator]="true"
+                          >
+                            <mat-option
+                              *ngFor="let fontSizes of BREAKER_FONT_SIZES"
+                              [value]="fontSizes"
+                            >
+                              {{ fontSizes }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="layout-inline__item layout-inline__item--expand">
+                      <div class="breaker__form-field">
+                        <mat-form-field>
+                          <mat-label>
+                            Order
+                          </mat-label>
+
+                          <input
+                            matInput
+                            type="text"
+                            formControlName="position"
+                            [placeholder]="'Order number'"
+                          >
+
+                          <mat-error
+                            *ngIf="form.controls['position'].hasError('required')"
+                          >
+                            Can't be blank
+                          </mat-error>
+
+                          <mat-error
+                            *ngIf="
+                          form.controls['position'].hasError('max')
+                        "
+                          >
+                            Should be less than 72 character
+                          </mat-error>
+
+                          <mat-error
+                            *ngIf="
+                          form.controls['position'].hasError('pattern')
+                        "
+                          >
+                            Order is invalid. Examples: 02, 17, Lamps
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="layout-list layout-list--8px">
+            <div class="layout-list__item">
+              <div class="breaker__form-field-label">
+                Color
+              </div>
+            </div>
+
+            <div class="layout-list__item">
+              <div class="layout-inline layout-inline--8px">
+                <div *ngFor="let color of BREAKER_COLORS" class="layout-inline__item">
+                  <div
+                    class="circle"
+                    [style.background-color]="color"
+                    [class.circle--selected]="form.controls['color'].value === color"
+                    (click)="form.controls['color'].setValue(color)"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="layout-list layout-list--8px">
+            <div class="layout-list__item">
+              <div class="breaker__form-field-label">
+                Icon
+              </div>
+            </div>
+
+            <div class="layout-list__item">
+              <div class="breaker__icons-container">
+                <div class="layout-inline layout-inline--0px layout-inline--wrap">
+                  <div *ngFor="let icon of BREAKER_ICONS" class="layout-inline__item">
+                    <span
+                      class="material-symbols-outlined breaker__icon"
+                      [class.breaker__icon--inactive]="form.controls['icon'].value && form.controls['icon'].value !== icon"
+                      (click)="form.controls['icon'].setValue(icon)"
+                    >
+                      {{ icon }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</custom-confirmation-dialog>

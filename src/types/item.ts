@@ -1,10 +1,12 @@
-export interface ISwitcherItem {
-  id: number;
-  position: number;
-  moduleSize: TModuleSize;
-  color: string;
-  icon: string;
-  label: string;
-}
+import { BreakerSize, BreakerType } from '../app/enums/item.enum';
 
-export type TModuleSize = 1 | 2 | 3;
+export interface ISwitcherItem {
+  color: string;
+  fontSize: string;
+  icon: string;
+  id: number;
+  label: string;
+  breakerSize: BreakerSize;
+  position: number;
+  type: BreakerType;
+}

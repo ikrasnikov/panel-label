@@ -1,13 +1,14 @@
 $item-sizes: 'small' 'medium' 'large';
 
 $item-max-widths: (
+        x-small: $item-max-width-x-small,
         small: $item-max-width-small,
         medium: $item-max-width-medium,
         large: $item-max-width-large,
 );
 
 .item {
-  max-width: $item-max-width-small;
+  max-width: $item-max-width-x-small;
 
   @each $size in $item-sizes {
     &--#{$size} {
@@ -47,7 +48,7 @@ $item-max-widths: (
     display: flex;
     justify-content: center;
     font-weight: $font-weight-bold;
-    flex: 1 0 0;
+    word-break: break-word;
   }
 
   &__add-container {

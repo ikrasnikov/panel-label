@@ -3,10 +3,18 @@
     *ngFor="let item of switcherRow.items"
     class="layout-inline__item"
   >
-    <panel-label-item [switcherItem]="item"></panel-label-item>
+    <panel-label-item
+      [switcherItem]="item"
+      [fontFamily]="fontFamily"
+      (deleteItem)="deleteBreaker.emit(item.id)"
+      (editItem)="editBreaker.emit(item)"
+    ></panel-label-item>
   </div>
 
-  <div class="layout-inline__item">
+  <div
+    *ngIf="freeSlotsCount"
+    class="layout-inline__item"
+  >
     <div class="item item__add-container">
       <button
         mat-button

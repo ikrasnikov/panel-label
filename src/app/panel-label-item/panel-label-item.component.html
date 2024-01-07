@@ -1,15 +1,17 @@
 <div
   class="layout-list layout-list--6px item"
-  [class.item--medium]="switcherItem.moduleSize === 2"
-  [class.item--large]="switcherItem.moduleSize === 3"
+  [class.item--small]="!isInteractive"
+  [class.item--medium]="switcherItem.breakerSize === 2 && isInteractive"
+  [class.item--large]="switcherItem.breakerSize === 3 && isInteractive"
 >
-  <div class="layout-list__item">
+  <div *ngIf="isInteractive" class="layout-list__item">
     <div class="layout-inline layout-inline--align-center layout-inline--0px">
       <div class="layout-inline__item">
         <button
           mat-icon-button
           large
           theme="warning"
+          (click)="editItem.emit()"
         >
           <span class="material-symbols-filled material-symbols-outlined">
             settings
@@ -22,6 +24,7 @@
           mat-icon-button
           large
           theme="danger"
+          (click)="deleteItem.emit()"
         >
           <span class="material-symbols-filled material-symbols-outlined">
             delete
@@ -33,7 +36,7 @@
 
   <div class="layout-list__item">
     <div class="item__size">
-      <span *ngFor="let itemSize of [].constructor(switcherItem.moduleSize)">
+      <span *ngFor="let itemSize of [].constructor(switcherItem.breakerSize)">
         I
       </span>
     </div>
@@ -47,6 +50,7 @@
     <div
       class="item__position"
       [style.background-color]="switcherItem.color"
+      [style.font-family]="fontFamily"
     >
       {{ switcherPosition }}
     </div>
@@ -64,7 +68,11 @@
   </div>
 
   <div class="layout-list__item">
-    <span class="item__label">
+    <span
+      class="item__label"
+      [style.font-size]="switcherItem.fontSize"
+      [style.font-family]="fontFamily"
+    >
       {{ switcherItem.label }}
     </span>
   </div>
