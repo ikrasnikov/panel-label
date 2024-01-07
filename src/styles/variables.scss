@@ -20,7 +20,7 @@ $color-bg-success-30: #d3eecf;
 $color-text-success: #269116;
 
 $color-bg-warning: #EE8100;
-$color-bg-warning-30: #fde4bd;
+$color-bg-warning-30: #FFF4E7;
 $color-text-warning: #dd7000;
 
 $color-bg-danger: #df5d4b;
@@ -45,17 +45,23 @@ $font-size-small: 12px;
 $font-size-normal: 14px;
 $font-size-large: 16px;
 $font-size-x-large: 20px;
-$font-size-xxx-large: 48px;
+$font-size-xx-large: 22px;
+$font-size-xxx-large: 32px;
 $font-title: 24px;
 $font-weight-bold: bold;
 
 $header-height: 72px;
 
-$item-max-width: 900px;
-$item-narrow-max-width: 720px;
+$item-max-width-extra-small: 68px;
+$item-max-width-small: 80px;
+$item-max-width-medium: 176px;
+$item-max-width-large: 272px;
+$row-max-width: 900px;
+$row-narrow-max-width: 720px;
 $content-wide-max-width: 1500px;
 $expanded-item-max-width: 940px;
 $expanded-item-narrow-max-width: 800px;
+$side-bar-max-width: 380px;
 
 $layout-spacing-options: 94px 88px 64px 44px 32px 24px 16px 12px 10px 8px 6px 2px 0px;
 

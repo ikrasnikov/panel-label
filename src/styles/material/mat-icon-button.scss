@@ -3,7 +3,7 @@ $icon-button-alternative-themes: danger light warning;
 
 $icon-button-theme-colors: (
   dark: $color-dark-50,
-  danger: $color-bg-danger-50,
+  danger: $color-bg-danger,
   light: rgba(white, 0.8),
   warning: $color-bg-warning,
 );
@@ -91,13 +91,13 @@ button.mat-mdc-icon-button.mat-mdc-button-base {
 }
 
 .mat-mdc-icon-button[large] {
-  height: 52px !important;
-  width: 52px !important;
-  padding: 10px;
+  height: 40px !important;
+  width: 40px !important;
+  padding: 4px;
 
   & .material-symbols-outlined {
-    font-size: 32px !important;
-    line-height: 32px !important;
+    font-size: $font-size-xxx-large !important;
+    line-height: $font-size-xxx-large !important;
   }
 }
 
@@ -107,7 +107,18 @@ button.mat-mdc-icon-button.mat-mdc-button-base {
   padding: 10px;
 
   & .material-symbols-outlined {
-    font-size: 22px !important;
-    line-height: 22px !important;
+    font-size: $font-size-xx-large !important;
+    line-height: $font-size-xx-large !important;
+  }
+}
+
+.mat-mdc-icon-button[extra-small] {
+  height: 32px !important;
+  width: 32px !important;
+  padding: 0;
+
+  & .material-symbols-outlined {
+    font-size: $font-size-large !important;
+    line-height: $font-size-large !important;
   }
 }

@@ -1,0 +1,63 @@
+<div *ngIf="isHorizontal" class="layout-inline layout-inline--24px">
+  <div class="layout-inline__item layout-inline__item--expand">
+    <div class="layout-inline layout-inline--0px">
+      <div class="layout-inline__item">
+        <div class="vertical-line vertical-line--horizontal"></div>
+      </div>
+
+      <div class="layout-inline__item layout-inline__item--expand">
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-inline__item">
+    <div class="label-size__container label-size__text-container--horizontal">
+      <div class="label-size__text">
+        {{ horizontalSize }}
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-inline__item layout-inline__item--expand">
+    <div class="layout-inline layout-inline--0px">
+      <div class="layout-inline__item layout-inline__item--expand">
+        <hr>
+      </div>
+
+      <div class="layout-inline__item">
+        <div class="vertical-line vertical-line--horizontal"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isHorizontal" class="layout-list layout-list--24px">
+  <div class="layout-list__item layout-list__item--expand layout-list layout-list--0px">
+    <div class="layout-list__item">
+      <hr>
+    </div>
+
+    <div class="layout-list__item layout-list__item--expand vertical-line-container">
+      <div class="vertical-line"></div>
+    </div>
+  </div>
+
+  <div class="layout-list__item">
+    <div class="label-size__container label-size__text-container--vertical">
+     <div class="label-size__text">
+        {{ verticalSize }}
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-list__item layout-list__item--expand layout-list layout-list--0px">
+    <div class="layout-list__item layout-list__item--expand vertical-line-container">
+      <div class="vertical-line"></div>
+    </div>
+
+    <div class="layout-list__item">
+      <hr>
+    </div>
+  </div>
+</div>

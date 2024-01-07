@@ -1,0 +1,60 @@
+div.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: $color-white;
+}
+
+div.mat-mdc-form-field-focus-overlay {
+  background: $color-white;
+}
+
+div.mdc-line-ripple.mdc-line-ripple--deactivating,
+div.mdc-line-ripple.mdc-line-ripple--active {
+  display: none;
+}
+
+div.mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled {
+  padding: 0;
+}
+div.mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled,
+div.mat-mdc-form-field-flex,
+div.mat-mdc-form-field-infix {
+  outline: none;
+}
+
+div.mat-mdc-form-field-infix {
+  display: flex;
+  padding-bottom: 0 !important;
+}
+
+mat-select.mat-mdc-select,
+div.mat-mdc-select-trigger {
+  height: 48px;
+}
+
+mat-select.mat-mdc-select {
+  border: 1px solid $color-dark-30;
+  border-radius: 8px;
+  padding: 0 16px;
+  color: $color-dark-50;
+}
+
+div.mat-mdc-select-arrow-wrapper {
+  transform: translateY(0) !important;
+}
+
+div.mat-mdc-select-arrow {
+  width: 4px;
+  height: 4px;
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+div.mat-mdc-select-arrow svg {
+  display: none;
+}
+
+mat-option.mat-mdc-option.mdc-list-item {
+  color: $color-dark-50
+}

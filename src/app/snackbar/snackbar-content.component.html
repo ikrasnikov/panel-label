@@ -1,0 +1,37 @@
+<div
+  class="simple-snackbar__message"
+  data-e2e="BLOCK__CONTENT"
+  [innerHTML]="data.message$ | async"
+></div>
+
+<div class="simple-snackbar__action">
+  <mat-progress-spinner
+    *ngIf="showInProgress"
+    class="simple-snackbar__spinner"
+    diameter="24"
+    mode="indeterminate"
+  ></mat-progress-spinner>
+  <button
+    *ngIf="showActionBtn"
+    class="simple-snackbar__button"
+    type="button"
+    mat-button
+    color="inverted"
+    (click)="dismissWithAction()"
+  >
+    {{ data.action }}
+  </button>
+  <button
+    *ngIf="showCloseBtn"
+    class="simple-snackbar__icon-button"
+    mat-icon-button
+    theme="light"
+    type="button"
+    extra-small
+    (click)="dismiss()"
+  >
+    <span class="material-symbols-outlined">
+      close
+    </span>
+  </button>
+</div>

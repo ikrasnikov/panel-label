@@ -2,14 +2,14 @@
   position: relative;
   width: 100%;
   padding: 0;
-  max-width: $item-max-width;
+  max-width: $row-max-width;
   margin-left: auto;
   margin-right: auto;
 
   transition: padding 0.2s;
 
   &--narrow {
-    max-width: $item-narrow-max-width;
+    max-width: $row-narrow-max-width;
   }
 
   &--medium {

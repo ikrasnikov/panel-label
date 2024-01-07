@@ -2,26 +2,40 @@
   font-family: "Montserrat", sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  background: $color-dark-05;
+  height: 100%;
 }
 
 .header {
   position: fixed;
+  display: block;
   height: $header-height;
   width: 100%;
   background: white;
   border-bottom: 1px solid $color-dark-10;
   box-shadow: 0 0 2px 0 $color-dark-10, 0 2px 2px 0 $color-dark-05;
   z-index: 20;
+  transform: translate(0, -100%);
 }
 
-.header-content {
+.app {
+  display: block;
+}
+
+.app-content {
+  position: relative;
+  display: block;
   height: 100%;
-  max-width: $content-wide-max-width;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 24px;
+  background: $color-dark-05;
+}
+
+panel-label-header > .content-container {
+  height: 100%;
+  margin: 0 auto 0 auto;
 }
 
 .logo {

@@ -1,0 +1,35 @@
+.constructor {
+  display: flex;
+  align-items: center;
+  height: calc(100% - $header-height - 1px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top: 72px;
+}
+
+.constructor-content {
+  height: 100%;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 144px);
+  max-width: $content-wide-max-width;
+  margin: 78px auto 24px auto;
+  padding: 0 24px;
+}
+
+.rows-container {
+  position: relative;
+  padding: 0 24px 0 42px;
+}
+
+.add-row {
+  display: flex;
+  justify-content: center;
+  padding: 29px 0;
+  border: 1px dashed $color-bg-warning;
+  border-radius: 4px;
+}

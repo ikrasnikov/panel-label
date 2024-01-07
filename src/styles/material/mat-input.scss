@@ -1,0 +1,37 @@
+div.mat-mdc-form-field-infix {
+  position: relative;
+}
+
+input.mat-mdc-input-element.mat-mdc-form-field-input-control.mdc-text-field__input {
+  height: 48px;
+  border: 1px solid $color-dark-30;
+  border-radius: 8px;
+  padding: 0 16px;
+  color: $color-dark-50
+}
+
+input.mat-mdc-input-element.mat-mdc-form-field-input-control.mdc-text-field__input.suffixed {
+  padding-right: 56px;
+}
+
+label.mdc-floating-label.mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
+  left: 18px;
+  top: 50px
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mdc-floating-label.mat-mdc-floating-label.mdc-floating-label--float-above {
+  color: $color-dark-50 !important;
+}
+
+div.mat-mdc-form-field-icon-suffix {
+  color: $color-dark-50;
+  position: absolute;
+  right: 16px;
+  top: 49px;
+}

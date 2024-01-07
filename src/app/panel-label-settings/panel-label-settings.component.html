@@ -1,0 +1,215 @@
+<form [formGroup]="form" (ngSubmit)="saveSettings.emit(form.value)">
+  <div class="layout-list">
+    <div class="layout-list__item">
+      <span class="settings__title">
+        Area settings
+      </span>
+    </div>
+
+<!--  TODO: here must be added autocomplete with selecting of user project  -->
+
+    <div class="layout-list__item">
+      <div class="layout-list layout-list--8px">
+        <div class="layout-list__item">
+          <div class="settings__form-field">
+            <mat-form-field>
+              <mat-label>
+                Breaker type
+              </mat-label>
+
+              <mat-select
+                formControlName="type"
+                [hideSingleSelectionIndicator]="true"
+              >
+                <mat-option
+                  *ngFor="let type of SWITCHER_TYPES"
+                  [value]="type"
+                >
+                  {{ type | uppercase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="settings__form-field">
+            <div class="layout-list layout-list--0px">
+              <div class="layout-list__item">
+                <mat-label>
+                  Size settings
+                </mat-label>
+              </div>
+
+              <div class="layout-list__item">
+                <mat-radio-group formControlName="isItemSize">
+                  <mat-radio-button [value]="true">Breaker sizes</mat-radio-button>
+                  <mat-radio-button [value]="false">Rail sizes</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="layout-inline layout-inline--6px">
+            <div class="layout-inline__item layout-inline__item--expand">
+              <div class="settings__form-field">
+                <mat-form-field>
+                  <mat-label>
+                    Width
+                  </mat-label>
+
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="width"
+                    [class.suffixed]="form.controls['width'].value"
+                    [placeholder]="form.controls['isItemSize'].value ? 'Breaker width' : 'Rail width'"
+                  >
+
+                  <span *ngIf="form.controls['width'].value" matSuffix>mm</span>
+
+                  <mat-error
+                    *ngIf="form.controls['width'].hasError('required')"
+                  >
+                    Can't be blank
+                  </mat-error>
+
+                  <mat-error
+                    *ngIf="
+                      form.controls['width'].hasError('max') ||
+                      form.controls['width'].hasError('min')
+                    "
+                  >
+                    {{ form.controls['isItemSize'].value ? 'From 10 to 100 mm' : 'From 10 to 9999 mm' }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="layout-inline__item layout-inline__item--expand">
+              <span class="material-symbols-filled material-symbols-outlined settings__icon">
+                link
+              </span>
+            </div>
+
+            <div class="layout-inline__item">
+              <div class="settings__form-field">
+                <mat-form-field>
+                  <mat-label>
+                    Height
+                  </mat-label>
+
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="height"
+                    [class.suffixed]="form.controls['height'].value"
+                    [placeholder]="settings.isItemSize ? 'Breaker height' : 'Rail height'"
+                  >
+
+                  <span *ngIf="form.controls['height'].value" matSuffix>mm</span>
+
+                  <mat-error
+                    *ngIf="form.controls['height'].hasError('required')"
+                  >
+                    Can't be blank
+                  </mat-error>
+
+                  <mat-error
+                    *ngIf="
+                      form.controls['height'].hasError('max') ||
+                      form.controls['height'].hasError('min')
+                    "
+                  >
+                    {{ form.controls['isItemSize'].value ? 'From 10 to 100 mm' : 'From 10 to 9999 mm' }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="settings__form-field">
+            <mat-form-field>
+              <mat-label>
+                Sticker font
+              </mat-label>
+
+              <input type="text"
+                     placeholder="Select sticker font"
+                     matInput
+                     formControlName="font"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+
+                <mat-option
+                  *ngFor="let font of LABEL_FONTS"
+                  [value]="font"
+                >
+                  {{ font }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="settings__form-field">
+            <mat-form-field>
+              <mat-label>
+                Position
+              </mat-label>
+
+              <mat-select
+                formControlName="position"
+                [hideSingleSelectionIndicator]="true"
+              >
+                <mat-option
+                  *ngFor="let position of LABEL_POSITION"
+                  [value]="position"
+                >
+                  {{ position | titlecase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="settings__form-field">
+            <mat-form-field>
+              <mat-label>
+                DIN Rail size
+              </mat-label>
+
+              <mat-select
+                formControlName="moduleCount"
+                [hideSingleSelectionIndicator]="true"
+              >
+                <mat-option
+                  *ngFor="let size of RAIL_SIZES"
+                  [value]="size"
+                >
+                  {{ size }} modules
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="layout-list__item">
+          <button
+            mat-raised-button
+            theme="warning"
+            type="submit"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,41 @@
+<div class="layout-inline layout-inline--valign-stretch">
+  <div
+    *ngFor="let item of switcherRow.items"
+    class="layout-inline__item"
+  >
+    <panel-label-item [switcherItem]="item"></panel-label-item>
+  </div>
+
+  <div class="layout-inline__item">
+    <div class="item item__add-container">
+      <button
+        mat-button
+        class="vertical-button"
+        theme="warning"
+        type="button"
+        (click)="addBreaker.emit()"
+      >
+        <div class="layout-list layout-list--8px">
+          <div class="layout-list__item">
+            <div class="icon-container">
+              <span class="material-symbols-outlined">
+                add
+              </span>
+            </div>
+          </div>
+
+          <div class="layout-list__item">
+            Add Breaker
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngFor="let emptyItem of emptySlots"
+    class="layout-inline__item item--small empty-item__image"
+  >
+    <panel-empty-item></panel-empty-item>
+  </div>
+</div>

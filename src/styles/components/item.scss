@@ -1,0 +1,60 @@
+$item-sizes: 'small' 'medium' 'large';
+
+$item-max-widths: (
+        small: $item-max-width-small,
+        medium: $item-max-width-medium,
+        large: $item-max-width-large,
+);
+
+.item {
+  max-width: $item-max-width-small;
+
+  @each $size in $item-sizes {
+    &--#{$size} {
+      max-width: map-get($item-max-widths, $size);
+    }
+  }
+
+  &__size {
+    display: flex;
+    justify-content: center;
+    background-color: $color-dark-10;
+    color: $color-dark-30;
+    font-size: $font-size-extra-small;
+    padding: 6px 0;
+  }
+
+  &__position {
+    display: flex;
+    justify-content: center;
+    color: $color-white;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    padding: 6px 0;
+    border-radius: 10px 10px 0 0;
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icon {
+    font-size: $font-size-xxx-large;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: center;
+    font-weight: $font-weight-bold;
+    flex: 1 0 0;
+  }
+
+  &__add-container {
+    display: flex;
+    align-items: center;
+    height: calc(100% - 46px);
+    margin-top: 46px;
+    background-color: $color-bg-warning-30;
+  }
+}
