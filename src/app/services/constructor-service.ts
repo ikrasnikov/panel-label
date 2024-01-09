@@ -99,12 +99,13 @@ export class ConstructorService {
   // 45.5*18
   private _settings$$: BehaviorSubject<IProjectSettings> = new BehaviorSubject<IProjectSettings>(
     {
+      breakerCount: 9,
       font: LabelFont.MONTSERRAT,
       height: 45.5,
       id: 1,
       isItemSize: true,
+      labelHeight: 14.82,
       position: LabelPosition.UNDER,
-      breakerCount: 9,
       title: 'My test project',
       type: SwitcherType.EU,
       width: 18,

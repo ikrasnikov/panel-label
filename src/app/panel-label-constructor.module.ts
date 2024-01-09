@@ -11,6 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -50,6 +51,7 @@ import { SnackBarService } from './services/snackbar.service';
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     TranslateModule.forRoot(),
   ],
