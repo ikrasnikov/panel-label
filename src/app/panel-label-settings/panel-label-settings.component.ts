@@ -25,6 +25,7 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
   public form!: FormGroup;
 
   private readonly _DEFAULT_RAIL_SIZE: number = 7;
+  private readonly _DEFAULT_LABEL_HEIGHT: number = 14.82;
 
   public constructor(
     private _fb: UntypedFormBuilder,
@@ -39,9 +40,10 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
       isItemSize: this.settings.isItemSize || true,
       width: [this.settings.width || 0, [Validators.required, Validators.min(10), Validators.max(9999)]],
       height: [this.settings.height || 0, [Validators.required, Validators.min(20), Validators.max(100)]],
-      font: [this.settings.font || LabelFont.MONTSERRAT, Validators.required],
       position: [this.settings.position || LabelPosition.UNDER, Validators.required],
       breakerCount: [this.settings.breakerCount || this._DEFAULT_RAIL_SIZE, Validators.required],
+      font: [this.settings.font || LabelFont.MONTSERRAT, Validators.required],
+      labelHeight: [this.settings.labelHeight || this._DEFAULT_LABEL_HEIGHT, [Validators.required, Validators.min(20), Validators.max(100)]],
     });
 
     this.form.controls['isItemSize'].valueChanges
@@ -50,9 +52,7 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
       )
       .subscribe((isItemSize: boolean) => {
         if (isItemSize) {
-          this.form.controls['width'].patchValue(
-            this.form.controls['width'].value / this.form.controls['breakerCount'].value
-          );
+          this.form.controls['width'].patchValue(this.getBreakerWidth());
           this.form.controls['width'].addValidators(Validators.max(100));
 
           return;
@@ -78,5 +78,11 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
 
   public getFonts(query: string): LabelFont[] {
     return this.LABEL_FONTS.filter((font: LabelFont) => font.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  public getBreakerWidth(): number {
+    return Math.round(
+      (this.form.controls['width'].value / this.form.controls['breakerCount'].value + Number.EPSILON) * 100)
+      / 100;
   }
 }

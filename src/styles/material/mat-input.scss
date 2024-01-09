@@ -7,7 +7,12 @@ input.mat-mdc-input-element.mat-mdc-form-field-input-control.mdc-text-field__inp
   border: 1px solid $color-dark-30;
   border-radius: 8px;
   padding: 0 16px;
-  color: $color-dark-50
+  color: $color-dark-50;
+
+  &[disabled] {
+    border: 1px solid $color-dark-10;
+    color: $color-dark-20;
+  }
 }
 
 input.mat-mdc-input-element.mat-mdc-form-field-input-control.mdc-text-field__input.suffixed {
@@ -38,4 +43,8 @@ div.mat-mdc-form-field-icon-suffix {
   position: absolute;
   right: 16px;
   top: 49px;
+}
+
+.mdc-text-field--disabled div.mat-mdc-form-field-icon-suffix {
+  color: $color-dark-20;
 }
