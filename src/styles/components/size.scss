@@ -20,16 +20,18 @@ hr {
 .label-size {
   display: flex;
   position: absolute;
-  height: calc(100% - 46px - 126px);
-  left: -12px;
-  top: 46px;
+  // 46px - top btns; 126px - bot button; 80px - padding-top; 24px - padding-bottom
+  height: calc(100% - 46px - 126px - 80px - 24px);
+  left: 24px;
+  top: 124px;
 
   &--horizontal {
     display: block;
     height: auto;
-    width: calc(100% - 68px);
-    top: -54px;
-    left: 42px;
+    // 80px - padding-left; 24px - padding-right
+    width: calc(100% - 24px - 80px);
+    top: 16px;
+    left: 80px;
   }
 
   &__text-container {

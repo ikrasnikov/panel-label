@@ -1,10 +1,7 @@
 .constructor {
   display: flex;
   align-items: center;
-  height: calc(100% - $header-height - 1px);
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-top: 72px;
+  height: 100%;
 }
 
 .constructor-content {
@@ -13,17 +10,24 @@
 
 .content-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100% - 144px);
-  max-width: $content-wide-max-width;
-  margin: 78px auto 24px auto;
-  padding: 0 24px;
+  height: 100%;
+
+  &--narrow {
+    margin-left: calc((100% - 1548px)/2);
+  }
+
+  &--wide {
+    margin-left: calc((100% - 1646px)/2);
+  }
+
+  &--widest {
+    margin-left: calc((100% - 1744px)/2);
+  }
 }
 
 .rows-container {
   position: relative;
-  padding: 0 24px 0 42px;
+  padding: 80px 24px 24px 80px;
 }
 
 .add-row {
@@ -32,4 +36,10 @@
   padding: 29px 0;
   border: 1px dashed $color-bg-warning;
   border-radius: 4px;
+}
+
+@media screen and (max-width: 1547px) {
+  .content-container {
+    margin-left: 0;
+  }
 }

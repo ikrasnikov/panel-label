@@ -17,7 +17,7 @@ import { SnackBarService } from '../services/snackbar.service';
 export class PanelLabelSettingsComponent extends BaseComponent implements OnInit {
   public readonly SWITCHER_TYPES: SwitcherType[] = this._settingsService.SWITCHER_TYPES;
   public readonly LABEL_FONTS: LabelFont[] = this._settingsService.LABEL_FONTS;
-  public readonly RAIL_SIZES: number[] = Array.from({ length: 12 }, (_, i: number) => i + 1);
+  public readonly RAIL_SIZES: number[] = Array.from({ length: 32 }, (_, i: number) => i + 1);
 
   @Output() public saveSettings: EventEmitter<IProjectSettings> = new EventEmitter();
   @Input() public settings!: IProjectSettings;
@@ -43,7 +43,7 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
       position: [this.settings.position || LabelPosition.UNDER, Validators.required],
       breakerCount: [this.settings.breakerCount || this._DEFAULT_RAIL_SIZE, Validators.required],
       font: [this.settings.font || LabelFont.MONTSERRAT, Validators.required],
-      labelHeight: [this.settings.labelHeight || this._DEFAULT_LABEL_HEIGHT, [Validators.required, Validators.min(20), Validators.max(100)]],
+      labelHeight: [this.settings.labelHeight || this._DEFAULT_LABEL_HEIGHT, [Validators.required, Validators.min(10), Validators.max(100)]],
     });
 
     this.form.controls['isItemSize'].valueChanges
