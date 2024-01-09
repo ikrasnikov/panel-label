@@ -1,0 +1,32 @@
+.settings {
+  display: block;
+  width: $side-bar-max-width;
+  padding: 24px;
+  margin-right: 68px;
+
+
+  &__title {
+    font-size: $font-title;
+    font-weight: $font-weight-bold;
+  }
+
+  &__form-field {
+    display: flex;
+  }
+
+  &__form-field mat-form-field {
+    flex: 1;
+  }
+
+  &__icon {
+    display: block;
+    color: $color-text-warning;
+    width: 24px;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .settings {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,27 @@
+mat-label:not(label>mat-label) {
+  font-size: 13px;
+  color: $color-dark-50;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+label.mdc-label {
+  color: $color-dark-50;
+}
+
+mat-radio-button.mat-mdc-radio-button.mat-mdc-radio-checked {
+  --mdc-radio-disabled-selected-icon-color: $color-dark-50;
+  --mdc-radio-disabled-unselected-icon-color: $color-dark-50;
+  --mdc-radio-unselected-hover-icon-color: $color-dark-50;
+  --mdc-radio-selected-focus-icon-color: $color-dark-50;
+  --mdc-radio-selected-hover-icon-color: $color-dark-50;
+  --mdc-radio-selected-icon-color: $color-dark-50;
+  --mdc-radio-selected-pressed-icon-color: $color-dark-50;
+  --mat-radio-checked-ripple-color: $color-dark-50;
+  --mat-radio-ripple-color: $color-dark-50;
+}
+
+mat-radio-button div.mdc-radio__outer-circle,
+mat-radio-button div.mdc-radio__inner-circle, {
+  border-color: $color-dark-50 !important;
+}

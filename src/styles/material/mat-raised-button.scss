@@ -1,25 +1,28 @@
 $raised-button-default-theme: primary;
-$raised-button-alternative-themes: light danger success primary-light;
+$raised-button-alternative-themes: light danger success primary-light warning;
 $raised-button-theme-colors: (
   light: $color-bg-primary,
   primary: white,
   primary-light: $color-bg-primary,
   danger: white,
-  success: white
+  success: white,
+  warning: white,
 );
 $raised-button-theme-backgrounds: (
   light: white,
   primary: $color-bg-primary,
   primary-light: rgba($color-bg-primary, 0.1),
   danger: $color-bg-danger,
-  success: $color-bg-success
+  success: $color-bg-success,
+  warning: $color-bg-warning,
 );
 $raised-button-theme-overlays: (
   light: $color-dark,
   primary: white,
   primary-light: rgba($color-bg-primary, 0.1),
   danger: white,
-  success: white
+  success: white,
+  warning: white
 );
 
 

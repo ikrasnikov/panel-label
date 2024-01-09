@@ -1,0 +1,16 @@
+.empty-item {
+  display: block;
+  padding: 6px;
+  margin-top: 46px;
+  border: 1px dashed $color-dark-70;
+  border-radius: 8px;
+  opacity: 0.2;
+
+  &__position {
+    background-color: $color-dark-70;
+  }
+
+  &__image {
+    max-width: $item-max-width-extra-small;
+  }
+}

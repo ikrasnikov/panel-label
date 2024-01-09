@@ -1,0 +1,38 @@
+mat-snack-bar-container.snackbar-container--warn .mdc-snackbar__surface {
+  background-color: $color-bg-danger;
+}
+
+@mixin core() {
+  .simple-snackbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $font-size-large;
+
+    &__action {
+      flex-shrink: 0;
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
+      max-height: 24px;
+    }
+
+    &__button,
+    &__icon-button {
+      display: block;
+      min-width: 0;
+    }
+
+    &__button {
+      margin: -6px;
+      margin-left: 0;
+    }
+
+    &__icon-button {
+      margin: -8px;
+      margin-left: 0;
+    }
+  }
+}
+
+@include core();

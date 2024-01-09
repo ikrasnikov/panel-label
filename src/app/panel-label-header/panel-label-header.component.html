@@ -1,4 +1,4 @@
-<div class="header-content">
+<div class="content-container">
   <div class="layout-split layout-split--stretch">
     <div class="layout-split__item">
       <img class="logo" src="../../assets/logo.png">
@@ -47,6 +47,7 @@
             mat-icon-button
             small
             theme="warning"
+            (click)="toggleSettings.emit()"
           >
             <span class="material-symbols-filled material-symbols-outlined">
               settings

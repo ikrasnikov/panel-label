@@ -1,0 +1,69 @@
+.vertical-line-container {
+  align-self: center;
+}
+
+.vertical-line {
+  background: linear-gradient($color-dark-10, $color-dark-10) no-repeat center/2px 100%;
+  height: 100%;
+  width: 1px;
+
+  &--horizontal {
+    height: 42px;
+  }
+}
+
+hr {
+  border-top: 1px solid $color-dark-10;
+  margin: 0;
+}
+
+.label-size {
+  display: flex;
+  position: absolute;
+  height: calc(100% - 58px - 126px);
+  left: -12px;
+  top: 58px;
+
+  &--horizontal {
+    display: block;
+    height: auto;
+    width: calc(100% - 68px);
+    top: -54px;
+    left: 42px;
+  }
+
+  &__text-container {
+    border: 1px solid $color-dark-10;
+    border-radius: 4px;
+
+    &--horizontal {
+      padding: 10px 50px;
+    }
+
+    &--vertical {
+      padding: 50px 10px;
+
+      &> .label-size__text {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.label-size__container {
+  border: 1px solid $color-dark-10;
+  border-radius: 4px;
+
+  &--horizantal {
+    padding: 10px 50px;
+  }
+
+  &--vertical {
+    padding: 50px 10px;
+
+    &> .size-text {
+      transform: rotate(270deg);
+    }
+  }
+}

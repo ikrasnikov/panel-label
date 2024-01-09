@@ -1,0 +1,71 @@
+<div
+  class="layout-list layout-list--6px item"
+  [class.item--medium]="switcherItem.moduleSize === 2"
+  [class.item--large]="switcherItem.moduleSize === 3"
+>
+  <div class="layout-list__item">
+    <div class="layout-inline layout-inline--align-center layout-inline--0px">
+      <div class="layout-inline__item">
+        <button
+          mat-icon-button
+          large
+          theme="warning"
+        >
+          <span class="material-symbols-filled material-symbols-outlined">
+            settings
+          </span>
+        </button>
+      </div>
+
+      <div class="layout-inline__item">
+        <button
+          mat-icon-button
+          large
+          theme="danger"
+        >
+          <span class="material-symbols-filled material-symbols-outlined">
+            delete
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-list__item">
+    <div class="item__size">
+      <span *ngFor="let itemSize of [].constructor(switcherItem.moduleSize)">
+        I
+      </span>
+    </div>
+  </div>
+
+  <div class="layout-list__item">
+    <img [src]="switcherImagePath">
+  </div>
+
+  <div class="layout-list__item">
+    <div
+      class="item__position"
+      [style.background-color]="switcherItem.color"
+    >
+      {{ switcherPosition }}
+    </div>
+  </div>
+
+  <div class="layout-list__item">
+    <div class="item__icon-container">
+      <span
+        class="material-symbols-outlined item__icon"
+        [style.color]="switcherItem.color"
+      >
+        {{ switcherItem.icon }}
+      </span>
+    </div>
+  </div>
+
+  <div class="layout-list__item">
+    <span class="item__label">
+      {{ switcherItem.label }}
+    </span>
+  </div>
+</div>

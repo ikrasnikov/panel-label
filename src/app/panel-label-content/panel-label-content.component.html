@@ -1,0 +1,55 @@
+<!--TODO: remove this piece of shit and write a custom sidebar. Then modules amount can be increased-->
+<mat-drawer-container autosize>
+  <mat-drawer
+    #drawer
+    mode="over"
+    position="end"
+  >
+    <panel-label-settings
+      [settings]="settings"
+      (saveSettings)="saveSettings($event)"
+    ></panel-label-settings>
+  </mat-drawer>
+
+  <div class="content-container">
+    <div class="rows-container">
+      <div class="layout-list">
+        <div *ngFor="let row of rows" class="layout-list__item">
+          <panel-label-size
+            [isHorizontal]="true"
+            [horizontalSize]="horizontalSize"
+          >
+          </panel-label-size>
+
+          <panel-label-size
+            [isHorizontal]="false"
+            [verticalSize]="verticalSize"
+          >
+          </panel-label-size>
+
+          <panel-label-row
+            [moduleCount]="settings.moduleCount"
+            [switcherRow]="row"
+          ></panel-label-row>
+        </div>
+
+        <div class="layout-list__item">
+          <div class="add-row">
+            <button
+              mat-button
+              theme="warning"
+            >
+              <div class="icon-container">
+                <span class="material-symbols-outlined">
+                  add
+                </span>
+              </div>
+
+              Add rail
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>
