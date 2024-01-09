@@ -12,7 +12,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/panel-label",
+        "outputPath": "dist",
         "index": "./src/index.html",
         "main": "./src/main.ts",
         "polyfills": [
@@ -44,6 +44,22 @@
             }
           ],
           "outputHashing": "all"
+        },
+        "gh-pages": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "baseHref": "/panel-label/"
         },
         "development": {
           "buildOptimizer": false,

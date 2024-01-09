@@ -4,6 +4,7 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "build:gh-pages": "nx build -c=gh-pages",
     "test": "nx test"
   },
   "private": true,

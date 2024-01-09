@@ -14,7 +14,7 @@ export class PanelLabelItemComponent implements OnInit, OnChanges {
   @Input() public fontFamily!: string;
   @Input() public isInteractive: boolean = true;
 
-  public switcherImagePath: string = '../../assets/switcher_{size}.png';
+  public switcherImagePath: string = 'assets/switcher_{size}.png';
   public switcherPosition: string = '';
 
   public ngOnInit(): void {
