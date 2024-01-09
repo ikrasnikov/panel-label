@@ -12,10 +12,17 @@
 
   &__form-field {
     display: flex;
+
+    & mat-form-field {
+      flex: 1;
+    }
   }
 
-  &__form-field mat-form-field {
-    flex: 1;
+  &__form-field-label {
+    font-size: 13px;
+    color: $color-dark-50;
+    font-weight: 500;
+    opacity: 0.8;
   }
 
   &__icon {

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
+import { ConstructorPageService } from '../services/constructor-page-service';
 import { ISwitcherItem } from '../../types/item';
 import { ISwitcherRow } from '../../types/row';
 
@@ -9,25 +10,24 @@ import { ISwitcherRow } from '../../types/row';
 })
 export class PanelLabelRowComponent implements OnChanges {
   @Output() public addBreaker: EventEmitter<void> = new EventEmitter<void>();
-  @Input() public moduleCount: number = 1;
+  @Output() public deleteBreaker: EventEmitter<number> = new EventEmitter<number>();
+  @Output() public editBreaker: EventEmitter<ISwitcherItem> = new EventEmitter<ISwitcherItem>();
+  @Input() public breakerCount: number = 1;
   @Input() public switcherRow!: ISwitcherRow;
+  @Input() public fontFamily!: string;
 
   public emptySlots: number[] = [];
-  public occupiedSlotsCount: number = 0;
+  public freeSlotsCount: number = 0;
+
+  public constructor(
+    private _constructorPageService: ConstructorPageService,
+  ) {}
 
   public ngOnChanges(): void {
-    if (this.switcherRow && this.switcherRow.items.length) {
-      this.occupiedSlotsCount = this.switcherRow.items.reduce(
-        (sum: number, item: ISwitcherItem) => sum + item.moduleSize, 0
-      )
-    }
+    this.freeSlotsCount = this._constructorPageService.getFreeSlots(this.switcherRow.items, this.breakerCount);
 
     this.emptySlots = Array.from(
-      {
-        length: this.occupiedSlotsCount
-          ? this.moduleCount - this.occupiedSlotsCount - 1
-          : this.moduleCount - 1
-      },
+      { length: this.freeSlotsCount - 1 },
       (_, i: number) => i + 1
     );
   }

@@ -1,0 +1,148 @@
+/**
+ *  DIALOG component
+ *
+ *    .dialog
+ *      &__image
+ *        &--theme-%THEME%
+ *      &__body
+ *        &--medium
+ *        &--large
+ *        &--x-large
+ *      &__actions
+ *
+ *    .dialog-body-section
+ *      &--bordered
+ *      &--narrow
+ *
+ *    .dialog-header
+ *      &__title
+ *      &__text
+ *
+ *  how to use
+ *  ----------
+ *  to ensure proper spacing, use with .layout-list and .layout-inline
+ *
+ *    .dialog
+ *      .dialog__body(.dialog__body--large)
+ *        .dialog-body-section(.dialog-body-section--bordered)(.dialog-body-section--narrow)
+ *          .layout-list
+ *            .layout-list__item
+ *              .dialog-header
+ *                .dialog-header__title
+ *                .dialog-header__text
+ *            .layout-list__item
+ *               (input group/whatever)
+ *            .layout-list__item
+ *               (input group/whatever)
+ *        (something full-width without "section", e.g., ng-wig)
+ *      .dialog__actions
+ *        .layout-inline.layout-inline--align-right
+ *          .layout-inline__item
+ *            <button>
+ *          .layout-inline__item
+ *            <button>
+ *
+ *  dialogs with images on the side:
+ *
+ *    .dialog
+ *      .layout-inline.layout-inline--0px.layout-inline--valign-stretch
+ *        .layout-inline__item
+ *          .dialog__image
+ *        .layout-inline__item
+ *          .dialog__body
+ *            (...)
+ *
+ **/
+
+$dialog-image-bg-themes: (
+  primary: $color-bg-primary,
+  warning: $color-bg-warning,
+  danger: $color-bg-danger,
+);
+
+.dialog {
+  @extend %dialog;
+  display: block;
+  overflow: hidden;
+
+  &__image {
+    width: 252px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @each $theme-name, $theme-color in $dialog-image-bg-themes {
+      &--theme-#{$theme-name} {
+        background-color: $theme-color;
+      }
+    }
+  }
+
+  &__body {
+    display: block;
+    width: 400px;
+    min-height: 280px - 56px; // 56 px === height of actions bar
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &--medium {
+      width: 500px;
+    }
+
+    &--large {
+      width: 640px;
+    }
+
+    &--x-large {
+      width: 960px;
+    }
+  }
+
+  &__actions {
+    padding: 12px 24px;
+  }
+}
+
+.dialog-body-section {
+  padding: 21px 24px;
+
+  &--bordered {
+    border-bottom: 1px solid $color-dark-30;
+  }
+
+  &--narrow {
+    padding: 16px 24px;
+  }
+}
+
+.dialog-header {
+  &__title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 24px;
+    color: $color-dark-50;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.dialog-overlay {
+  @extend %layout-center;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-height: 100%;
+  }
+}

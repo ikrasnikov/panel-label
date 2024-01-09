@@ -1,0 +1,13 @@
+<div
+  (click)="checkAndClose()"
+  class="dialog-overlay"
+>
+  <div class="dialog-overlay__body">
+    <div
+      (mousedown)="isClickedInside = true"
+      (click)="isClickedInside = true"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

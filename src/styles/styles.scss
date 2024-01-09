@@ -17,6 +17,7 @@
 @import './layouts/layout-list';
 @import './layouts/layout-split';
 
+@import './material/dialog';
 @import './material/mat-button';
 @import './material/mat-drawer';
 @import './material/mat-icon-button';
@@ -26,6 +27,7 @@
 @import './material/mat-raised-button';
 @import './material/mat-select';
 
+@import 'components/breaker-dialog';
 @import 'components/constructor';
 @import 'components/empty-item';
 @import './index';

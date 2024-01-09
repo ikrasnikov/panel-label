@@ -1,0 +1,50 @@
+.circle {
+  cursor: pointer;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+
+  &--selected {
+    box-shadow: 0 0 2px 3px $color-dark-20;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 3px $color-dark-20;
+  }
+
+  &:active {
+    box-shadow: 0 0 0 3px $color-dark-30;
+  }
+}
+
+.breaker {
+  &__form-field {
+    display: flex;
+
+    & mat-form-field {
+      flex: 1;
+    }
+  }
+
+  &__form-field-label {
+    font-size: 13px;
+    color: $color-dark-50;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  &__icons-container {
+    overflow-y: auto;
+    height: 134px;
+  }
+
+  &__icon {
+    cursor: pointer;
+    font-size: $font-size-xxx-large;
+    color: $color-dark-70;
+
+    &--inactive {
+      opacity: 0.2;
+    }
+  }
+}

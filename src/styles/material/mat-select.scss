@@ -35,6 +35,15 @@ mat-select.mat-mdc-select {
   border-radius: 8px;
   padding: 0 16px;
   color: $color-dark-50;
+
+  &.mat-mdc-select-disabled {
+    border: 1px solid $color-dark-10;
+    color: $color-dark-20;
+
+    & div.mat-mdc-select-arrow {
+      border-color: $color-dark-20;
+    }
+  }
 }
 
 div.mat-mdc-select-arrow-wrapper {

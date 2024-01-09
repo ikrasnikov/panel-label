@@ -1,0 +1,21 @@
+<custom-confirmation-dialog
+  [submitButtonLabel]="submitButtonLabel"
+  [cancelButtonLabel]="cancelButtonLabel"
+  [submitIsHidden]="submitIsHidden"
+  [action$]="action$"
+  [buttonType]="buttonType"
+  [image]="image"
+  [large]="large"
+  [medium]="medium"
+  (cancelled)="close()"
+  (success)="triggerSuccess($event)"
+  (error)="triggerError($event)"
+>
+  <div class="dialog-body-section">
+    <div class="dialog-header">
+      <div class="dialog-header__title">{{ data.title }}</div>
+
+      <div class="dialog-header__text" [innerHtml]="data.body"></div>
+    </div>
+  </div>
+</custom-confirmation-dialog>

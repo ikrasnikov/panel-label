@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="saveSettings.emit(form.value)">
+<form [formGroup]="form" (ngSubmit)="saveForm()">
   <div class="layout-list">
     <div class="layout-list__item">
       <span class="settings__title">
@@ -9,7 +9,7 @@
 <!--  TODO: here must be added autocomplete with selecting of user project  -->
 
     <div class="layout-list__item">
-      <div class="layout-list layout-list--8px">
+      <div class="layout-list layout-list--0px">
         <div class="layout-list__item">
           <div class="settings__form-field">
             <mat-form-field>
@@ -43,8 +43,8 @@
 
               <div class="layout-list__item">
                 <mat-radio-group formControlName="isItemSize">
-                  <mat-radio-button [value]="true">Breaker sizes</mat-radio-button>
-                  <mat-radio-button [value]="false">Rail sizes</mat-radio-button>
+                  <mat-radio-button [value]="true">Breaker width</mat-radio-button>
+                  <mat-radio-button [value]="false">Rail width</mat-radio-button>
                 </mat-radio-group>
               </div>
             </div>
@@ -106,7 +106,7 @@
                     type="number"
                     formControlName="height"
                     [class.suffixed]="form.controls['height'].value"
-                    [placeholder]="settings.isItemSize ? 'Breaker height' : 'Rail height'"
+                    [placeholder]="'Breaker height'"
                   >
 
                   <span *ngIf="form.controls['height'].value" matSuffix>mm</span>
@@ -146,37 +146,44 @@
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
 
                 <mat-option
-                  *ngFor="let font of LABEL_FONTS"
+                  *ngFor="let font of getFonts(form.controls['font'].value)"
                   [value]="font"
                 >
                   {{ font }}
                 </mat-option>
               </mat-autocomplete>
-            </mat-form-field>
-          </div>
-        </div>
 
-        <div class="layout-list__item">
-          <div class="settings__form-field">
-            <mat-form-field>
-              <mat-label>
-                Position
-              </mat-label>
-
-              <mat-select
-                formControlName="position"
-                [hideSingleSelectionIndicator]="true"
+              <mat-error
+                *ngIf="form.controls['font'].hasError('required')"
               >
-                <mat-option
-                  *ngFor="let position of LABEL_POSITION"
-                  [value]="position"
-                >
-                  {{ position | titlecase }}
-                </mat-option>
-              </mat-select>
+                Can't be blank
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
+
+<!--        TODO: uncomment when vertical layout will be ready-->
+<!--        <div class="layout-list__item">-->
+<!--          <div class="settings__form-field">-->
+<!--            <mat-form-field>-->
+<!--              <mat-label>-->
+<!--                Position-->
+<!--              </mat-label>-->
+
+<!--              <mat-select-->
+<!--                formControlName="position"-->
+<!--                [hideSingleSelectionIndicator]="true"-->
+<!--              >-->
+<!--                <mat-option-->
+<!--                  *ngFor="let position of LABEL_POSITION"-->
+<!--                  [value]="position"-->
+<!--                >-->
+<!--                  {{ position | titlecase }}-->
+<!--                </mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
 
         <div class="layout-list__item">
           <div class="settings__form-field">
@@ -186,7 +193,7 @@
               </mat-label>
 
               <mat-select
-                formControlName="moduleCount"
+                formControlName="breakerCount"
                 [hideSingleSelectionIndicator]="true"
               >
                 <mat-option

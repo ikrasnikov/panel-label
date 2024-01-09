@@ -6,7 +6,7 @@ export interface IProjectSettings {
   id: number;
   isItemSize: boolean;
   position: LabelPosition;
-  moduleCount: number;
+  breakerCount: number;
   title: string;
   type: SwitcherType;
   width: number;
