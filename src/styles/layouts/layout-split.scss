@@ -1,0 +1,38 @@
+.layout-split {
+  @extend %layout-split;
+  width: 100%;
+
+  &__item {
+    flex-shrink: 0;
+
+    &--expand {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+    }
+
+    &--collapse {
+      flex-grow: 0;
+      flex-shrink: 1;
+      overflow: hidden;
+    }
+  }
+
+  &--stretch {
+    height: 100%;
+  }
+
+  &--bottom {
+    align-items: flex-end;
+  }
+
+  &--start {
+    justify-content: flex-start;
+  }
+
+  @each $margin in $layout-spacing-options {
+    &--#{$margin} > &__item:not(:first-child) {
+      padding-left: $margin;
+    }
+  }
+}

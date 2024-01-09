@@ -1,0 +1,39 @@
+.layout-content {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  max-width: $item-max-width;
+  margin-left: auto;
+  margin-right: auto;
+
+  transition: padding 0.2s;
+
+  &--narrow {
+    max-width: $item-narrow-max-width;
+  }
+
+  &--medium {
+    max-width: $expanded-item-narrow-max-width;
+  }
+
+  &--wide {
+    max-width: $content-wide-max-width;
+  }
+
+  &--fullscreen-dialog-section {
+    min-width: $expanded-item-max-width;
+  }
+
+  &--expanded {
+    padding: 24px 0;
+    max-width: $expanded-item-max-width;
+
+    &.layout-content--narrow {
+      max-width: $expanded-item-narrow-max-width;
+    }
+
+    &.layout-content--wide {
+      max-width: $content-wide-max-width;
+    }
+  }
+}
