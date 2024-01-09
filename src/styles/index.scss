@@ -10,8 +10,9 @@ body {
   height: 100%;
 }
 
-.header {
-  position: fixed;
+.header-container {
+  position: sticky;
+  top: 0;
   display: block;
   height: $header-height;
   width: 100%;
@@ -19,23 +20,27 @@ body {
   border-bottom: 1px solid $color-dark-10;
   box-shadow: 0 0 2px 0 $color-dark-10, 0 2px 2px 0 $color-dark-05;
   z-index: 20;
-  transform: translate(0, -100%);
+}
+
+.header {
+  height: 100%;
+  margin: 0 auto 0 auto;
+  max-width: $content-wide-max-width;
+  padding: 0 24px;
 }
 
 .app {
   display: block;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 .app-content {
-  position: relative;
   display: block;
-  height: 100%;
+  height: calc(100% - 72px);
   background: $color-dark-05;
-}
-
-panel-label-header > .content-container {
-  height: 100%;
-  margin: 0 auto 0 auto;
+  overflow-y: auto;
+  width: 100%;
 }
 
 .logo {

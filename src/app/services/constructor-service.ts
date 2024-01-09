@@ -139,11 +139,7 @@ export class ConstructorService {
           this._rows = this._getUpdatedBreakerRows(
             rowId,
             this._rows,
-            (items: ISwitcherItem[]) => {
-              items.push({ ...item, id: Number(new Date()) });
-
-              return items
-            }
+            (items: ISwitcherItem[]) => [ ...items, { ...item, id: Number(new Date()) } ],
           );
 
           this._rows$$.next(this._rows);
