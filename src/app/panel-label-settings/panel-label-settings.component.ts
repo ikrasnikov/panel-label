@@ -38,7 +38,13 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
       title: [this.settings.title || '', [Validators.required, Validators.maxLength(72), Validators.pattern(/\S+/)]],
       type: [this.settings.type || SwitcherType.EU, Validators.required],
       isItemSize: this.settings.isItemSize || true,
-      width: [this.settings.width || 0, [Validators.required, Validators.min(10), Validators.max(9999)]],
+      width: [
+        this.settings.width || 0,
+        [
+          Validators.required,
+          Validators.min(10),
+          this.settings.isItemSize ? Validators.max(100) : Validators.max(9999),
+        ]],
       height: [this.settings.height || 0, [Validators.required, Validators.min(20), Validators.max(100)]],
       position: [this.settings.position || LabelPosition.UNDER, Validators.required],
       breakerCount: [this.settings.breakerCount || this._DEFAULT_RAIL_SIZE, Validators.required],
@@ -51,18 +57,11 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
         takeUntil(this._destroy$$)
       )
       .subscribe((isItemSize: boolean) => {
-        if (isItemSize) {
-          this.form.controls['width'].patchValue(this.getBreakerWidth());
-          this.form.controls['width'].addValidators(Validators.max(100));
-
-          return;
-        }
-
-        this.form.controls['width'].patchValue(
-          this.form.controls['width'].value * this.form.controls['breakerCount'].value
-        );
-        this.form.controls['width'].removeValidators(Validators.max(100));
-        this.form.controls['width'].addValidators(Validators.max(9999));
+        this.form.controls['width'].setValidators([]);
+        this.form.controls['width'].patchValue(this.getWidth(isItemSize));
+        this.form.controls['width'].addValidators(Validators.min(10));
+        this.form.controls['width'].addValidators(Validators.max(isItemSize ? 100 : 9999));
+        this.form.controls['width'].updateValueAndValidity();
       });
   }
 
@@ -80,9 +79,11 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
     return this.LABEL_FONTS.filter((font: LabelFont) => font.toLowerCase().includes(query.toLowerCase()));
   }
 
-  public getBreakerWidth(): number {
-    return Math.round(
-      (this.form.controls['width'].value / this.form.controls['breakerCount'].value + Number.EPSILON) * 100)
-      / 100;
+  public getWidth(isItemSize: boolean): number {
+    const countOperation: () => number = isItemSize
+    ? () => this.form.controls['width'].value / this.form.controls['breakerCount'].value
+    : () => this.form.controls['width'].value * this.form.controls['breakerCount'].value;
+
+    return Math.round(countOperation() * 100) / 100;
   }
 }
