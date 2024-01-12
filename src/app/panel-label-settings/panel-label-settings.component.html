@@ -204,7 +204,9 @@
                   matInput
                   type="number"
                   matTooltip="Label width will be equal to x1 breaker width"
-                  [value]="form.controls['isItemSize'].value ? form.controls['width'].value : getBreakerWidth()"
+                  [value]="form.controls['isItemSize'].value
+                    ? form.controls['width'].value
+                    : getWidth(true).toString()"
                   [disabled]="true"
                   [class.suffixed]="form.controls['width'].value"
                 >
