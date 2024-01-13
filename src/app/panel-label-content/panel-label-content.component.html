@@ -1,4 +1,4 @@
-<mat-drawer-container autosize>
+<mat-drawer-container *ngIf="!isLoading" autosize>
   <mat-drawer
     #drawer
     mode="over"
@@ -69,3 +69,13 @@
     </div>
   </div>
 </mat-drawer-container>
+
+<div
+  *ngIf="isLoading"
+  class="layout-inline layout-inline--expand layout-inline--align-center"
+>
+  <mat-spinner
+    diameter="200"
+    theme="primary-light"
+  ></mat-spinner>
+</div>

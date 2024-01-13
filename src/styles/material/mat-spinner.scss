@@ -1,0 +1,27 @@
+$mat-spinner-default-theme: primary;
+$mat-spinner-alternative-themes: primary-light light danger;
+
+$mat-spinner-theme-colors: (
+  light: white,
+  primary: $color-bg-primary,
+  primary-light: $color-bg-primary-30,
+  danger: $color-bg-danger
+);
+
+
+.mat-mdc-progress-spinner {
+  // default theme
+
+  & circle {
+    stroke: map-get($mat-spinner-theme-colors, $mat-spinner-default-theme) !important;
+  }
+}
+
+
+@each $theme-name in $mat-spinner-alternative-themes {
+  .mat-mdc-progress-spinner[theme="#{$theme-name}"] {
+    & circle {
+      stroke: map-get($mat-spinner-theme-colors, $theme-name) !important;
+    }
+  }
+}
