@@ -26,6 +26,7 @@ export class PanelLabelContentComponent extends BaseComponent {
   public settings!: IProjectSettings
   public horizontalSize: number = 0;
   public verticalSize: number = 0;
+  public isLoading: boolean = true;
 
   public constructor(
     private _constructorPageService: ConstructorPageService,
@@ -52,6 +53,8 @@ export class PanelLabelContentComponent extends BaseComponent {
         this.verticalSize = settings.isItemSize
           ? this._getRowSize(this.settings.height, this.rows.length)
           : this.settings.height;
+
+        this.isLoading = false;
       });
   }
 
