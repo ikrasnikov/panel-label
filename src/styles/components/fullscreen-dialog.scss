@@ -1,0 +1,62 @@
+/**
+ *  FULLSCREEN DIALOG component
+ *
+ *  styling for full-screen dialogs
+ *
+ *    .fullscreen-dialog
+ *      &__body
+ *
+ *    .fullscreen-dialog-header
+ *      &__title
+ *
+ *  how to use
+ *  ----------
+ *
+ *    .fullscreen-dialog
+ *      .fullscreen-dialog-header
+ *        .layout-split
+ *          .layout-split__item
+ *            .fullscreen-dialog-header__title
+ *          .layout-split__item
+ *            (close button)
+ *      .fullscreen-dialog__body
+ *        (body)
+ *
+ */
+
+.fullscreen-dialog {
+  @extend %dialog;
+
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  &__body {
+    height: calc(100% - #{$header-height});
+    overflow: auto;
+
+    &--with-two-headers {
+      height: calc(100% - 2 *#{$header-height});
+      overflow: auto;
+    }
+  }
+
+  &__page-content {
+    min-width: 1200px;
+  }
+}
+
+.fullscreen-dialog-header {
+  @extend %pagebar;
+
+  &--no-border {
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

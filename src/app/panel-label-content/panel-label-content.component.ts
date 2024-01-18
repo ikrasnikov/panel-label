@@ -12,6 +12,7 @@ import { ConstructorService } from '../services/constructor-service';
 import { ISwitcherItem } from '../../types/item';
 import { ISwitcherRow } from '../../types/row';
 import { IProjectSettings } from '../../types/settings';
+import { PanelLabelPreviewDialogComponent } from '../panel-label-preview-dialog/panel-label-preview-dialog.component';
 import { SnackBarService } from '../services/snackbar.service';
 
 @Component({
@@ -56,10 +57,30 @@ export class PanelLabelContentComponent extends BaseComponent {
 
         this.isLoading = false;
       });
-  }
 
-  public toggleSettings(): void {
-    this.matDrawer.toggle();
+    this._constructorPageService.getToggleSettings$()
+      .pipe(
+        takeUntil(this._destroy$$)
+      )
+      .subscribe(() => {
+        this.matDrawer.toggle();
+      });
+
+    this._constructorPageService.getOpenPreview$()
+      .pipe(
+        takeUntil(this._destroy$$)
+      )
+      .subscribe(() => {
+        this._dialog.open(
+          PanelLabelPreviewDialogComponent,
+          {
+            data: {
+              settings: this.settings,
+              rows: this.rows,
+            },
+          },
+        );
+      });
   }
 
   public saveSettings(settings: IProjectSettings): void {

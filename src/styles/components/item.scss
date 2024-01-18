@@ -49,6 +49,7 @@ $item-max-widths: (
     justify-content: center;
     font-weight: $font-weight-bold;
     word-break: break-word;
+    padding: 0 4px;
   }
 
   &__add-container {

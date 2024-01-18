@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
+import { BreakerFontSizes, BreakerIconFontSizes } from '../enums/item.enum';
+import { BREAKER_FONT_SIZES_MAP, BREAKER_ICON_FONT_SIZES_MAP } from '../maps/item';
 import { ISwitcherItem } from '../../types/item';
 
 @Component({
@@ -7,6 +9,9 @@ import { ISwitcherItem } from '../../types/item';
   templateUrl: './panel-label-item.component.html',
 })
 export class PanelLabelItemComponent implements OnInit, OnChanges {
+  public readonly BREAKER_FONT_SIZES_MAP: { [key: number]: BreakerFontSizes } = BREAKER_FONT_SIZES_MAP;
+  public readonly BREAKER_ICON_FONT_SIZES_MAP: { [key: number]: BreakerIconFontSizes } = BREAKER_ICON_FONT_SIZES_MAP;
+
   @Output() public deleteItem: EventEmitter<void> = new EventEmitter<void>();
   @Output() public editItem: EventEmitter<void> = new EventEmitter<void>();
 

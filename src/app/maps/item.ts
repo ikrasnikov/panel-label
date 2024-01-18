@@ -1,4 +1,4 @@
-import { BreakerColor, BreakerFontSizes, BreakerIcon, BreakerSize } from '../enums/item.enum';
+import { BreakerColor, BreakerFontSizes, BreakerIcon, BreakerIconFontSizes, BreakerSize } from '../enums/item.enum';
 
 export const SWITCHER_SIZES_MAP: { [key: string]: BreakerSize } = {
   x1 : BreakerSize.ONE,
@@ -6,20 +6,35 @@ export const SWITCHER_SIZES_MAP: { [key: string]: BreakerSize } = {
   x3 : BreakerSize.THREE,
 };
 
-export const BREAKER_FONT_SIZES: BreakerFontSizes[] = [
-  BreakerFontSizes.SIX,
-  BreakerFontSizes.EIGHT,
-  BreakerFontSizes.TEN,
-  BreakerFontSizes.TWELVE,
-  BreakerFontSizes.FOURTEEN,
-  BreakerFontSizes.SIXTEEN,
-  BreakerFontSizes.EIGHTEEN,
-  BreakerFontSizes.TWENTY,
-  BreakerFontSizes.TWENTY_TWO,
-  BreakerFontSizes.TWENTY_FOUR,
-  BreakerFontSizes.THIRTY_TWO,
-  BreakerFontSizes.FORTY_EIGHT,
-];
+export const BREAKER_FONT_SIZES_MAP: { [key: number]: BreakerFontSizes } = {
+  6: BreakerFontSizes.SIX,
+  8: BreakerFontSizes.EIGHT,
+  10: BreakerFontSizes.TEN,
+  12: BreakerFontSizes.TWELVE,
+  14: BreakerFontSizes.FOURTEEN,
+  16: BreakerFontSizes.SIXTEEN,
+  18: BreakerFontSizes.EIGHTEEN,
+  20: BreakerFontSizes.TWENTY,
+  22: BreakerFontSizes.TWENTY_TWO,
+  24: BreakerFontSizes.TWENTY_FOUR,
+  32: BreakerFontSizes.THIRTY_TWO,
+  48: BreakerFontSizes.FORTY_EIGHT,
+};
+
+export const BREAKER_ICON_FONT_SIZES_MAP: { [key: number]: BreakerIconFontSizes } = {
+  22: BreakerIconFontSizes.TWENTY_TWO,
+  24: BreakerIconFontSizes.TWENTY_FOUR,
+  26: BreakerIconFontSizes.TWENTY_SIX,
+  28: BreakerIconFontSizes.TWENTY_EIGHT,
+  30: BreakerIconFontSizes.THIRTY,
+  32: BreakerIconFontSizes.THIRTY_TWO,
+  34: BreakerIconFontSizes.THIRTY_FOUR,
+  36: BreakerIconFontSizes.THIRTY_SIX,
+  38: BreakerIconFontSizes.THIRTY_EIGHT,
+  40: BreakerIconFontSizes.FORTY,
+  48: BreakerIconFontSizes.FORTY_EIGHT,
+  64: BreakerIconFontSizes.SIXTY_FOUR,
+};
 
 export const BREAKER_COLORS: BreakerColor[] = [
   BreakerColor.RED,
