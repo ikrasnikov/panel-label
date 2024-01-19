@@ -1,5 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
+import { panelLabelConstructorRouter } from './panel-label-constructor.routes';
+
 import { BaseDialogComponent } from './helpers/base-dialog.component';
 import { BreakerDialogComponent } from './breaker-dialog/breaker-dialog.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
@@ -29,9 +32,11 @@ import { PanelLabelConstructorComponent } from './panel-label-constructor/panel-
 import { PanelLabelContentComponent } from './panel-label-content/panel-label-content.component';
 import { PanelLabelHeaderComponent } from './panel-label-header/panel-label-header.component';
 import { PanelLabelItemComponent } from './panel-label-item/panel-label-item.component';
+import { PanelLabelPreviewDialogComponent } from './panel-label-preview-dialog/panel-label-preview-dialog.component';
 import { PanelLabelRowComponent } from './panel-label-row/panel-label-row.component';
 import { PanelLabelSettingsComponent } from './panel-label-settings/panel-label-settings.component';
 import { PanelLabelSizeComponent } from './panel-label-size/panel-label-size.component';
+import { ScrollService } from './services/scroll.service';
 import { SettingsService } from './services/settings-service';
 import { SnackBarContentComponent } from './snackbar/snackbar-content.component';
 import { SnackBarService } from './services/snackbar.service';
@@ -40,6 +45,7 @@ import { SnackBarService } from './services/snackbar.service';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    CdkScrollableModule,
     FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -52,6 +58,7 @@ import { SnackBarService } from './services/snackbar.service';
     MatSidenavModule,
     MatSnackBarModule,
     MatTooltipModule,
+    panelLabelConstructorRouter,
     ReactiveFormsModule,
     TranslateModule.forRoot(),
   ],
@@ -66,6 +73,7 @@ import { SnackBarService } from './services/snackbar.service';
     PanelLabelContentComponent,
     PanelLabelHeaderComponent,
     PanelLabelItemComponent,
+    PanelLabelPreviewDialogComponent,
     PanelLabelRowComponent,
     PanelLabelSettingsComponent,
     PanelLabelSizeComponent,
@@ -74,6 +82,7 @@ import { SnackBarService } from './services/snackbar.service';
   providers: [
     ConstructorPageService,
     ConstructorService,
+    ScrollService,
     SettingsService,
     SnackBarService,
     TranslateService,

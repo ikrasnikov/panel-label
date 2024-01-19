@@ -19,6 +19,21 @@ export const enum BreakerFontSizes {
   FORTY_EIGHT = '48px',
 }
 
+export const enum BreakerIconFontSizes {
+  TWENTY_TWO = '22px',
+  TWENTY_FOUR = '24px',
+  TWENTY_SIX = '26px',
+  TWENTY_EIGHT = '28px',
+  THIRTY = '30px',
+  THIRTY_TWO = '32px',
+  THIRTY_FOUR = '34px',
+  THIRTY_SIX = '36px',
+  THIRTY_EIGHT = '38px',
+  FORTY = '40px',
+  FORTY_EIGHT = '48px',
+  SIXTY_FOUR = '64px',
+}
+
 export const enum BreakerType {
   BREAKER = 'breaker',
 }

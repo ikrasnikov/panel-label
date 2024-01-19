@@ -139,10 +139,10 @@
                             [hideSingleSelectionIndicator]="true"
                           >
                             <mat-option
-                              *ngFor="let fontSizes of BREAKER_FONT_SIZES"
-                              [value]="fontSizes"
+                              *ngFor="let fontSize of BREAKER_FONT_SIZES_MAP | keyvalue: originalOrder"
+                              [value]="fontSize.key"
                             >
-                              {{ fontSizes }}
+                              {{ fontSize.value }}
                             </mat-option>
                           </mat-select>
                         </mat-form-field>

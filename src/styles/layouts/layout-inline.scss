@@ -1,4 +1,26 @@
 $inline-default-margin: 16px;
+$inline-default-gap: 16px;
+
+$layout-gap-options: (
+        0px: 0px,
+        2px: 2px,
+        6px: 6px,
+        8px: 8px,
+        10px: 10px,
+        11px: 11.34px,
+        12px: 12px,
+        16px: 16px,
+        24px: 24px,
+        32px: 32px,
+        44px: 44px,
+        64px: 64px,
+        88px: 88px,
+        94px: 94px,
+        3per: 3.3333%,
+        4per: 4.7619%,
+        10per: 10%,
+        15per: 15%,
+);
 
 $inline-item-widths: (
         30px: 30px,
@@ -118,9 +140,17 @@ $inline-item-widths: (
   &--wrap {
     flex-wrap: wrap;
     margin-bottom: -8px;
+    gap: $inline-default-gap;
+
+    @each $gap-name, $gap-size in $layout-gap-options {
+      &.layout-inline--#{$gap-name} {
+        gap: $gap-size;
+      }
+    }
 
     .layout-inline__item {
       margin-bottom: 8px;
+      padding-left: 0;
     }
   }
 

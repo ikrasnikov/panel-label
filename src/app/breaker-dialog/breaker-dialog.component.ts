@@ -3,11 +3,22 @@ import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Observable, Subject, defer, throwError } from 'rxjs';
+import { Observable, Subject, defer, throwError, takeUntil } from 'rxjs';
 
 import { BaseDialogComponent } from '../helpers/base-dialog.component';
-import { BREAKER_COLORS, BREAKER_FONT_SIZES, BREAKER_ICONS, SWITCHER_SIZES_MAP } from '../maps/item';
-import { BreakerColor, BreakerFontSizes, BreakerIcon, BreakerSize, BreakerType } from '../enums/item.enum';
+import {
+  BreakerColor,
+  BreakerFontSizes,
+  BreakerIcon,
+  BreakerSize,
+  BreakerType
+} from '../enums/item.enum';
+import {
+  BREAKER_COLORS,
+  BREAKER_FONT_SIZES_MAP,
+  BREAKER_ICONS,
+  SWITCHER_SIZES_MAP
+} from '../maps/item';
 import { ISwitcherItem } from '../../types/item';
 import { SnackBarService } from '../services/snackbar.service';
 
@@ -20,7 +31,7 @@ import { SnackBarService } from '../services/snackbar.service';
 export class BreakerDialogComponent extends BaseDialogComponent<void> {
   public readonly BREAKER_TYPES: BreakerType[] = [BreakerType.BREAKER];
   public readonly BREAKER_SIZES_MAP: { [key: string]: BreakerSize } = SWITCHER_SIZES_MAP;
-  public readonly BREAKER_FONT_SIZES: BreakerFontSizes[] = BREAKER_FONT_SIZES;
+  public readonly BREAKER_FONT_SIZES_MAP: { [key: number]: BreakerFontSizes } = BREAKER_FONT_SIZES_MAP;
   public readonly BREAKER_COLORS: BreakerColor[] = BREAKER_COLORS;
   public readonly BREAKER_ICONS: BreakerIcon[] = BREAKER_ICONS;
 
@@ -28,8 +39,13 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
 
   public form!: FormGroup;
 
+  public originalOrder: () => number = () => 0;
+
   private readonly _DEFAULT_POSITION: string = '1';
   private readonly _DEFAULT_ICON: string = 'home';
+  private readonly _DEFAULT_ICON_SIZE_BALANCE: number = 16;
+  private readonly _DEFAULT_FONT_SIZE: number = 16;
+  private readonly _DEFAULT_ICON_FONT_SIZE: number = this._DEFAULT_FONT_SIZE + this._DEFAULT_ICON_SIZE_BALANCE;
 
   private _cancel$$: Subject<void> = new Subject<void>();
 
@@ -48,14 +64,41 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
     super();
 
     this.form = this._fb.group({
-      type: [{ value: this.data.item && this.data.item.type || BreakerType.BREAKER, disabled: true}, Validators.required],
-      breakerSize: [this.data.item && this.data.item.breakerSize || BreakerSize.ONE, [Validators.required, Validators.max(this.data.freeSlots)]],
-      label: [this.data.item && this.data.item.label || '', [Validators.required, Validators.maxLength(72), Validators.pattern(/\S+/)]],
-      fontSize: [this.data.item && this.data.item.fontSize || BreakerFontSizes.SIXTEEN, Validators.required],
-      position: [this.data.item && this.data.item.position || this._DEFAULT_POSITION, [Validators.required, Validators.maxLength(10), Validators.pattern(/\S+/)]],
+      type: [
+        { value: this.data.item && this.data.item.type || BreakerType.BREAKER, disabled: true},
+        Validators.required
+      ],
+      breakerSize: [
+        this.data.item && this.data.item.breakerSize || BreakerSize.ONE,
+        [Validators.required, Validators.max(this.data.freeSlots)]
+      ],
+      label: [
+        this.data.item && this.data.item.label || '',
+        [Validators.required, Validators.maxLength(72), Validators.pattern(/\S+/)]
+      ],
+      fontSize: [
+        this.data.item && this.data.item.fontSize.toString() || this._DEFAULT_FONT_SIZE.toString(),
+        Validators.required
+      ],
+      position: [
+        this.data.item && this.data.item.position || this._DEFAULT_POSITION,
+        [Validators.required, Validators.maxLength(10), Validators.pattern(/\S+/)]
+      ],
       color: [this.data.item && this.data.item.color || BreakerColor.RED, Validators.required],
       icon: [this.data.item && this.data.item.icon || this._DEFAULT_ICON, Validators.required],
+      iconFontSize: [
+        this.data.item && this.data.item.iconFontSize || this._DEFAULT_ICON_FONT_SIZE,
+        Validators.required
+      ],
     });
+
+    this.form.controls['fontSize'].valueChanges
+      .pipe(
+        takeUntil(this._destroy$$)
+      )
+      .subscribe((fontSize: number) => {
+        this.form.controls['iconFontSize'].setValue(Number(fontSize) + this._DEFAULT_ICON_SIZE_BALANCE)
+      })
   }
 
   public triggerSuccess(): void {

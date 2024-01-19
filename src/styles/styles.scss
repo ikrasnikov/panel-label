@@ -17,6 +17,7 @@
 @import './layouts/layout-list';
 @import './layouts/layout-split';
 
+@import './material/cdk-overlay';
 @import './material/dialog';
 @import './material/mat-button';
 @import './material/mat-drawer';
@@ -28,11 +29,14 @@
 @import './material/mat-select';
 @import './material/mat-spinner';
 
+@import './index';
 @import 'components/breaker-dialog';
 @import 'components/constructor';
 @import 'components/empty-item';
-@import './index';
+@import 'components/fullscreen-dialog';
 @import 'components/item';
+@import 'components/pagebar';
+@import 'components/preview';
 @import 'components/settings';
 @import 'components/size';
 @import 'components/simple-snackbar';

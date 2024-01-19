@@ -1,0 +1,93 @@
+<div class="fullscreen-dialog-header">
+  <div class="layout-split layout-split--stretch">
+    <div class="layout-split__item layout-split__item--expand">
+      <div class="fullscreen-dialog-header__title is--ellipsis">
+        Label preview for {{ data.settings.title }}
+      </div>
+    </div>
+
+    <div class="layout-split__item ultra-theme">
+      <button
+        mat-icon-button
+        small
+        (click)="closeDialog()"
+      >
+        <span class="material-symbols-filled material-symbols-outlined">
+          close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="fullscreen-dialog__body">
+  <div class="preview" #topScrollPositionRequest cdkScrollable>
+    <div class="preview__body">
+      <div class="preview__content" #previewContent>
+        <div class="layout-list">
+          <div *ngFor="let row of data.rows; index as i" class="layout-list__item">
+            <div *ngIf="row.items.length" class="preview__row">
+              <div class="layout-list layout-list--8px">
+                <div class="layout-list__item">
+                  <div class="preview__row-number">
+                    Rail {{ i + 1 }}
+                  </div>
+                </div>
+
+                <div class="layout-list__item">
+                  <div class="layout-inline layout-inline--valign-stretch layout-inline--wrap layout-inline--11px">
+                    <div
+                      *ngFor="let breaker of row.items"
+                      class="layout-inline__item"
+                      [style.width]="getLabelPercentageWidth(breaker.breakerSize)"
+                    >
+                      <div
+                        class="preview__breaker"
+                        [style.height]="labelHeight"
+                      >
+                        <div class="layout-list layout-list--6px">
+                          <div class="layout-list__item">
+                            <div
+                              class="item__position"
+                              [style.background-color]="breaker.color"
+                              [style.font-family]="data.settings.font"
+                              [style.font-size]="getFontSize(breaker.fontSize)"
+                            >
+                              {{ breaker.position }}
+                            </div>
+                          </div>
+
+                          <div class="layout-list__item">
+                            <div class="item__icon-container">
+                            <span
+                              class="material-symbols-outlined item__icon"
+                              [style.color]="breaker.color"
+                              [style.font-size]="getFontSize(breaker.iconFontSize)"
+                            >
+                              {{ breaker.icon }}
+                            </span>
+                            </div>
+                          </div>
+
+                          <div class="layout-list__item">
+                          <span
+                            class="item__label"
+                            [style.font-size]="getFontSize(breaker.fontSize)"
+                            [style.font-family]="data.settings.font"
+                          >
+                            {{ breaker.label }}
+                          </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.cdk-overlay-backdrop {
+  &:not(.ultra-theme &) {
+    background: rgba($color-dark, 0.6);
+
+    &.cdk-overlay-transparent-backdrop {
+      background: transparent;
+    }
+  }
+}
+
+.cdk-overlay-pane {
+  &:not(.ultra-theme &) {
+    max-width: none !important;
+  }
+}
+
+/**https://github.com/angular/material2/issues/11609**/
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles go here */
+  /** IE 11 fixes */
+  .cdk-overlay-pane {
+    display: block;
+  }
+}

@@ -1,0 +1,38 @@
+// I'll use 1.5 multiplier to try to avoid coping of HTML
+
+.preview {
+  display: block;
+  height: 100%;
+  background: $color-dark-05;
+
+  &__body {
+    padding: 24px;
+    // 1191px is 1.5x width of A4 paper sheet
+    max-width: 1190.55px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    // 57px is 1.5*10mm margin of A4 paper sheet
+    padding: 4.7619%;
+    background-color: $color-white;
+    box-shadow: 0 0 2px 0 $color-dark-20,
+                0 2px 2px 0 $color-dark-10;
+  }
+
+  &__row {
+    padding: 11.34px;
+    border: 1px dashed $color-dark-10;
+  }
+
+  &__row-number {
+    color: $color-dark-50;
+  }
+
+  &__breaker {
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    border: 1px dashed $color-dark-20;
+    overflow-y: hidden;
+  }
+}
