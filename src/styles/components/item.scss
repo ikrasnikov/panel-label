@@ -59,4 +59,8 @@ $item-max-widths: (
     margin-top: 46px;
     background-color: $color-bg-warning-30;
   }
+
+  &__interactive {
+    cursor: pointer;
+  }
 }

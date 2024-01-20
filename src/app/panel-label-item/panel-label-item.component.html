@@ -46,35 +46,39 @@
     <img [src]="switcherImagePath">
   </div>
 
-  <div class="layout-list__item">
-    <div
-      class="item__position"
-      [style.background-color]="switcherItem.color"
-      [style.font-family]="fontFamily"
-    >
-      {{ switcherPosition }}
-    </div>
-  </div>
+  <div class="layout-list__item item__interactive">
+    <div class="layout-list layout-list--6px" (click)="editItem.emit()">
+      <div class="layout-list__item">
+        <div
+          class="item__position"
+          [style.background-color]="switcherItem.color"
+          [style.font-family]="fontFamily"
+        >
+          {{ switcherPosition }}
+        </div>
+      </div>
 
-  <div class="layout-list__item">
-    <div class="item__icon-container">
-      <span
-        class="material-symbols-outlined item__icon"
-        [style.color]="switcherItem.color"
-        [style.font-size]="BREAKER_ICON_FONT_SIZES_MAP[switcherItem.iconFontSize]"
-      >
-        {{ switcherItem.icon }}
-      </span>
-    </div>
-  </div>
+      <div class="layout-list__item">
+        <div class="item__icon-container">
+          <span
+            class="material-symbols-outlined item__icon"
+            [style.color]="switcherItem.color"
+            [style.font-size]="BREAKER_ICON_FONT_SIZES_MAP[switcherItem.iconFontSize]"
+          >
+            {{ switcherItem.icon }}
+          </span>
+        </div>
+      </div>
 
-  <div class="layout-list__item">
-    <span
-      class="item__label"
-      [style.font-size]="BREAKER_FONT_SIZES_MAP[switcherItem.fontSize]"
-      [style.font-family]="fontFamily"
-    >
-      {{ switcherItem.label }}
-    </span>
+      <div class="layout-list__item">
+        <span
+          class="item__label"
+          [style.font-size]="BREAKER_FONT_SIZES_MAP[switcherItem.fontSize]"
+          [style.font-family]="fontFamily"
+        >
+          {{ switcherItem.label }}
+        </span>
+      </div>
+    </div>
   </div>
 </div>

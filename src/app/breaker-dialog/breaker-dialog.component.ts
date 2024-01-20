@@ -56,7 +56,7 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
     @Inject(MAT_DIALOG_DATA)
     public data: {
       item?: ISwitcherItem,
-      action$: (item: ISwitcherItem) => Observable<null>,
+      action$: (item?: ISwitcherItem) => Observable<null>,
       fontFamily: string,
       freeSlots: number,
     },
