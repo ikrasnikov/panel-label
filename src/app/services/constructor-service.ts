@@ -10,6 +10,18 @@ import { LabelFont, LabelPosition, SwitcherType } from '../enums/settings.enum';
 
 @Injectable()
 export class ConstructorService {
+  private readonly _DEFAULT_NEW_BREAKER: ISwitcherItem = {
+    id: 0,
+    position: 1,
+    breakerSize: BreakerSize.ONE,
+    color: BreakerColor.RED,
+    icon: 'home',
+    iconFontSize: 32,
+    label: 'New breaker',
+    fontSize: 16,
+    type: BreakerType.BREAKER,
+  };
+
   private readonly _EMPTY_ROW: ISwitcherRow = {
     id: 0,
     items: [],
@@ -138,14 +150,14 @@ export class ConstructorService {
     this._rows.push({ ...this._EMPTY_ROW, position, id: Number(new Date()), projectId });
   }
 
-  public addBreaker$(rowId: number, item: ISwitcherItem/*, projectId: number*/): Observable<null> {
+  public addBreaker$(rowId: number/*, item: ISwitcherItem, projectId: number*/): Observable<null> {
     return of(null)
       .pipe(
         tap(() => {
           this._rows = this._getUpdatedBreakerRows(
             rowId,
             this._rows,
-            (items: ISwitcherItem[]) => [ ...items, { ...item, id: Number(new Date()) } ],
+            (items: ISwitcherItem[]) => [ ...items, { ...this._DEFAULT_NEW_BREAKER, id: Number(new Date()) } ],
           );
 
           this._rows$$.next(this._rows);

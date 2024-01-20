@@ -101,6 +101,13 @@ export class PanelLabelContentComponent extends BaseComponent {
     );
   }
 
+  // I think it is a bad decision to add default breaker after click, that is why I leave logic in openBreakerDialog()
+  public addDefaultBreaker(row: ISwitcherRow): void {
+    this._constructorService.addBreaker$(row.id)
+      .pipe(takeUntil(this._destroy$$))
+      .subscribe();
+  }
+
   public openBreakerDialog(row: ISwitcherRow, breaker?: ISwitcherItem): void {
     const freeSlots: number = this._constructorPageService.getFreeSlots(row.items, this.settings.breakerCount);
 
@@ -108,7 +115,7 @@ export class PanelLabelContentComponent extends BaseComponent {
       data: {
         action$: breaker
           ? (item: ISwitcherItem) => this._constructorService.updateBreaker$(row.id, item)
-          : (item: ISwitcherItem) => this._constructorService.addBreaker$(row.id, item),
+          : (/*item: ISwitcherItem*/) => this._constructorService.addBreaker$(row.id/*, item*/),
         item: breaker,
         fontFamily: this.settings.font,
         freeSlots,

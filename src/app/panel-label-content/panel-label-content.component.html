@@ -40,7 +40,7 @@
               [breakerCount]="settings.breakerCount"
               [switcherRow]="row"
               [fontFamily]="settings.font"
-              (addBreaker)="openBreakerDialog(row)"
+              (addBreaker)="addDefaultBreaker(row)"
               (editBreaker)="openBreakerDialog(row, $event)"
               (deleteBreaker)="deleteBreaker($event, row.id)"
             ></panel-label-row>
