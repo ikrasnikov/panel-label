@@ -122,7 +122,7 @@ export class ConstructorService {
       height: 45.5,
       id: 1,
       isItemSize: true,
-      labelHeight: 14.82,
+      labelHeight: 25,
       position: LabelPosition.UNDER,
       title: 'My test project',
       type: SwitcherType.EU,

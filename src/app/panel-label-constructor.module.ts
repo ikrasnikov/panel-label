@@ -27,6 +27,7 @@ import {
   CustomConfirmationDialogComponent
 } from './helpers/custom-confirmation-dialog/custom-confirmation-dialog.component';
 import { DialogOverlayComponent } from './helpers/dialog-overlay/dialog-overlay.component';
+import { HtmlToImageService } from './services/html-to-image-service';
 import { PanelEmptyItemComponent } from './panel-empty-item/panel-empty-item.component';
 import { PanelLabelConstructorComponent } from './panel-label-constructor/panel-label-constructor.component';
 import { PanelLabelContentComponent } from './panel-label-content/panel-label-content.component';
@@ -82,6 +83,7 @@ import { SnackBarService } from './services/snackbar.service';
   providers: [
     ConstructorPageService,
     ConstructorService,
+    HtmlToImageService,
     ScrollService,
     SettingsService,
     SnackBarService,
