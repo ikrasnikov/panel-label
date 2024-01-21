@@ -31,8 +31,25 @@
 
   &__breaker {
     height: 100%;
+    position: relative;
     border-radius: 10px 10px 0 0;
     border: 1px dashed $color-dark-20;
-    overflow-y: hidden;
+    overflow: hidden;
+  }
+
+  &__watermark {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/preview.png');
+    transform: rotate(-30deg);
+    opacity: 0.2;
+    background-position: center;
+    background-size: contain;
   }
 }

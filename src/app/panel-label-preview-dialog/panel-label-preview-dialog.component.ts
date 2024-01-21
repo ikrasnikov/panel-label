@@ -2,7 +2,10 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, ViewCh
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PageScrollViews } from 'ngx-page-scroll-core';
 
+import { takeUntil } from 'rxjs';
+
 import { BaseDialogComponent } from '../helpers/base-dialog.component';
+import { HtmlToImageService } from '../services/html-to-image-service';
 import { IProjectSettings } from '../../types/settings';
 import { ISwitcherRow } from '../../types/row';
 import { ScrollService } from '../services/scroll.service';
@@ -13,12 +16,13 @@ import { ScrollService } from '../services/scroll.service';
 })
 export class PanelLabelPreviewDialogComponent extends BaseDialogComponent<void> implements AfterViewInit {
   @ViewChild('topScrollPositionRequest', { static: true })
-  public topScrollPosition!: ElementRef;
+  public topScrollPosition!: ElementRef<HTMLElement>;
 
   @ViewChild('previewContent', { static: true })
   public previewContent!: ElementRef;
 
   public labelHeight: string = '';
+  public isLoading: boolean = true;
 
   // rail width is 210mm (A4 width) - 2*10mm (side margin) - 2*2mm (rail side margin)
   private readonly _RAIL_WIDTH_MM: number = 186;
@@ -35,8 +39,9 @@ export class PanelLabelPreviewDialogComponent extends BaseDialogComponent<void> 
       settings: IProjectSettings,
       rows: ISwitcherRow[],
     },
+    private _cdRef: ChangeDetectorRef,
+    private _htmlToImageService: HtmlToImageService,
     private _scrollService: ScrollService,
-    private readonly _cdRef: ChangeDetectorRef,
   ) {
     super();
 
@@ -53,6 +58,15 @@ export class PanelLabelPreviewDialogComponent extends BaseDialogComponent<void> 
       * this.previewContent.nativeElement.offsetWidth / this._CONTENT_MAX_WIDTH) * 1.5 + 'px';
 
     this._cdRef.detectChanges();
+
+    this._htmlToImageService.getPngFromHtml$(this.previewContent.nativeElement.firstChild)
+      .pipe(takeUntil(this._destroy$$))
+      .subscribe((previewImageSource: string) => {
+        let image: HTMLImageElement = new Image();
+        image.src = previewImageSource;
+        this.previewContent.nativeElement.insertAdjacentElement('beforeend', image);
+        this.isLoading = false;
+      });
   }
 
   public closeDialog(): void {

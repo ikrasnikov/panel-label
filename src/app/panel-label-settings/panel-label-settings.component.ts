@@ -25,7 +25,7 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
   public form!: FormGroup;
 
   private readonly _DEFAULT_RAIL_SIZE: number = 7;
-  private readonly _DEFAULT_LABEL_HEIGHT: number = 14.82;
+  private readonly _DEFAULT_LABEL_HEIGHT: number = 25;
 
   public constructor(
     private _fb: UntypedFormBuilder,

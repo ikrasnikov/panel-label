@@ -24,7 +24,7 @@
   <div class="preview" #topScrollPositionRequest cdkScrollable>
     <div class="preview__body">
       <div class="preview__content" #previewContent>
-        <div class="layout-list">
+        <div *ngIf="isLoading" class="layout-list">
           <div *ngFor="let row of data.rows; index as i" class="layout-list__item">
             <div *ngIf="row.items.length" class="preview__row">
               <div class="layout-list layout-list--8px">
@@ -45,6 +45,8 @@
                         class="preview__breaker"
                         [style.height]="labelHeight"
                       >
+                        <div class="preview__watermark"></div>
+
                         <div class="layout-list layout-list--6px">
                           <div class="layout-list__item">
                             <div
