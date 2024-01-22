@@ -29,11 +29,24 @@
     color: $color-dark-50;
   }
 
+  &__breaker-container {
+    border-radius: 10px 10px 0 0;
+    border: 1px dashed $color-dark-20;
+
+    &--united {
+      &:not(:first-child) {
+        border-left: 0;
+      }
+
+      &:not(:last-child) {
+        border-right: 0;
+      }
+    }
+  }
+
   &__breaker {
     height: 100%;
     position: relative;
-    border-radius: 10px 10px 0 0;
-    border: 1px dashed $color-dark-20;
     overflow: hidden;
   }
 

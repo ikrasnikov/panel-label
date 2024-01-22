@@ -50,6 +50,7 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
       breakerCount: [this.settings.breakerCount || this._DEFAULT_RAIL_SIZE, Validators.required],
       font: [this.settings.font || LabelFont.MONTSERRAT, Validators.required],
       labelHeight: [this.settings.labelHeight || this._DEFAULT_LABEL_HEIGHT, [Validators.required, Validators.min(10), Validators.max(100)]],
+      areLabelsSeperated: this.settings.isItemSize || true,
     });
 
     this.form.controls['isItemSize'].valueChanges
