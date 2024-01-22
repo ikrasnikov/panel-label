@@ -35,10 +35,15 @@
                 </div>
 
                 <div class="layout-list__item">
-                  <div class="layout-inline layout-inline--valign-stretch layout-inline--wrap layout-inline--11px">
+                  <div
+                    class="layout-inline layout-inline--valign-stretch layout-inline--wrap"
+                    [class.layout-inline--11px]="data.settings.areLabelsSeperated"
+                    [class.layout-inline--0px]="!data.settings.areLabelsSeperated"
+                  >
                     <div
                       *ngFor="let breaker of row.items"
-                      class="layout-inline__item"
+                      class="layout-inline__item preview__breaker-container"
+                      [class.preview__breaker-container--united]="!data.settings.areLabelsSeperated"
                       [style.width]="getLabelPercentageWidth(breaker.breakerSize)"
                     >
                       <div

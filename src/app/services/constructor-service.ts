@@ -117,6 +117,7 @@ export class ConstructorService {
   // 45.5*18
   private _settings$$: BehaviorSubject<IProjectSettings> = new BehaviorSubject<IProjectSettings>(
     {
+      areLabelsSeperated: true,
       breakerCount: 9,
       font: LabelFont.MONTSERRAT,
       height: 45.5,
