@@ -20,4 +20,8 @@ export class PanelLabelHeaderComponent {
   public openPreview(): void {
     this._constructorPageService.openPreview()
   };
+
+  public downloadLabels(): void {
+    this._constructorPageService.downloadLabels()
+  };
 }

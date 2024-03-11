@@ -2,10 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, ViewCh
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PageScrollViews } from 'ngx-page-scroll-core';
 
-import { takeUntil } from 'rxjs';
-
 import { BaseDialogComponent } from '../helpers/base-dialog.component';
-import { HtmlToImageService } from '../services/html-to-image-service';
 import { IProjectSettings } from '../../types/settings';
 import { ISwitcherRow } from '../../types/row';
 import { ScrollService } from '../services/scroll.service';
@@ -18,19 +15,7 @@ export class PanelLabelPreviewDialogComponent extends BaseDialogComponent<void> 
   @ViewChild('topScrollPositionRequest', { static: true })
   public topScrollPosition!: ElementRef<HTMLElement>;
 
-  @ViewChild('previewContent', { static: true })
-  public previewContent!: ElementRef;
-
-  public labelHeight: string = '';
-  public isLoading: boolean = true;
-
-  // rail width is 210mm (A4 width) - 2*10mm (side margin) - 2*2mm (rail side margin)
-  private readonly _RAIL_WIDTH_MM: number = 186;
-  private readonly _CONTENT_MAX_WIDTH: number = 1190.55;
-  private readonly _PX_TO_MM_COEFFICIENT: number = 0.26458333333333;
-
   private _scrollContainer!: PageScrollViews;
-  private _singleLabelWidth: number = 0;
 
   public constructor(
     public dialogRef: MatDialogRef<PanelLabelPreviewDialogComponent>,
@@ -40,46 +25,20 @@ export class PanelLabelPreviewDialogComponent extends BaseDialogComponent<void> 
       rows: ISwitcherRow[],
     },
     private _cdRef: ChangeDetectorRef,
-    private _htmlToImageService: HtmlToImageService,
     private _scrollService: ScrollService,
   ) {
     super();
-
-    this._singleLabelWidth = this.data.settings.isItemSize
-      ? this.data.settings.width
-      : this.data.settings.width / this.data.settings.breakerCount;
   }
 
   public ngAfterViewInit(): void {
     this._scrollContainer = this._scrollService.getContainer();
     this._scrollService.setContainer(this.topScrollPosition.nativeElement);
 
-    this.labelHeight = ((this.data.settings.labelHeight / this._PX_TO_MM_COEFFICIENT)
-      * this.previewContent.nativeElement.offsetWidth / this._CONTENT_MAX_WIDTH) * 1.5 + 'px';
-
     this._cdRef.detectChanges();
-
-    this._htmlToImageService.getPngFromHtml$(this.previewContent.nativeElement.firstChild)
-      .pipe(takeUntil(this._destroy$$))
-      .subscribe((previewImageSource: string) => {
-        let image: HTMLImageElement = new Image();
-        image.src = previewImageSource;
-        this.previewContent.nativeElement.insertAdjacentElement('beforeend', image);
-        this.isLoading = false;
-      });
   }
 
   public closeDialog(): void {
     this._scrollService.setContainer(this._scrollContainer);
     this.dialogRef.close();
-  }
-
-  public getLabelPercentageWidth(breakerSize: number): string {
-    return (((this._singleLabelWidth * breakerSize)
-      / this._RAIL_WIDTH_MM) * 100) + '%';
-  }
-
-  public getFontSize(fontSize: number): string {
-    return (this.previewContent.nativeElement.offsetWidth / this._CONTENT_MAX_WIDTH * fontSize) + 'px'
   }
 }

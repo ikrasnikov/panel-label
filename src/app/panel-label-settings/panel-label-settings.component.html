@@ -276,14 +276,17 @@
                      placeholder="Select sticker font"
                      matInput
                      formControlName="font"
-                     [matAutocomplete]="auto">
+                     [matAutocomplete]="auto"
+                     [style.font-family]="form.controls['font'].value">
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
 
                 <mat-option
                   *ngFor="let font of getFonts(form.controls['font'].value)"
                   [value]="font"
                 >
-                  {{ font }}
+                  <span [style.font-family]="font">
+                    {{ font }}
+                  </span>
                 </mat-option>
               </mat-autocomplete>
 
