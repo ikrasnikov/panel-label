@@ -8,6 +8,7 @@ import { ISwitcherItem } from '../../types/item';
 export class ConstructorPageService {
   private _toggleSettings$$: Subject<void> = new Subject();
   private _openPreview$$: Subject<void> = new Subject();
+  private _downloadLabels$$: Subject<void> = new Subject();
 
   public getFreeSlots(items: ISwitcherItem[], settingsBreakerCount: number): number {
     return settingsBreakerCount - items.reduce(
@@ -23,11 +24,19 @@ export class ConstructorPageService {
     return this._openPreview$$.asObservable();
   }
 
+  public getDownloadLabels$(): Observable<void> {
+    return this._downloadLabels$$.asObservable();
+  }
+
   public toggleSettings(): void {
     this._toggleSettings$$.next();
   }
 
   public openPreview(): void {
     this._openPreview$$.next();
+  }
+
+  public downloadLabels(): void {
+    this._downloadLabels$$.next();
   }
 }

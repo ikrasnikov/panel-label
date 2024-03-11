@@ -16,7 +16,7 @@ export const enum LabelFont {
   FIRA_SANS = 'Fira Sans',
   IBM_PLEX_SANS = 'IBM Plex Sans',
   INCONSOLATA = 'Inconsolata',
-  INKNUT_ANTIQUA = 'Inknut Antiqua ',
+  INKNUT_ANTIQUA = 'Inknut Antiqua',
   INTER = 'Inter',
   KARLA = 'Karla',
   LATO = 'Lato',

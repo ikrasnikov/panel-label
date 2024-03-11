@@ -1,4 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
 
@@ -9,9 +13,9 @@ import { BreakerDialogComponent } from '../breaker-dialog/breaker-dialog.compone
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { ConstructorPageService } from '../services/constructor-page-service';
 import { ConstructorService } from '../services/constructor-service';
+import { IProjectSettings } from '../../types/settings';
 import { ISwitcherItem } from '../../types/item';
 import { ISwitcherRow } from '../../types/row';
-import { IProjectSettings } from '../../types/settings';
 import { PanelLabelPreviewDialogComponent } from '../panel-label-preview-dialog/panel-label-preview-dialog.component';
 import { SnackBarService } from '../services/snackbar.service';
 
@@ -28,8 +32,10 @@ export class PanelLabelContentComponent extends BaseComponent {
   public horizontalSize: number = 0;
   public verticalSize: number = 0;
   public isLoading: boolean = true;
+  public isPrintShown: boolean = false;
 
   public constructor(
+    private _cdr: ChangeDetectorRef,
     private _constructorPageService: ConstructorPageService,
     private _constructorService: ConstructorService,
     private _dialog: MatDialog,
@@ -80,6 +86,17 @@ export class PanelLabelContentComponent extends BaseComponent {
             },
           },
         );
+      });
+
+    this._constructorPageService.getDownloadLabels$()
+      .pipe(
+        takeUntil(this._destroy$$)
+      )
+      .subscribe(() => {
+        this.isPrintShown = true;
+        this._cdr.detectChanges();
+        window.print();
+        this.isPrintShown = false;
       });
   }
 

@@ -22,82 +22,11 @@
 
 <div class="fullscreen-dialog__body">
   <div class="preview" #topScrollPositionRequest cdkScrollable>
-    <div class="preview__body">
-      <div class="preview__content" #previewContent>
-        <div *ngIf="isLoading" class="layout-list">
-          <div *ngFor="let row of data.rows; index as i" class="layout-list__item">
-            <div *ngIf="row.items.length" class="preview__row">
-              <div class="layout-list layout-list--8px">
-                <div class="layout-list__item">
-                  <div class="preview__row-number">
-                    Rail {{ i + 1 }}
-                  </div>
-                </div>
-
-                <div class="layout-list__item">
-                  <div
-                    class="layout-inline layout-inline--valign-stretch layout-inline--wrap"
-                    [class.layout-inline--11px]="data.settings.areLabelsSeperated"
-                    [class.layout-inline--0px]="!data.settings.areLabelsSeperated"
-                  >
-                    <div
-                      *ngFor="let breaker of row.items"
-                      class="layout-inline__item preview__breaker-container"
-                      [class.preview__breaker-container--united]="!data.settings.areLabelsSeperated"
-                      [style.width]="getLabelPercentageWidth(breaker.breakerSize)"
-                    >
-                      <div
-                        class="preview__breaker"
-                        [style.height]="labelHeight"
-                      >
-                        <div
-                          class="preview__watermark"
-                          [style.background-image]="'url(\'assets/preview.png\')'"
-                        ></div>
-
-                        <div class="layout-list layout-list--6px">
-                          <div class="layout-list__item">
-                            <div
-                              class="item__position"
-                              [style.background-color]="breaker.color"
-                              [style.font-family]="data.settings.font"
-                              [style.font-size]="getFontSize(breaker.fontSize)"
-                            >
-                              {{ breaker.position }}
-                            </div>
-                          </div>
-
-                          <div class="layout-list__item">
-                            <div class="item__icon-container">
-                            <span
-                              class="material-symbols-outlined item__icon"
-                              [style.color]="breaker.color"
-                              [style.font-size]="getFontSize(breaker.iconFontSize)"
-                            >
-                              {{ breaker.icon }}
-                            </span>
-                            </div>
-                          </div>
-
-                          <div class="layout-list__item">
-                          <span
-                            class="item__label"
-                            [style.font-size]="getFontSize(breaker.fontSize)"
-                            [style.font-family]="data.settings.font"
-                          >
-                            {{ breaker.label }}
-                          </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <print-content
+      [rows]="data.rows"
+      [settings]="data.settings"
+      [isPreview]="true"
+    >
+    </print-content>
   </div>
 </div>

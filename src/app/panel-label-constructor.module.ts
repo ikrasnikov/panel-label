@@ -37,10 +37,12 @@ import { PanelLabelPreviewDialogComponent } from './panel-label-preview-dialog/p
 import { PanelLabelRowComponent } from './panel-label-row/panel-label-row.component';
 import { PanelLabelSettingsComponent } from './panel-label-settings/panel-label-settings.component';
 import { PanelLabelSizeComponent } from './panel-label-size/panel-label-size.component';
+import { PrintContentComponent } from './print-content/print-content.component';
 import { ScrollService } from './services/scroll.service';
 import { SettingsService } from './services/settings-service';
 import { SnackBarContentComponent } from './snackbar/snackbar-content.component';
 import { SnackBarService } from './services/snackbar.service';
+import { WindowService } from './services/window.service';
 
 @NgModule({
   imports: [
@@ -78,6 +80,7 @@ import { SnackBarService } from './services/snackbar.service';
     PanelLabelRowComponent,
     PanelLabelSettingsComponent,
     PanelLabelSizeComponent,
+    PrintContentComponent,
     SnackBarContentComponent,
   ],
   providers: [
@@ -88,6 +91,7 @@ import { SnackBarService } from './services/snackbar.service';
     SettingsService,
     SnackBarService,
     TranslateService,
+    WindowService,
   ],
   bootstrap: [PanelLabelConstructorComponent],
 })

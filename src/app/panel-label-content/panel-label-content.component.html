@@ -55,9 +55,9 @@
                 (click)="addRow()"
               >
                 <div class="icon-container">
-                <span class="material-symbols-outlined">
-                  add
-                </span>
+                  <span class="material-symbols-outlined">
+                    add
+                  </span>
                 </div>
 
                 Add rail
@@ -78,4 +78,13 @@
     diameter="200"
     theme="primary-light"
   ></mat-spinner>
+</div>
+
+<div *ngIf="isPrintShown" class="print-wrapper">
+  <print-content
+    [rows]="rows"
+    [settings]="settings"
+    [isPreview]="false"
+  >
+  </print-content>
 </div>
