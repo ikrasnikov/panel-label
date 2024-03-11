@@ -126,7 +126,7 @@ export class PanelLabelContentComponent extends BaseComponent {
   }
 
   public openBreakerDialog(row: ISwitcherRow, breaker?: ISwitcherItem): void {
-    const freeSlots: number = this._constructorPageService.getFreeSlots(row.items, this.settings.breakerCount);
+    const freeSlots: number = this._constructorPageService.getFreeSlots(row.items, this.settings.breakerCount, breaker);
 
     const dialogRef: MatDialogRef<BreakerDialogComponent> = this._dialog.open(BreakerDialogComponent, {
       data: {

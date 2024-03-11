@@ -10,10 +10,14 @@ export class ConstructorPageService {
   private _openPreview$$: Subject<void> = new Subject();
   private _downloadLabels$$: Subject<void> = new Subject();
 
-  public getFreeSlots(items: ISwitcherItem[], settingsBreakerCount: number): number {
+  public getFreeSlots(
+    items: ISwitcherItem[],
+    settingsBreakerCount: number,
+    breaker?: ISwitcherItem
+  ): number {
     return settingsBreakerCount - items.reduce(
       (sum: number, item:ISwitcherItem) => sum + item.breakerSize, 0
-    );
+    ) + (breaker ? breaker?.breakerSize : 0);
   }
 
   public getToggleSettings$(): Observable<void> {
