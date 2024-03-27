@@ -4,6 +4,7 @@
   <div
     class="print-content__container"
     [class.print-content__container--preview]="isPreview"
+    [tourAnchor]="TOUR_ANCHOR_PREVIEW"
     #printContentContainer
   >
     <div *ngIf="isHtmlShown" class="layout-list">

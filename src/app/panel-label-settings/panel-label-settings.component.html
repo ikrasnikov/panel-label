@@ -16,7 +16,7 @@
           </span>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_TYPE">
           <div class="settings__form-field">
             <mat-form-field>
               <mat-label>
@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_SIZE_TYPE">
           <div class="settings__form-field">
             <div class="layout-list layout-list--0px">
               <div class="layout-list__item">
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_SIZE">
           <div class="layout-inline layout-inline--6px">
             <div class="layout-inline__item layout-inline__item--expand">
               <div class="settings__form-field">
@@ -174,7 +174,7 @@
 <!--          </div>-->
 <!--        </div>-->
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_BREAKER_QUANTITY">
           <div class="settings__form-field">
             <mat-form-field>
               <mat-label>
@@ -206,7 +206,7 @@
           </span>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_SEPERATED_UNITED">
           <mat-radio-group formControlName="areLabelsSeperated">
             <div class="layout-list layout-list--0px">
               <div class="layout-list__item">
@@ -220,7 +220,7 @@
           </mat-radio-group>
         </div>
 
-        <div class="layout-inline layout-inline--6px">
+        <div class="layout-inline layout-inline--6px" [tourAnchor]="TOUR_ANCHOR_LABEL_SIZE">
           <div class="layout-inline__item layout-inline__item--expand">
             <div class="settings__form-field">
               <mat-form-field>
@@ -286,7 +286,7 @@
           </div>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_FONT">
           <div class="settings__form-field">
             <mat-form-field>
               <mat-label>
@@ -327,6 +327,7 @@
         mat-raised-button
         theme="warning"
         type="submit"
+        [tourAnchor]="TOUR_ANCHOR_SAVE"
       >
         {{ '__BUTTON_CONFIRM' | translate }}
       </button>

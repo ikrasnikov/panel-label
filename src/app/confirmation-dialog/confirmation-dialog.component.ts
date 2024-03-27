@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { BaseDialogComponent } from '../helpers/base-dialog.component';
 import { IDialogData } from '../../types/dialog-data';
+import { IMap } from '../../types/map';
 
 @Component({
   templateUrl: './confirmation-dialog.component.html',
@@ -37,6 +38,16 @@ export class ConfirmationDialogComponent extends BaseDialogComponent<any> {
 
   public get image(): string {
     return this.data.image || '';
+  }
+
+  public get tourAnchorMap(): IMap {
+    return {
+      container: '',
+      title: '',
+      body: '',
+      actions: '',
+      ...this.data.tourAnchorMap
+    };
   }
 
   public get large(): boolean {

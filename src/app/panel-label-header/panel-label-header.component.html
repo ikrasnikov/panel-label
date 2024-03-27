@@ -10,6 +10,7 @@
           <button
             mat-button
             theme="dark-70"
+            [tourAnchor]="TOUR_ANCHOR_PREVIEW"
             (click)="openPreview()"
           >
             <span class="material-symbols-filled material-symbols-outlined">
@@ -24,6 +25,7 @@
           <button
             mat-raised-button
             theme="success"
+            [tourAnchor]="TOUR_ANCHOR_DOWNLOAD"
             (click)="downloadLabels()"
           >
             <span class="material-symbols-outlined">
@@ -52,6 +54,7 @@
             mat-icon-button
             small
             theme="warning"
+            [tourAnchor]="TOUR_ANCHOR_SETTINGS"
             (click)="toggleSettings()"
           >
             <span class="material-symbols-filled material-symbols-outlined">
@@ -64,6 +67,7 @@
           <button
             mat-button
             theme="dark-70"
+            [tourAnchor]="TOUR_ANCHOR_LANGUAGE"
             [matMenuTriggerFor]="languageList"
           >
             {{ language | translate }}

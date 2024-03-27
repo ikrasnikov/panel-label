@@ -24,6 +24,7 @@
     "@nx/angular": "17.2.7",
     "html-to-image": "1.11.11",
     "ngx-page-scroll-core": "12.0.0",
+    "ngx-ui-tour-md-menu": "12.0.2",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
     "zone.js": "0.14.2"

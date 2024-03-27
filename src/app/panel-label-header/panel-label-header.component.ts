@@ -6,6 +6,8 @@ import { BaseComponent } from '../helpers/base-component';
 import { ConstructorPageService } from '../services/constructor-page-service';
 import { LanguageKey } from '../enums/settings.enum';
 import { LanguageService } from '../services/language.service';
+import { TourStepAnchorEnum } from '../enums/tour-steps.enum';
+import { UserTourService } from '../services/user-tour.service';
 
 @Component({
   selector: 'panel-label-header',
@@ -14,6 +16,10 @@ import { LanguageService } from '../services/language.service';
   host: { class: 'header-container' },
 })
 export class PanelLabelHeaderComponent extends BaseComponent {
+  public readonly TOUR_ANCHOR_LANGUAGE: TourStepAnchorEnum = TourStepAnchorEnum.HEADER_LANGUAGE;
+  public readonly TOUR_ANCHOR_SETTINGS: TourStepAnchorEnum = TourStepAnchorEnum.HEADER_SETTINGS;
+  public readonly TOUR_ANCHOR_PREVIEW: TourStepAnchorEnum = TourStepAnchorEnum.HEADER_PREVIEW;
+  public readonly TOUR_ANCHOR_DOWNLOAD: TourStepAnchorEnum = TourStepAnchorEnum.HEADER_DOWNLOAD;
   public readonly LANGUAGE_KEY_TRANSLATIONS: Record<LanguageKey, string> = this._languageService.LANGUAGE_KEY_TRANSLATIONS;
   public readonly SUPPORTED_LANGUAGES: LanguageKey[] = this._languageService.SUPPORTED_LANGUAGES;
 
@@ -22,6 +28,7 @@ export class PanelLabelHeaderComponent extends BaseComponent {
   public constructor(
     private _constructorPageService: ConstructorPageService,
     private _languageService: LanguageService,
+    private _userTourService: UserTourService,
   ) {
     super();
 
@@ -48,5 +55,6 @@ export class PanelLabelHeaderComponent extends BaseComponent {
 
   public setLanguage(language: LanguageKey): void {
     this._languageService.setLanguage(language);
+    this._userTourService.nextStep();
   };
 }

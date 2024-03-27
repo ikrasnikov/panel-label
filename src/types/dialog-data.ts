@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs';
 
+import { IMap } from './map';
+
 export interface IDialogData {
   title: string;
   body: string;
@@ -12,4 +14,5 @@ export interface IDialogData {
   image: string;
   large: boolean;
   medium: boolean;
+  tourAnchorMap: IMap;
 }

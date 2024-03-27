@@ -19,6 +19,8 @@ import { NgModule } from '@angular/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
+import { TourMatMenuModule } from 'ngx-ui-tour-md-menu';
+
 import { panelLabelConstructorRouter } from './panel-label-constructor.routes';
 
 // import { AvatarComponent } from './avatar/avatar.component';
@@ -34,6 +36,7 @@ import {
 import { DialogOverlayComponent } from './helpers/dialog-overlay/dialog-overlay.component';
 import { HtmlToImageService } from './services/html-to-image-service';
 import { LanguageService } from './services/language.service';
+import { LocalStorageService } from './services/local-storage.service';
 import { PanelEmptyItemComponent } from './panel-empty-item/panel-empty-item.component';
 import { PanelLabelConstructorComponent } from './panel-label-constructor/panel-label-constructor.component';
 import { PanelLabelContentComponent } from './panel-label-content/panel-label-content.component';
@@ -48,6 +51,7 @@ import { ScrollService } from './services/scroll.service';
 import { SettingsService } from './services/settings-service';
 import { SnackBarContentComponent } from './snackbar/snackbar-content.component';
 import { SnackBarService } from './services/snackbar.service';
+import { UserTourService } from './services/user-tour.service';
 import { WindowService } from './services/window.service';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -75,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatTooltipModule,
     panelLabelConstructorRouter,
     ReactiveFormsModule,
+    TourMatMenuModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -108,10 +113,12 @@ export function createTranslateLoader(http: HttpClient) {
     // ColorService,
     HtmlToImageService,
     LanguageService,
+    LocalStorageService,
     ScrollService,
     SettingsService,
     SnackBarService,
     TranslateService,
+    UserTourService,
     WindowService,
   ],
   bootstrap: [PanelLabelConstructorComponent],

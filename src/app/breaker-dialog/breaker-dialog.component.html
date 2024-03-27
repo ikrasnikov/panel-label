@@ -4,6 +4,7 @@
   [action$]="action$"
   [buttonType]="'warning'"
   [large]="true"
+  [tourAnchorMap]="{ actions: TOUR_ANCHOR_ACTIONS }"
   (cancelled)="close()"
   (success)="triggerSuccess()"
   (error)="triggerError($event)"
@@ -20,7 +21,7 @@
 
       <form [formGroup]="form">
         <div class="layout-list__item">
-          <div class="layout-inline layout-inline--valign-top">
+          <div class="layout-inline layout-inline--valign-top" [tourAnchor]="TOUR_ANCHOR_INFO">
             <div class="layout-inline__item">
               <panel-label-item
                 [isInteractive]="false"
@@ -194,7 +195,7 @@
           </div>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_COLOR">
           <div class="layout-list layout-list--8px">
             <div class="layout-list__item">
               <div class="breaker__form-field-label">
@@ -217,7 +218,7 @@
           </div>
         </div>
 
-        <div class="layout-list__item">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_ICON">
           <div class="layout-list layout-list--8px">
             <div class="layout-list__item">
               <div class="breaker__form-field-label">

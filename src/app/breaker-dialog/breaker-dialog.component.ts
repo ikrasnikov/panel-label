@@ -22,6 +22,7 @@ import {
 } from '../maps/item';
 import { ISwitcherItem } from '../../types/item';
 import { SnackBarService } from '../services/snackbar.service';
+import { TourStepAnchorEnum } from '../enums/tour-steps.enum';
 
 @Component({
   templateUrl: './breaker-dialog.component.html',
@@ -36,6 +37,10 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
   public readonly BREAKER_FONT_SIZES_MAP: { [key: number]: BreakerFontSizes } = BREAKER_FONT_SIZES_MAP;
   public readonly BREAKER_COLORS: BreakerColor[] = BREAKER_COLORS;
   public readonly BREAKER_ICONS: BreakerIcon[] = BREAKER_ICONS;
+  public readonly TOUR_ANCHOR_INFO: TourStepAnchorEnum = TourStepAnchorEnum.EDIT_BREAKER_DIALOG_INFO;
+  public readonly TOUR_ANCHOR_COLOR: TourStepAnchorEnum = TourStepAnchorEnum.EDIT_BREAKER_DIALOG_COLOR;
+  public readonly TOUR_ANCHOR_ICON: TourStepAnchorEnum = TourStepAnchorEnum.EDIT_BREAKER_DIALOG_ICON;
+  public readonly TOUR_ANCHOR_ACTIONS: TourStepAnchorEnum = TourStepAnchorEnum.EDIT_BREAKER_DIALOG_ACTIONS;
 
   public action$: Observable<null> = defer(() => this._saveBreaker());
 

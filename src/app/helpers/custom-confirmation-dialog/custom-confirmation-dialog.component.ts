@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { BaseComponent } from '../base-component';
+import { IMap } from '../../../types/map';
 
 @Component({
   selector: 'custom-confirmation-dialog',
@@ -28,6 +29,7 @@ export class CustomConfirmationDialogComponent extends BaseComponent {
   @Input() public submitButtonLabel: string = '';
   @Input() public cancelButtonLabel: string = '';
   @Input() public submitId: string = '';
+  @Input() public tourAnchorMap!: IMap;
   @Input() public submitIsHidden: boolean = false;
   @Input() public isSubmitDisabled: boolean = false;
 
@@ -60,14 +62,10 @@ export class CustomConfirmationDialogComponent extends BaseComponent {
   @HostListener('window:keydown.control.enter', ['$event'])
   public onKeyboardSendPressed(event: KeyboardEvent): void {
     event.preventDefault();
-    this.confirm(event);
+    this.confirm();
   }
 
-  public confirm(event: Event): void {
-    // For some reason dialog confirmation triggered form submission in the Admin course editing
-    // So I had to prevent propagation this event further
-    event.stopPropagation();
-
+  public confirm(): void {
     if (this.isSubmitDisabled || this.isProcessing) {
       return;
     }
