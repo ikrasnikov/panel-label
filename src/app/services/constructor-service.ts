@@ -6,7 +6,7 @@ import { BreakerColor, BreakerSize, BreakerType } from '../enums/item.enum';
 import { IProjectSettings } from '../../types/settings';
 import { ISwitcherItem } from '../../types/item';
 import { ISwitcherRow } from '../../types/row';
-import { LabelFont, LabelPosition, LanguageKey, SwitcherType } from '../enums/settings.enum';
+import { LabelFont, LabelPosition, SwitcherType } from '../enums/settings.enum';
 
 @Injectable()
 export class ConstructorService {
@@ -16,9 +16,9 @@ export class ConstructorService {
     breakerSize: BreakerSize.ONE,
     color: BreakerColor.RED,
     icon: 'home',
-    iconFontSize: 32,
+    iconFontSize: 28,
     label: 'New breaker',
-    fontSize: 16,
+    fontSize: 14,
     type: BreakerType.BREAKER,
   };
 
@@ -41,9 +41,9 @@ export class ConstructorService {
           breakerSize: BreakerSize.THREE,
           color: BreakerColor.RED,
           icon: 'home',
-          iconFontSize: 32,
+          iconFontSize: 28,
           label: 'Main',
-          fontSize: 16,
+          fontSize: 14,
           type: BreakerType.BREAKER,
         },
         {
@@ -52,9 +52,9 @@ export class ConstructorService {
           breakerSize: BreakerSize.ONE,
           color: BreakerColor.BLUE,
           icon: 'lightbulb',
-          iconFontSize: 32,
+          iconFontSize: 28,
           label: 'Kitchen uysdyuh isdyicdyuv',
-          fontSize: 16,
+          fontSize: 14,
           type: BreakerType.BREAKER,
         },
         {
@@ -63,9 +63,9 @@ export class ConstructorService {
           breakerSize: BreakerSize.TWO,
           color: BreakerColor.GREEN,
           icon: 'electrical_services',
-          iconFontSize: 32,
+          iconFontSize: 28,
           label: 'Sockets Kitchen',
-          fontSize: 16,
+          fontSize: 14,
           type: BreakerType.BREAKER,
         },
       ],
@@ -81,31 +81,9 @@ export class ConstructorService {
           breakerSize: BreakerSize.TWO,
           color: BreakerColor.GREY,
           icon: 'home',
-          iconFontSize: 32,
+          iconFontSize: 28,
           label: 'Main',
-          fontSize: 16,
-          type: BreakerType.BREAKER,
-        },
-        {
-          id: 5,
-          position: 2,
-          breakerSize: BreakerSize.THREE,
-          color: BreakerColor.PURPLE,
-          icon: 'lightbulb',
-          iconFontSize: 32,
-          label: 'Kitchen uysdyuh isdyicdyuv',
-          fontSize: 16,
-          type: BreakerType.BREAKER,
-        },
-        {
-          id: 6,
-          position: 3,
-          breakerSize: BreakerSize.ONE,
-          color: BreakerColor.SAND,
-          icon: 'electrical_services',
-          iconFontSize: 32,
-          label: 'Sockets Kitchen',
-          fontSize: 16,
+          fontSize: 14,
           type: BreakerType.BREAKER,
         },
       ],

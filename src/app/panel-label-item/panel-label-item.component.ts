@@ -18,14 +18,18 @@ export class PanelLabelItemComponent implements OnInit, OnChanges {
   @Input() public switcherItem!: ISwitcherItem;
   @Input() public fontFamily!: string;
   @Input() public isInteractive: boolean = true;
+  @Input() public tourEditAnchor: string = '';
+  @Input() public tourDeleteAnchor: string = '';
 
   public switcherImagePath: string = 'assets/switcher_{size}.png';
   public switcherPosition: string = '';
 
+  private readonly _EXAMPLE_IMAGE_NUMBER: string = '1';
+
   public ngOnInit(): void {
     this.switcherImagePath = this.switcherImagePath.replace(
       '{size}',
-      this.isInteractive ? this.switcherItem.breakerSize.toString() : 'example'
+      this.isInteractive ? this.switcherItem.breakerSize.toString() : this._EXAMPLE_IMAGE_NUMBER
     );
   }
 

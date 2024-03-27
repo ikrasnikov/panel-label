@@ -1,11 +1,13 @@
 <div class="layout-inline layout-inline--valign-stretch">
   <div
-    *ngFor="let item of switcherRow.items"
+    *ngFor="let item of switcherRow.items; index as i"
     class="layout-inline__item"
   >
     <panel-label-item
       [switcherItem]="item"
       [fontFamily]="fontFamily"
+      [tourEditAnchor]="i === 0 && orderNumber === 0 ? TOUR_ANCHOR_EDIT_BREAKER : ''"
+      [tourDeleteAnchor]="i === 0 && orderNumber === 1 ? TOUR_ANCHOR_DELETE_BREAKER : ''"
       (deleteItem)="deleteBreaker.emit(item.id)"
       (editItem)="editBreaker.emit(item)"
     ></panel-label-item>
@@ -21,6 +23,7 @@
         class="vertical-button"
         theme="warning"
         type="button"
+        [disabled]="isAddBreakerDisabled"
         (click)="addBreaker.emit()"
       >
         <div class="layout-list layout-list--8px">

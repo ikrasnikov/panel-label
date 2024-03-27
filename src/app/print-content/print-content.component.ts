@@ -14,12 +14,15 @@ import { BaseComponent } from '../helpers/base-component';
 import { HtmlToImageService } from '../services/html-to-image-service';
 import { IProjectSettings } from '../../types/settings';
 import { ISwitcherRow } from '../../types/row';
+import { TourStepAnchorEnum } from '../enums/tour-steps.enum';
 
 @Component({
   selector: 'print-content',
   templateUrl: './print-content.component.html',
 })
 export class PrintContentComponent extends BaseComponent implements AfterViewInit, OnInit {
+  public readonly TOUR_ANCHOR_PREVIEW: TourStepAnchorEnum = TourStepAnchorEnum.PREVIEW_DIALOG_CONTENT;
+
   @Input() public rows: ISwitcherRow[] = [];
   @Input() public settings!: IProjectSettings;
   @Input() public isPreview: boolean = true;

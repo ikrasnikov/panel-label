@@ -8,6 +8,7 @@ import { IProjectSettings } from '../../types/settings';
 import { LabelFont, LabelPosition, SwitcherType } from '../enums/settings.enum';
 import { SettingsService } from '../services/settings-service';
 import { SnackBarService } from '../services/snackbar.service';
+import { TourStepAnchorEnum } from '../enums/tour-steps.enum';
 
 @Component({
   selector: 'panel-label-settings',
@@ -15,6 +16,15 @@ import { SnackBarService } from '../services/snackbar.service';
   host: { class: 'settings' },
 })
 export class PanelLabelSettingsComponent extends BaseComponent implements OnInit {
+  public readonly TOUR_ANCHOR_TYPE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_TYPE;
+  public readonly TOUR_ANCHOR_SIZE_TYPE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SIZE_TYPE;
+  public readonly TOUR_ANCHOR_SIZE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SIZE;
+  public readonly TOUR_ANCHOR_BREAKER_QUANTITY: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_BREAKER_QUANTITY;
+  public readonly TOUR_ANCHOR_SEPERATED_UNITED: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SEPERATED_UNITED;
+  public readonly TOUR_ANCHOR_PRINT_ORIENTATION: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_PRINT_ORIENTATION;
+  public readonly TOUR_ANCHOR_LABEL_SIZE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_LABEL_SIZE;
+  public readonly TOUR_ANCHOR_FONT: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_FONT;
+  public readonly TOUR_ANCHOR_SAVE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SAVE;
   public readonly SWITCHER_TYPES: SwitcherType[] = this._settingsService.SWITCHER_TYPES;
   public readonly LABEL_FONTS: LabelFont[] = this._settingsService.LABEL_FONTS;
   public readonly RAIL_SIZES: number[] = Array.from({ length: 32 }, (_, i: number) => i + 1);

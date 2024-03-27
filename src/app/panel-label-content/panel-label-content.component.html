@@ -35,11 +35,17 @@
         </panel-label-size>
 
         <div class="layout-list">
-          <div *ngFor="let row of rows" class="layout-list__item">
+          <div
+            *ngFor="let row of rows; index as i"
+            class="layout-list__item"
+            [tourAnchor]="i === 0 ? TOUR_ANCHOR_RAIL : ''"
+          >
             <panel-label-row
               [breakerCount]="settings.breakerCount"
               [switcherRow]="row"
               [fontFamily]="settings.font"
+              [orderNumber]="i"
+              [isAddBreakerDisabled]="isAddBreakerDisabled"
               (addBreaker)="addDefaultBreaker(row)"
               (editBreaker)="openBreakerDialog(row, $event)"
               (deleteBreaker)="deleteBreaker($event, row.id)"
@@ -52,6 +58,7 @@
                 mat-button
                 theme="warning"
                 type="button"
+                [tourAnchor]="TOUR_ANCHOR_ADD_RAIL"
                 (click)="addRow()"
               >
                 <div class="icon-container">

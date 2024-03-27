@@ -1,5 +1,5 @@
 <dialog-overlay [isProcessing]="isProcessing" (closed)="cancel()">
-  <div class="dialog">
+  <div class="dialog" [tourAnchor]="tourAnchorMap['container']">
     <div class="layout-inline layout-inline--0px layout-inline--valign-stretch">
       <div
         class="layout-inline__item dialog__image"
@@ -20,7 +20,7 @@
           <ng-content></ng-content>
         </div>
 
-        <div class="dialog__actions">
+        <div class="dialog__actions" [tourAnchor]="tourAnchorMap['actions']">
           <div class="layout-inline layout-inline--align-right">
             <div class="layout-inline__item">
               <button
@@ -55,7 +55,7 @@
                 type="button"
                 mat-raised-button
                 [attr.theme]="buttonType"
-                (click)="confirm($event)"
+                (click)="confirm()"
                 [disabled]="isProcessing || isSubmitDisabled"
                 [tabindex]="2"
               >

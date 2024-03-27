@@ -83,7 +83,8 @@ export class LanguageService {
   public getTranslatedStream$(
     textTranslateKey: string | string[],
     translateParams: { [key: string]: string | number } = {},
-  ): Observable<string> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): Observable<string | any> {
     if (!textTranslateKey) {
       return of('');
     }

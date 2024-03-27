@@ -18,6 +18,8 @@ import { ISwitcherItem } from '../../types/item';
 import { ISwitcherRow } from '../../types/row';
 import { PanelLabelPreviewDialogComponent } from '../panel-label-preview-dialog/panel-label-preview-dialog.component';
 import { SnackBarService } from '../services/snackbar.service';
+import { TourStepAnchorEnum } from '../enums/tour-steps.enum';
+import { UserTourService } from '../services/user-tour.service';
 
 @Component({
   selector: 'panel-label-content',
@@ -25,6 +27,9 @@ import { SnackBarService } from '../services/snackbar.service';
   host: { class: 'constructor' },
 })
 export class PanelLabelContentComponent extends BaseComponent {
+  public readonly TOUR_ANCHOR_RAIL: TourStepAnchorEnum = TourStepAnchorEnum.CONSTRUCTOR_RAIL;
+  public readonly TOUR_ANCHOR_ADD_RAIL: TourStepAnchorEnum = TourStepAnchorEnum.CONSTRUCTOR_ADD_RAIL;
+
   @ViewChild('drawer') public matDrawer!: MatDrawer;
 
   public rows: ISwitcherRow[] = [];
@@ -33,6 +38,7 @@ export class PanelLabelContentComponent extends BaseComponent {
   public verticalSize: number = 0;
   public isLoading: boolean = true;
   public isPrintShown: boolean = false;
+  public isAddBreakerDisabled: boolean = false;
 
   public constructor(
     private _cdr: ChangeDetectorRef,
@@ -40,6 +46,7 @@ export class PanelLabelContentComponent extends BaseComponent {
     private _constructorService: ConstructorService,
     private _dialog: MatDialog,
     private _snackBarService: SnackBarService,
+    private _userTourService: UserTourService,
   ) {
     super();
     combineLatest(
@@ -97,6 +104,22 @@ export class PanelLabelContentComponent extends BaseComponent {
         this._cdr.detectChanges();
         window.print();
         this.isPrintShown = false;
+      });
+
+    this._userTourService.getIsStarted$()
+      .pipe(
+        takeUntil(this._destroy$$)
+      )
+      .subscribe(() => {
+        this.isAddBreakerDisabled = true;
+      });
+
+    this._userTourService.getIsEnded$()
+      .pipe(
+        takeUntil(this._destroy$$)
+      )
+      .subscribe(() => {
+        this.isAddBreakerDisabled = false;
       });
   }
 
@@ -169,6 +192,7 @@ export class PanelLabelContentComponent extends BaseComponent {
           cancelButtonLabel: '__BUTTON_NO',
           buttonType: 'danger',
           action$: this._constructorService.deleteRow$(rowId),
+          tourAnchorMap: { container: TourStepAnchorEnum.CONSTRUCTOR_DELETE_ROW },
         },
         autoFocus: false
       });
