@@ -20,7 +20,6 @@ export interface ISnackBarContentData {
   },
 })
 export class SnackBarContentComponent {
-  public test
   public get showInProgress(): boolean {
     return !!this.data?.inProgress;
   }

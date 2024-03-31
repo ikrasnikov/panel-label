@@ -31,6 +31,7 @@ export class LanguageService {
   public initLanguage(): void {
     this._translateService.addLangs(this.SUPPORTED_LANGUAGES);
     this._translateService.setDefaultLang(this.getFilteredLanguage(this._translateService.getBrowserLang() as LanguageKey));
+    this.setLanguage(this._translateService.getBrowserLang() as LanguageKey);
 
     this.getLanguage$().subscribe((language: LanguageKey) => {
       this.translateUse(language);

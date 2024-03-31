@@ -52,6 +52,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "panel-label",
-  "nxCloudAccessToken": "ZWUzNmM4M2YtYzFkZi00NmQwLTk1NzQtNjA1NmM2OWM5OTMwfHJlYWQtd3JpdGU="
+  "defaultProject": "panel-label"
 }

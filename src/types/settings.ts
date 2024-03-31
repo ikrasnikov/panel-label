@@ -8,7 +8,6 @@ export interface IProjectSettings {
   id: number;
   isItemSize: boolean;
   labelHeight: number;
-  language: LanguageKey;
   position: LabelPosition;
   title: string;
   type: SwitcherType;
