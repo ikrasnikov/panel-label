@@ -13,9 +13,9 @@
 >
   <div class="dialog-body-section">
     <div class="dialog-header">
-      <div class="dialog-header__title">{{ data.title }}</div>
+      <div class="dialog-header__title">{{ data.title | translate }}</div>
 
-      <div class="dialog-header__text" [innerHtml]="data.body"></div>
+      <div class="dialog-header__text" [innerHtml]="data.body | translate"></div>
     </div>
   </div>
 </custom-confirmation-dialog>

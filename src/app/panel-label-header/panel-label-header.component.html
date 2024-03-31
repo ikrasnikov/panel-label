@@ -15,7 +15,8 @@
             <span class="material-symbols-filled material-symbols-outlined">
               visibility
             </span>
-            Preview
+
+            {{ 'HEADER__PREVIEW' | translate }}
           </button>
         </div>
 
@@ -28,7 +29,8 @@
             <span class="material-symbols-outlined">
              place_item
             </span>
-            Download
+
+            {{ '__BUTTON_DOWNLOAD' | translate }}
           </button>
         </div>
 
@@ -56,6 +58,38 @@
               settings
             </span>
           </button>
+        </div>
+
+        <div class="layout-inline__item">
+          <button
+            mat-button
+            theme="dark-70"
+            [matMenuTriggerFor]="languageList"
+          >
+            {{ language | translate }}
+            <span class="material-symbols-filled material-symbols-outlined">
+              arrow_drop_down
+            </span>
+          </button>
+
+          <mat-menu
+            #languageList="matMenu"
+            >
+            <div class="layout-list layout-list--0px">
+              <div
+                *ngFor="let supportedLanguage of SUPPORTED_LANGUAGES"
+                class="layout-list__item"
+              >
+                <button
+                  mat-button
+                  theme="dark-70"
+                  (click)="setLanguage(supportedLanguage)"
+                >
+                  {{ LANGUAGE_KEY_TRANSLATIONS[supportedLanguage] | translate }}
+                </button>
+              </div>
+            </div>
+          </mat-menu>
         </div>
       </div>
     </nav>

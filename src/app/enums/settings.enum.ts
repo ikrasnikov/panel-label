@@ -3,6 +3,13 @@ export const enum SwitcherType {
   US = 'us',
 }
 
+export const enum LanguageKey {
+  BG = 'bg',
+  EN = 'en',
+  RU = 'ru',
+  UA = 'ua',
+}
+
 export const enum LabelFont {
   ALEGREYA = 'Alegreya',
   ALEGREYA_SANS = 'Alegreya Sans',

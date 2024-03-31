@@ -24,7 +24,7 @@ export interface ISnackBarMessageOptions {
 @Injectable()
 export class SnackBarService {
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  private readonly _duration: number = 10000;
+  private readonly _duration: number = 1000;
 
   public constructor(private _snackBar: MatSnackBar, private _tranlsateService: TranslateService) {}
 
@@ -36,7 +36,7 @@ export class SnackBarService {
 
   public showError(
     options: Omit<ISnackBarMessageOptions, 'type'> = {
-      message: 'Something went wrong. Please try again',
+      message: 'SNACK_BAR__ERROR',
     },
   ): MatSnackBarRef<SnackBarContentComponent> {
     return this._show({ ...options, type: 'warn' });

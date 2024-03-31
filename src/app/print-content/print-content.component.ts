@@ -32,7 +32,6 @@ export class PrintContentComponent extends BaseComponent implements AfterViewIni
 
   // rail width is 210mm (A4 width) - 2*10mm (side margin) - 2*2mm (rail side margin)
   private readonly _RAIL_WIDTH_MM: number = 186;
-  private readonly _CONTENT_MAX_WIDTH: number = 1190.55;
   private readonly _PX_TO_MM_COEFFICIENT: number = 0.26458333333333;
 
   private _singleLabelWidth: number = 0;

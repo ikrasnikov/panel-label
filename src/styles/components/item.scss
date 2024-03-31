@@ -1,14 +1,15 @@
-$item-sizes: 'small' 'medium' 'large';
+$item-sizes: 'x-small' 'small' 'medium' 'large' 'x-large';
 
 $item-max-widths: (
         x-small: $item-max-width-x-small,
         small: $item-max-width-small,
         medium: $item-max-width-medium,
         large: $item-max-width-large,
+        x-large: $item-max-width-x-large,
 );
 
 .item {
-  max-width: $item-max-width-x-small;
+  max-width: $item-max-width-small;
 
   @each $size in $item-sizes {
     &--#{$size} {

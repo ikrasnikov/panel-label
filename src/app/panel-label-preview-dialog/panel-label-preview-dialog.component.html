@@ -2,7 +2,8 @@
   <div class="layout-split layout-split--stretch">
     <div class="layout-split__item layout-split__item--expand">
       <div class="fullscreen-dialog-header__title is--ellipsis">
-        Label preview for {{ data.settings.title }}
+        {{ 'PREVIEW_DIALOG__TITLE' | translate:
+        { title: data.settings.title } }}
       </div>
     </div>
 

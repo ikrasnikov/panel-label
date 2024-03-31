@@ -1,8 +1,8 @@
 <div
   class="layout-list layout-list--6px item"
   [class.item--small]="!isInteractive"
-  [class.item--medium]="switcherItem.breakerSize === 2 && isInteractive"
-  [class.item--large]="switcherItem.breakerSize === 3 && isInteractive"
+  [class.item--large]="switcherItem.breakerSize === 2 && isInteractive"
+  [class.item--x-large]="switcherItem.breakerSize === 3 && isInteractive"
 >
   <div *ngIf="isInteractive" class="layout-list__item">
     <div class="layout-inline layout-inline--align-center layout-inline--0px">

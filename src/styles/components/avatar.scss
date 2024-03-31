@@ -1,0 +1,96 @@
+.avatar {
+  position: relative;
+  display: inline-flex;
+  border-radius: 4px;
+  color: $color-white;
+  font-weight: 700;
+
+  &--s {
+    height: 32px;
+
+    &.avatar {
+      &--circle {
+        width: 32px;
+      }
+
+      &--square {
+        width: 42px;
+      }
+    }
+  }
+
+  &--m {
+    height: 40px;
+
+    &.avatar {
+      &--circle {
+        width: 42px;
+      }
+
+      &--square {
+        width: 52px;
+      }
+    }
+  }
+
+  &--l {
+    height: 48px;
+
+    &.avatar {
+      &--circle {
+        width: 48px;
+      }
+
+      &--square {
+        width: 64px;
+      }
+    }
+  }
+
+  &--muted {
+    opacity: 0.5;
+  }
+
+  &--interactive {
+    cursor: pointer;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  &__image-icon {
+    display: flex;
+    justify-content: center;
+    background-color: initial;
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* stylelint-disable-next-line -- block modifier */
+  &--circle &__image,
+    /* stylelint-disable-next-line -- block modifier */
+  &--circle &__image-icon,
+    /* stylelint-disable-next-line -- block modifier */
+  &--circle &__icon,
+    /* stylelint-disable-next-line -- block modifier */
+  &--circle &__default-image {
+    border-radius: 50%;
+  }
+}

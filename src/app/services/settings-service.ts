@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { LabelFont, LabelPosition, SwitcherType } from '../enums/settings.enum';
+import { TStrictMap } from '../../types/map';
 
 @Injectable()
 export class SettingsService {
@@ -58,4 +59,11 @@ export class SettingsService {
     LabelPosition.RIGHT,
     LabelPosition.UNDER,
   ];
+
+  public readonly POSITION_TRANSLATIONS_MAP: TStrictMap<LabelPosition> = {
+    [LabelPosition.ABOVE]: 'SETTINGS__POSITION_ABOVE',
+    [LabelPosition.LEFT]: 'SETTINGS__POSITION_LEFT',
+    [LabelPosition.RIGHT]: 'SETTINGS__POSITION_RIGHT',
+    [LabelPosition.UNDER]: 'SETTINGS__POSITION_UNDER',
+  };
 }

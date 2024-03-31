@@ -2,7 +2,7 @@
   <div class="layout-list">
     <div class="layout-list__item">
       <span class="settings__title">
-        Area settings
+        {{ 'SETTINGS__AREA_SETTINGS' | translate }}
       </span>
     </div>
 
@@ -12,7 +12,7 @@
       <div class="layout-list layout-list--0px">
         <div class="layout-list__item">
           <span class="settings__sub-title">
-            Rail settings
+            {{ 'SETTINGS__RAIL_SETTINGS' | translate }}
           </span>
         </div>
 
@@ -20,7 +20,7 @@
           <div class="settings__form-field">
             <mat-form-field>
               <mat-label>
-                Breaker type
+                {{ 'SETTINGS__BREAKER_TYPE' | translate }}
               </mat-label>
 
               <mat-select
@@ -43,14 +43,21 @@
             <div class="layout-list layout-list--0px">
               <div class="layout-list__item">
                 <mat-label>
-                  Size settings
+                  {{ 'SETTINGS__SIZE_SETTINGS' | translate }}
                 </mat-label>
               </div>
 
               <div class="layout-list__item">
                 <mat-radio-group formControlName="isItemSize">
-                  <mat-radio-button [value]="true">x1 Breaker width</mat-radio-button>
-                  <mat-radio-button [value]="false">Rail width</mat-radio-button>
+                  <div class="layout-list layout-list--0px">
+                    <div class="layout-list__item">
+                      <mat-radio-button [value]="true">{{ 'SETTINGS__BREAKER_WIDTH' | translate }}</mat-radio-button>
+                    </div>
+
+                    <div class="layout-list__item">
+                      <mat-radio-button [value]="false">{{ 'SETTINGS__RAIL_WIDTH' | translate }}</mat-radio-button>
+                    </div>
+                  </div>
                 </mat-radio-group>
               </div>
             </div>
@@ -63,7 +70,7 @@
               <div class="settings__form-field">
                 <mat-form-field>
                   <mat-label>
-                    Width
+                    {{ 'SETTINGS__WIDTH' | translate }}
                   </mat-label>
 
                   <input
@@ -71,7 +78,9 @@
                     type="number"
                     formControlName="width"
                     [class.suffixed]="form.controls['width'].value"
-                    [placeholder]="form.controls['isItemSize'].value ? 'Breaker width' : 'Rail width'"
+                    [placeholder]="(form.controls['isItemSize'].value
+                      ? 'SETTINGS__BREAKER_WIDTH_PLACEHOLDER'
+                      : 'SETTINGS__RAIL_WIDTH') | translate"
                   >
 
                   <span *ngIf="form.controls['width'].value" matSuffix>mm</span>
@@ -79,7 +88,7 @@
                   <mat-error
                     *ngIf="form.controls['width'].hasError('required')"
                   >
-                    Can't be blank
+                    {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
                   </mat-error>
 
                   <mat-error
@@ -88,7 +97,10 @@
                       form.controls['width'].hasError('min')
                     "
                   >
-                    {{ form.controls['isItemSize'].value ? 'From 10 to 100 mm' : 'From 10 to 9999 mm' }}
+                    {{ (form.controls['isItemSize'].value
+                    ? 'SETTINGS__ERROR_MAX_SIZE_100'
+                    : 'SETTINGS__ERROR_MAX_SIZE_9999') | translate
+                    }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -104,7 +116,7 @@
               <div class="settings__form-field">
                 <mat-form-field>
                   <mat-label>
-                    Height
+                    {{ 'SETTINGS__HEIGHT' | translate }}
                   </mat-label>
 
                   <input
@@ -112,15 +124,17 @@
                     type="number"
                     formControlName="height"
                     [class.suffixed]="form.controls['height'].value"
-                    [placeholder]="'Breaker height'"
+                    [placeholder]="'SETTINGS__BREAKER_HEIGHT' | translate"
                   >
 
-                  <span *ngIf="form.controls['height'].value" matSuffix>mm</span>
+                  <span *ngIf="form.controls['height'].value" matSuffix>
+                    {{ 'SETTINGS__MM' | translate }}
+                  </span>
 
                   <mat-error
                     *ngIf="form.controls['height'].hasError('required')"
                   >
-                    Can't be blank
+                    {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
                   </mat-error>
 
                   <mat-error
@@ -129,7 +143,7 @@
                       form.controls['height'].hasError('min')
                     "
                   >
-                    {{ 'From 10 to 100 mm' }}
+                    {{ 'SETTINGS__ERROR_MAX_SIZE_100' | translate }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -142,7 +156,7 @@
 <!--          <div class="settings__form-field">-->
 <!--            <mat-form-field>-->
 <!--              <mat-label>-->
-<!--                Position-->
+<!--                {{ 'SETTINGS__POSITION' | translate }}-->
 <!--              </mat-label>-->
 
 <!--              <mat-select-->
@@ -153,7 +167,7 @@
 <!--                  *ngFor="let position of LABEL_POSITION"-->
 <!--                  [value]="position"-->
 <!--                >-->
-<!--                  {{ position | titlecase }}-->
+<!--                  {{ POSITION_TRANSLATIONS_MAP[position] | translate }}-->
 <!--                </mat-option>-->
 <!--              </mat-select>-->
 <!--            </mat-form-field>-->
@@ -164,7 +178,7 @@
           <div class="settings__form-field">
             <mat-form-field>
               <mat-label>
-                DIN Rail size
+                {{ 'SETTINGS__DIN_RAIL_SIZE' | translate }}
               </mat-label>
 
               <mat-select
@@ -175,7 +189,7 @@
                   *ngFor="let size of RAIL_SIZES"
                   [value]="size"
                 >
-                  {{ size }} modules
+                  {{ size }} {{ 'SETTINGS__SIZE_MODULES' | translate }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -188,14 +202,21 @@
       <div class="layout-list layout-list--0px">
         <div class="layout-list__item">
           <span class="settings__sub-title">
-            Label settings
+            {{ 'SETTINGS__LABEL_SETTINGS' | translate }}
           </span>
         </div>
 
         <div class="layout-list__item">
           <mat-radio-group formControlName="areLabelsSeperated">
-            <mat-radio-button [value]="true">Seperated label</mat-radio-button>
-            <mat-radio-button [value]="false">United labels</mat-radio-button>
+            <div class="layout-list layout-list--0px">
+              <div class="layout-list__item">
+                <mat-radio-button [value]="true">{{ 'SETTINGS__SEPERATED_LABELS' | translate }}</mat-radio-button>
+              </div>
+
+              <div class="layout-list__item">
+                <mat-radio-button [value]="false">{{ 'SETTINGS__UNITED_LABELS' | translate }}</mat-radio-button>
+              </div>
+            </div>
           </mat-radio-group>
         </div>
 
@@ -204,13 +225,13 @@
             <div class="settings__form-field">
               <mat-form-field>
                 <mat-label>
-                  Width
+                  {{ 'SETTINGS__WIDTH' | translate }}
                 </mat-label>
 
                 <input
                   matInput
                   type="number"
-                  matTooltip="Label width will be equal to x1 breaker width"
+                  [matTooltip]="'SETTINGS__WIDTH_TOOLTIP' | translate"
                   [value]="form.controls['isItemSize'].value
                     ? form.controls['width'].value
                     : getWidth(true).toString()"
@@ -218,7 +239,7 @@
                   [class.suffixed]="form.controls['width'].value"
                 >
 
-                <span *ngIf="form.controls['width'].value" matSuffix>mm</span>
+                <span *ngIf="form.controls['width'].value" matSuffix>{{ 'SETTINGS__MM' | translate }}</span>
               </mat-form-field>
             </div>
           </div>
@@ -233,7 +254,7 @@
             <div class="settings__form-field">
               <mat-form-field>
                 <mat-label>
-                  Height
+                  {{ 'SETTINGS__HEIGHT' | translate }}
                 </mat-label>
 
                 <input
@@ -241,15 +262,15 @@
                   type="number"
                   formControlName="labelHeight"
                   [class.suffixed]="form.controls['labelHeight'].value"
-                  [placeholder]="'Label height'"
+                  [placeholder]="'SETTINGS__LABEL_HEIGHT_PLACEHOLDER' | translate"
                 >
 
-                <span *ngIf="form.controls['labelHeight'].value" matSuffix>mm</span>
+                <span *ngIf="form.controls['labelHeight'].value" matSuffix>{{ 'SETTINGS__MM' | translate }}</span>
 
                 <mat-error
                   *ngIf="form.controls['labelHeight'].hasError('required')"
                 >
-                  Can't be blank
+                  {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
                 </mat-error>
 
                 <mat-error
@@ -258,7 +279,7 @@
                       form.controls['labelHeight'].hasError('min')
                     "
                 >
-                  {{ 'From 10 to 100 mm' }}
+                  {{ 'SETTINGS__ERROR_MAX_SIZE_100' | translate }}
                 </mat-error>
               </mat-form-field>
             </div>
@@ -269,11 +290,11 @@
           <div class="settings__form-field">
             <mat-form-field>
               <mat-label>
-                Sticker font
+                {{ 'SETTINGS__FONT' | translate }}
               </mat-label>
 
               <input type="text"
-                     placeholder="Select sticker font"
+                     [placeholder]="'SETTINGS__FONT_PLACEHOLDER' | translate"
                      matInput
                      formControlName="font"
                      [matAutocomplete]="auto"
@@ -293,7 +314,7 @@
               <mat-error
                 *ngIf="form.controls['font'].hasError('required')"
               >
-                Can't be blank
+                {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
               </mat-error>
             </mat-form-field>
           </div>
@@ -307,7 +328,7 @@
         theme="warning"
         type="submit"
       >
-        Confirm
+        {{ '__BUTTON_CONFIRM' | translate }}
       </button>
     </div>
   </div>

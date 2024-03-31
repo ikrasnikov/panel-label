@@ -1,0 +1,17 @@
+<div
+  *ngIf="entity?.avatar"
+  class="avatar__image"
+  [style.background-image]="'url(' + entity.avatar + ')'"
+></div>
+
+<div
+  *ngIf="!entity?.avatar && !entity?.image"
+  class="avatar__image"
+  [style.background-color]="background"
+>
+  {{ initials }}
+</div>
+
+<div *ngIf="entity?.image" class="avatar__icon">
+  <img class="avatar__img" [src]="entity.image" alt="" />
+</div>
