@@ -1,6 +1,6 @@
 .empty-item {
   display: block;
-  padding: 6px;
+  padding: 5px;
   margin-top: 46px;
   border: 1px dashed $color-dark-70;
   border-radius: 8px;
@@ -11,6 +11,6 @@
   }
 
   &__image {
-    max-width: $item-max-width-extra-small;
+    max-width: $item-max-width-x-small;
   }
 }

@@ -1,6 +1,6 @@
 <custom-confirmation-dialog
-  [submitButtonLabel]="data.item ? 'Save' : 'Add'"
-  [cancelButtonLabel]="'Cancel'"
+  [submitButtonLabel]="(data.item ? '__BUTTON_SAVE' : '__BUTTON_ADD') | translate"
+  [cancelButtonLabel]="'__BUTTON_CANCEL' | translate"
   [action$]="action$"
   [buttonType]="'warning'"
   [large]="true"
@@ -13,7 +13,7 @@
       <div class="layout-list__item">
         <div class="dialog-header">
           <div class="dialog-header__title">
-            {{ data.item ? 'Edit breaker' : 'Add new breaker' }}
+            {{ (data.item ? 'BREAKER_DIALOG__EDIT_BREAKER' : 'BREAKER_DIALOG__ADD_BREAKER') | translate }}
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
                       <div class="breaker__form-field">
                         <mat-form-field floatLabel="always">
                           <mat-label>
-                            Type
+                            {{ 'BREAKER_DIALOG__TYPE' | translate }}
                           </mat-label>
 
                           <mat-select
@@ -48,7 +48,7 @@
                               *ngFor="let type of BREAKER_TYPES"
                               [value]="type"
                             >
-                              {{ type | titlecase }}
+                              {{ BREAKER_TYPE_TRANSLATION_KEYS[type] | translate }}
                             </mat-option>
                           </mat-select>
                         </mat-form-field>
@@ -59,7 +59,7 @@
                       <div class="breaker__form-field">
                         <mat-form-field>
                           <mat-label>
-                            Size
+                            {{ 'BREAKER_DIALOG__SIZE' | translate }}
                           </mat-label>
 
                           <mat-select
@@ -77,10 +77,10 @@
                           <mat-error
                             *ngIf="form.controls['breakerSize'].hasError('max')"
                           >
-                            {{ 'Only ' + data.freeSlots + ' free slots in this rail' }}
+                            {{ 'BREAKER_DIALOG__ERROR_NOT_ENOUGH_SLOTS' | translate:
+                            { freeSlotsCount: data.freeSlots } }}
                           </mat-error>
                         </mat-form-field>
-
                       </div>
                     </div>
                   </div>
@@ -90,28 +90,28 @@
                   <div class="breaker__form-field">
                     <mat-form-field floatLabel="always">
                       <mat-label>
-                        Text
+                        {{ 'BREAKER_DIALOG__TEXT' | translate }}
                       </mat-label>
 
                       <input
                         matInput
                         type="text"
                         formControlName="label"
-                        [placeholder]="'Label text'"
+                        [placeholder]="'BREAKER_DIALOG__LABEL_PLACEHOLDER' | translate"
                       >
 
                       <mat-error
                         *ngIf="form.controls['label'].hasError('required')"
                       >
-                        Can't be blank
+                        {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
                       </mat-error>
 
                       <mat-error
                         *ngIf="
-                          form.controls['label'].hasError('max')
+                          form.controls['label'].hasError('maxlength')
                         "
                       >
-                        Should be less than 72 character
+                        {{ 'FORM_FIELD__ERROR_72_MAX_LENGTH' | translate }}
                       </mat-error>
 
                       <mat-error
@@ -119,7 +119,7 @@
                           form.controls['label'].hasError('pattern')
                         "
                       >
-                        Label is invalid. Examples: Lamps, Kitchen, Input
+                        {{ 'BREAKER_DIALOG__ERROR_LABEL_PATTERN' | translate }}
                       </mat-error>
                     </mat-form-field>
                   </div>
@@ -131,7 +131,7 @@
                       <div class="breaker__form-field">
                         <mat-form-field>
                           <mat-label>
-                            Font Size
+                            {{ 'BREAKER_DIALOG__FONT_SIZE' | translate }}
                           </mat-label>
 
                           <mat-select
@@ -153,28 +153,28 @@
                       <div class="breaker__form-field">
                         <mat-form-field>
                           <mat-label>
-                            Order
+                            {{ 'BREAKER_DIALOG__ORDER' | translate }}
                           </mat-label>
 
                           <input
                             matInput
                             type="text"
                             formControlName="position"
-                            [placeholder]="'Order number'"
+                            [placeholder]="'BREAKER_DIALOG__ORDER_PLACEHOLDER' | translate"
                           >
 
                           <mat-error
                             *ngIf="form.controls['position'].hasError('required')"
                           >
-                            Can't be blank
+                            {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
                           </mat-error>
 
                           <mat-error
                             *ngIf="
-                          form.controls['position'].hasError('max')
+                          form.controls['position'].hasError('maxlength')
                         "
                           >
-                            Should be less than 72 character
+                            {{ 'FORM_FIELD__ERROR_72_MAX_LENGTH' | translate }}
                           </mat-error>
 
                           <mat-error
@@ -182,7 +182,7 @@
                           form.controls['position'].hasError('pattern')
                         "
                           >
-                            Order is invalid. Examples: 02, 17, Lamps
+                            {{ 'BREAKER_DIALOG__ERROR_ORDER_PATTERN' | translate }}
                           </mat-error>
                         </mat-form-field>
                       </div>
@@ -198,7 +198,7 @@
           <div class="layout-list layout-list--8px">
             <div class="layout-list__item">
               <div class="breaker__form-field-label">
-                Color
+                {{ 'BREAKER_DIALOG__COLOR' | translate }}
               </div>
             </div>
 
@@ -221,7 +221,7 @@
           <div class="layout-list layout-list--8px">
             <div class="layout-list__item">
               <div class="breaker__form-field-label">
-                Icon
+                {{ 'BREAKER_DIALOG__ICON' | translate }}
               </div>
             </div>
 

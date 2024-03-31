@@ -106,7 +106,10 @@ export class PanelLabelContentComponent extends BaseComponent {
         takeUntil(this._destroy$$)
       )
       .subscribe(() => {
-        this._snackBarService.showMessage({ message: `${settings.title} settings successfully updated` });
+        this._snackBarService.showMessage({
+          message: 'CONTENT__SUCCESSFULLY_UPDATED_SETTINGS',
+          translateParams: { title: settings.title },
+        });
         this.matDrawer.close();
       });
   }
@@ -132,7 +135,7 @@ export class PanelLabelContentComponent extends BaseComponent {
       data: {
         action$: breaker
           ? (item: ISwitcherItem) => this._constructorService.updateBreaker$(row.id, item)
-          : (/*item: ISwitcherItem*/) => this._constructorService.addBreaker$(row.id/*, item*/),
+          : () => this._constructorService.addBreaker$(row.id),
         item: breaker,
         fontFamily: this.settings.font,
         freeSlots,
@@ -143,7 +146,7 @@ export class PanelLabelContentComponent extends BaseComponent {
     dialogRef.componentInstance.success$.pipe(takeUntil(this._destroy$$))
       .subscribe(() => {
         this._snackBarService.showMessage({
-          message: `You\'ve successfully ${breaker ? 'updated' : 'added new'} breaker`
+          message: breaker ? 'CONTENT__SUCCESSFULLY_UPDATED_BREAKER' : 'CONTENT__SUCCESSFULLY_ADDED_BREAKER'
         });
         dialogRef.close();
       });
@@ -160,10 +163,10 @@ export class PanelLabelContentComponent extends BaseComponent {
     if (editingRow && editingRow.items.length === 1) {
       const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this._dialog.open(ConfirmationDialogComponent, {
         data: {
-          title: 'Delete row',
-          body: 'You are about to delete the last breaker in the rail. Would you like remove row too?',
-          submitButtonLabel: 'Yes',
-          cancelButtonLabel: 'No',
+          title: 'CONTENT__DELETE_ROW_TITLE',
+          body: 'CONTENT__DELETE_ROW_BODY',
+          submitButtonLabel: '__BUTTON_YES',
+          cancelButtonLabel: '__BUTTON_NO',
           buttonType: 'danger',
           action$: this._constructorService.deleteRow$(rowId),
         },
@@ -172,7 +175,7 @@ export class PanelLabelContentComponent extends BaseComponent {
 
       dialogRef.componentInstance.success$.pipe(takeUntil(this._destroy$$))
         .subscribe(() => {
-          this._snackBarService.showMessage({ message: 'You\'ve successfully deleted an empty row' });
+          this._snackBarService.showMessage({ message: 'CONTENT__SUCCESSFULLY_DELETED_ROW' });
           dialogRef.close();
         });
 

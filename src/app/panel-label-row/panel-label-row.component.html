@@ -33,7 +33,7 @@
           </div>
 
           <div class="layout-list__item">
-            Add Breaker
+            {{ 'ROW__ADD_BREAKER' | translate }}
           </div>
         </div>
       </button>
@@ -42,7 +42,7 @@
 
   <div
     *ngFor="let emptyItem of emptySlots"
-    class="layout-inline__item item--small empty-item__image"
+    class="layout-inline__item"
   >
     <panel-empty-item></panel-empty-item>
   </div>

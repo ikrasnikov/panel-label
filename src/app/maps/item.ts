@@ -1,4 +1,12 @@
-import { BreakerColor, BreakerFontSizes, BreakerIcon, BreakerIconFontSizes, BreakerSize } from '../enums/item.enum';
+import {
+  BreakerColor,
+  BreakerFontSizes,
+  BreakerIcon,
+  BreakerIconFontSizes,
+  BreakerSize,
+  BreakerType
+} from '../enums/item.enum';
+import { TStrictMap } from '../../types/map';
 
 export const SWITCHER_SIZES_MAP: { [key: string]: BreakerSize } = {
   x1 : BreakerSize.ONE,
@@ -97,3 +105,7 @@ export const BREAKER_ICONS: BreakerIcon[] = [
   BreakerIcon.EMOJI_OBJECT,
   BreakerIcon.WB_SUNNY,
 ];
+
+export const BREAKER_TYPE_TRANSLATIONS_MAP: TStrictMap<BreakerType> = {
+  [BreakerType.BREAKER]: 'BREAKER_DIALOG__TYPE_BREAKER',
+};

@@ -31,7 +31,7 @@
                 [disabled]="isProcessing"
                 [attr.tabindex]="3"
               >
-                {{ cancelButtonLabel }}
+                {{ cancelButtonLabel | translate }}
               </button>
 
               <button
@@ -43,7 +43,7 @@
                 [disabled]="isProcessing"
                 [attr.tabindex]="3"
               >
-                {{ cancelButtonLabel }}
+                {{ cancelButtonLabel | translate }}
               </button>
             </div>
 
@@ -60,7 +60,7 @@
                 [tabindex]="2"
               >
                 <ng-container *ngIf="!isProcessing">
-                  {{ submitButtonLabel }}
+                  {{ submitButtonLabel | translate }}
                 </ng-container>
 
                 <mat-progress-spinner

@@ -17,6 +17,7 @@ import {
   BREAKER_COLORS,
   BREAKER_FONT_SIZES_MAP,
   BREAKER_ICONS,
+  BREAKER_TYPE_TRANSLATIONS_MAP,
   SWITCHER_SIZES_MAP
 } from '../maps/item';
 import { ISwitcherItem } from '../../types/item';
@@ -30,6 +31,7 @@ import { SnackBarService } from '../services/snackbar.service';
 
 export class BreakerDialogComponent extends BaseDialogComponent<void> {
   public readonly BREAKER_TYPES: BreakerType[] = [BreakerType.BREAKER];
+  public readonly BREAKER_TYPE_TRANSLATION_KEYS: Record<BreakerType, string> = BREAKER_TYPE_TRANSLATIONS_MAP;
   public readonly BREAKER_SIZES_MAP: { [key: string]: BreakerSize } = SWITCHER_SIZES_MAP;
   public readonly BREAKER_FONT_SIZES_MAP: { [key: number]: BreakerFontSizes } = BREAKER_FONT_SIZES_MAP;
   public readonly BREAKER_COLORS: BreakerColor[] = BREAKER_COLORS;

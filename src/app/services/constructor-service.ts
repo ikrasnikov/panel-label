@@ -6,7 +6,7 @@ import { BreakerColor, BreakerSize, BreakerType } from '../enums/item.enum';
 import { IProjectSettings } from '../../types/settings';
 import { ISwitcherItem } from '../../types/item';
 import { ISwitcherRow } from '../../types/row';
-import { LabelFont, LabelPosition, SwitcherType } from '../enums/settings.enum';
+import { LabelFont, LabelPosition, LanguageKey, SwitcherType } from '../enums/settings.enum';
 
 @Injectable()
 export class ConstructorService {
@@ -124,6 +124,7 @@ export class ConstructorService {
       id: 1,
       isItemSize: true,
       labelHeight: 25,
+      language: LanguageKey.EN,
       position: LabelPosition.UNDER,
       title: 'My test project',
       type: SwitcherType.EU,
@@ -149,6 +150,7 @@ export class ConstructorService {
 
   public addRow$(position: number, projectId: number): void {
     this._rows.push({ ...this._EMPTY_ROW, position, id: Number(new Date()), projectId });
+    this._rows$$.next(this._rows);
   }
 
   public addBreaker$(rowId: number/*, item: ISwitcherItem, projectId: number*/): Observable<null> {
