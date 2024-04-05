@@ -8,6 +8,7 @@ export interface ISwitcherItem {
   id: number;
   label: string;
   breakerSize: BreakerSize;
+  order: string | number;
   position: number;
   type: BreakerType;
 }

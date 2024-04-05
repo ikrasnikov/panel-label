@@ -1,5 +1,6 @@
 <div class="print-content__body"
-     [class.print-content__body--preview]="isPreview"
+     [class.print-content__body--preview-album]="isPreview && !settings.isBookOrientation"
+     [class.print-content__body--preview-book]="isPreview && settings.isBookOrientation"
 >
   <div
     class="print-content__container"
@@ -13,6 +14,8 @@
           *ngIf="row.items.length"
           class="print-content__row"
           [class.print-content__row--preview]="isPreview"
+          [class.print-content__row--album]="!isPreview && !settings.isBookOrientation"
+          [class.print-content__row--book]="!isPreview && settings.isBookOrientation"
         >
           <div class="layout-list layout-list--8px">
             <div class="layout-list__item">
@@ -50,12 +53,12 @@
                     >
                       <div class="layout-list__item">
                         <div
-                          class="item__position"
+                          class="item__order"
                           [style.background-color]="breaker.color"
                           [style.font-family]="settings.font"
                           [style.font-size]="getFontSize(breaker.fontSize)"
                         >
-                          {{ breaker.position }}
+                          {{ breaker.order }}
                         </div>
                       </div>
 

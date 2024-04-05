@@ -36,7 +36,10 @@
                   <div class="layout-inline">
                     <div class="layout-inline__item layout-inline__item--expand">
                       <div class="breaker__form-field">
-                        <mat-form-field floatLabel="always">
+                        <mat-form-field
+                          floatLabel="always"
+                          [matTooltip]="'BREAKER_DIALOG__TYPE_DISABLE_DESCRIPTION' | translate"
+                        >
                           <mat-label>
                             {{ 'BREAKER_DIALOG__TYPE' | translate }}
                           </mat-label>
@@ -160,19 +163,19 @@
                           <input
                             matInput
                             type="text"
-                            formControlName="position"
+                            formControlName="order"
                             [placeholder]="'BREAKER_DIALOG__ORDER_PLACEHOLDER' | translate"
                           >
 
                           <mat-error
-                            *ngIf="form.controls['position'].hasError('required')"
+                            *ngIf="form.controls['order'].hasError('required')"
                           >
                             {{ 'FORM_FIELD__ERROR_CAN_NOT_BE_BLANK' | translate }}
                           </mat-error>
 
                           <mat-error
                             *ngIf="
-                          form.controls['position'].hasError('maxlength')
+                          form.controls['order'].hasError('maxlength')
                         "
                           >
                             {{ 'FORM_FIELD__ERROR_72_MAX_LENGTH' | translate }}
@@ -180,7 +183,7 @@
 
                           <mat-error
                             *ngIf="
-                          form.controls['position'].hasError('pattern')
+                          form.controls['order'].hasError('pattern')
                         "
                           >
                             {{ 'BREAKER_DIALOG__ERROR_ORDER_PATTERN' | translate }}

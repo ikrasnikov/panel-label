@@ -16,27 +16,28 @@
           </span>
         </div>
 
-        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_TYPE">
-          <div class="settings__form-field">
-            <mat-form-field>
-              <mat-label>
-                {{ 'SETTINGS__BREAKER_TYPE' | translate }}
-              </mat-label>
+        <!--  TODO: uncomment this logic when there will be a difference between those two types of breakers  -->
+<!--        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_TYPE">-->
+<!--          <div class="settings__form-field">-->
+<!--            <mat-form-field>-->
+<!--              <mat-label>-->
+<!--                {{ 'SETTINGS__BREAKER_TYPE' | translate }}-->
+<!--              </mat-label>-->
 
-              <mat-select
-                formControlName="type"
-                [hideSingleSelectionIndicator]="true"
-              >
-                <mat-option
-                  *ngFor="let type of SWITCHER_TYPES"
-                  [value]="type"
-                >
-                  {{ type | uppercase }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
+<!--              <mat-select-->
+<!--                formControlName="type"-->
+<!--                [hideSingleSelectionIndicator]="true"-->
+<!--              >-->
+<!--                <mat-option-->
+<!--                  *ngFor="let type of SWITCHER_TYPES"-->
+<!--                  [value]="type"-->
+<!--                >-->
+<!--                  {{ type | uppercase }}-->
+<!--                </mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
 
         <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_SIZE_TYPE">
           <div class="settings__form-field">
@@ -206,18 +207,56 @@
           </span>
         </div>
 
-        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_SEPERATED_UNITED">
-          <mat-radio-group formControlName="areLabelsSeperated">
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_PRINT_ORIENTATION">
+          <div class="settings__form-field">
             <div class="layout-list layout-list--0px">
               <div class="layout-list__item">
-                <mat-radio-button [value]="true">{{ 'SETTINGS__SEPERATED_LABELS' | translate }}</mat-radio-button>
+                <mat-label>
+                  {{ 'SETTINGS__PAGE_ORIENTATION' | translate }}
+                </mat-label>
               </div>
 
               <div class="layout-list__item">
-                <mat-radio-button [value]="false">{{ 'SETTINGS__UNITED_LABELS' | translate }}</mat-radio-button>
+                <mat-radio-group formControlName="isBookOrientation">
+                  <div class="layout-list layout-list--0px">
+                    <div class="layout-list__item">
+                      <mat-radio-button [value]="true">{{ 'SETTINGS__ORIENTATION_BOOK' | translate }}</mat-radio-button>
+                    </div>
+
+                    <div class="layout-list__item">
+                      <mat-radio-button [value]="false">{{ 'SETTINGS__ORIENTATION_ALBUM' | translate }}</mat-radio-button>
+                    </div>
+                  </div>
+                </mat-radio-group>
               </div>
             </div>
-          </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="layout-list__item" [tourAnchor]="TOUR_ANCHOR_SEPERATED_UNITED">
+          <div class="settings__form-field">
+            <div class="layout-list layout-list--0px">
+              <div class="layout-list__item">
+                <mat-label>
+                  {{ 'SETTINGS__STICKERS_TYPE' | translate }}
+                </mat-label>
+              </div>
+
+              <div class="layout-list__item">
+                <mat-radio-group formControlName="areLabelsSeperated">
+                  <div class="layout-list layout-list--0px">
+                    <div class="layout-list__item">
+                      <mat-radio-button [value]="true">{{ 'SETTINGS__SEPERATED_LABELS' | translate }}</mat-radio-button>
+                    </div>
+
+                    <div class="layout-list__item">
+                      <mat-radio-button [value]="false">{{ 'SETTINGS__UNITED_LABELS' | translate }}</mat-radio-button>
+                    </div>
+                  </div>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="layout-inline layout-inline--6px" [tourAnchor]="TOUR_ANCHOR_LABEL_SIZE">

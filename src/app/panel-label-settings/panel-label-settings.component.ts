@@ -16,12 +16,12 @@ import { TourStepAnchorEnum } from '../enums/tour-steps.enum';
   host: { class: 'settings' },
 })
 export class PanelLabelSettingsComponent extends BaseComponent implements OnInit {
-  public readonly TOUR_ANCHOR_TYPE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_TYPE;
+  // public readonly TOUR_ANCHOR_TYPE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_TYPE;
   public readonly TOUR_ANCHOR_SIZE_TYPE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SIZE_TYPE;
   public readonly TOUR_ANCHOR_SIZE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SIZE;
   public readonly TOUR_ANCHOR_BREAKER_QUANTITY: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_BREAKER_QUANTITY;
-  public readonly TOUR_ANCHOR_SEPERATED_UNITED: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SEPERATED_UNITED;
   public readonly TOUR_ANCHOR_PRINT_ORIENTATION: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_PRINT_ORIENTATION;
+  public readonly TOUR_ANCHOR_SEPERATED_UNITED: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SEPERATED_UNITED;
   public readonly TOUR_ANCHOR_LABEL_SIZE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_LABEL_SIZE;
   public readonly TOUR_ANCHOR_FONT: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_FONT;
   public readonly TOUR_ANCHOR_SAVE: TourStepAnchorEnum = TourStepAnchorEnum.SETTINGS_SAVE;
@@ -46,8 +46,9 @@ export class PanelLabelSettingsComponent extends BaseComponent implements OnInit
   public ngOnInit(): void {
     this.form = this._fb.group({
       title: [this.settings.title || '', [Validators.required, Validators.maxLength(72), Validators.pattern(/\S+/)]],
-      type: [this.settings.type || SwitcherType.EU, Validators.required],
+      // type: [this.settings.type || SwitcherType.EU, Validators.required],
       isItemSize: this.settings.isItemSize || true,
+      isBookOrientation: this.settings.isBookOrientation || true,
       width: [
         this.settings.width || 0,
         [
