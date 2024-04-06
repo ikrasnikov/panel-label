@@ -22,7 +22,7 @@ export class PanelLabelItemComponent implements OnInit, OnChanges {
   @Input() public tourDeleteAnchor: string = '';
 
   public switcherImagePath: string = 'assets/switcher_{size}.png';
-  public switcherPosition: string = '';
+  public switcherOrder: string = '';
 
   private readonly _EXAMPLE_IMAGE_NUMBER: string = '1';
 
@@ -34,8 +34,8 @@ export class PanelLabelItemComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(): void {
-    this.switcherPosition = this.switcherItem.position < 10
-      ? `0${this.switcherItem.position}`
-      : this.switcherItem.position.toString();
+    this.switcherOrder = !isNaN(Number(this.switcherItem.order)) && (this.switcherItem.order as number) < 10
+      ? `0${this.switcherItem.order}`
+      : this.switcherItem.order.toString();
   }
 }

@@ -4,11 +4,19 @@
   &__body {
     height: 100%;
 
-    &--preview {
+    &--preview-album {
       margin: 0 auto;
       width: auto;
       padding: 24px;
-      // 1190.55px is 1.5x*210mm width of A4 paper sheet
+      // 1683.78px is 1.5x*297mm width of A4 paper album orientated sheet
+      max-width: 1683.78px;
+    }
+
+    &--preview-book {
+      margin: 0 auto;
+      width: auto;
+      padding: 24px;
+      // 1190.55px is 1.5x*210mm width of A4 paper book orientated sheet
       max-width: 1190.55px;
     }
   }
@@ -27,11 +35,19 @@
   }
 
   &__row {
-    // 793.7px is 210mm width of A4 paper sheet
-    max-width: 793.7px;
     // 11.34px is 3mm padding of A4 paper sheet
     padding: 11.34px;
     border: 1px dashed $color-dark-10;
+
+    &--album {
+      // 1122.52px is 210mm width of A4 paper album orientated sheet
+      max-width: 1122.52px;
+    }
+
+    &--book {
+      // 793.7px is 210mm width of A4 paper book orientated sheet
+      max-width: 793.7px;
+    }
 
     &--preview {
       max-width: none;

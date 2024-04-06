@@ -23,14 +23,14 @@ export const TOUR_STEPS: ITourStep[] = [
     stepDimensions: TOUR_WIDTH_SETTING,
     nextOnAnchorClick: true,
   },
-  {
-    anchorId: TourStepAnchorEnum.SETTINGS_TYPE,
-    content: 'USER_TOUR__SETTINGS_TYPE',
-    title: 'USER_TOUR__SETTINGS_TYPE_TITLE',
-    placement: TOUR_POSITION_SETTING_BEFORE,
-    stepDimensions: TOUR_WIDTH_SETTING,
-    delayBeforeStepShow: TOUR_SIDEBAR_ANIMATION_DELAY,
-  },
+  // {
+  //   anchorId: TourStepAnchorEnum.SETTINGS_TYPE,
+  //   content: 'USER_TOUR__SETTINGS_TYPE',
+  //   title: 'USER_TOUR__SETTINGS_TYPE_TITLE',
+  //   placement: TOUR_POSITION_SETTING_BEFORE,
+  //   stepDimensions: TOUR_WIDTH_SETTING,
+  //   delayBeforeStepShow: TOUR_SIDEBAR_ANIMATION_DELAY,
+  // },
   {
     anchorId: TourStepAnchorEnum.SETTINGS_SIZE_TYPE,
     content: 'USER_TOUR__SETTINGS_SIZE_TYPE',
@@ -38,6 +38,7 @@ export const TOUR_STEPS: ITourStep[] = [
     placement: TOUR_POSITION_SETTING_BEFORE,
     stepDimensions: TOUR_WIDTH_SETTING,
     nextOnAnchorClick: true,
+    delayBeforeStepShow: TOUR_SIDEBAR_ANIMATION_DELAY,
   },
   {
     anchorId: TourStepAnchorEnum.SETTINGS_SIZE,
@@ -54,6 +55,14 @@ export const TOUR_STEPS: ITourStep[] = [
     stepDimensions: TOUR_WIDTH_SETTING,
   },
   {
+    anchorId: TourStepAnchorEnum.SETTINGS_PRINT_ORIENTATION,
+    content: 'USER_TOUR__SETTINGS_PRINT_ORIENTATION',
+    title: 'USER_TOUR__SETTINGS_PRINT_ORIENTATION_TITLE',
+    placement: TOUR_POSITION_SETTING_BEFORE,
+    stepDimensions: TOUR_WIDTH_SETTING,
+    nextOnAnchorClick: true,
+  },
+  {
     anchorId: TourStepAnchorEnum.SETTINGS_SEPERATED_UNITED,
     content: 'USER_TOUR__SETTINGS_SEPERATED_UNITED',
     title: 'USER_TOUR__SETTINGS_SEPERATED_UNITED_TITLE',
@@ -61,14 +70,6 @@ export const TOUR_STEPS: ITourStep[] = [
     stepDimensions: TOUR_WIDTH_SETTING,
     nextOnAnchorClick: true,
   },
-  // {
-  //   anchorId: TourStepAnchorEnum.SETTINGS_PRINT_ORIENTATION,
-  //   content: 'USER_TOUR__SETTINGS_SIZE_TYPE',
-  //   title: 'USER_TOUR__SETTINGS_SIZE_TYPE_TITLE',
-  //   placement: TOUR_POSITION_SETTING_BEFORE,
-  //   stepDimensions: TOUR_WIDTH_SETTING,
-  //   nextOnAnchorClick: true,
-  // },
   {
     anchorId: TourStepAnchorEnum.SETTINGS_LABEL_SIZE,
     content: 'USER_TOUR__SETTINGS_LABEL_SIZE',

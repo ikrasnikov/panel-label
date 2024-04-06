@@ -48,7 +48,7 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
 
   public originalOrder: () => number = () => 0;
 
-  private readonly _DEFAULT_POSITION: string = '1';
+  private readonly _DEFAULT_ORDER: string = '1';
   private readonly _DEFAULT_ICON: string = 'home';
   private readonly _DEFAULT_ICON_SIZE_BALANCE: number = 16;
   private readonly _DEFAULT_FONT_SIZE: number = 16;
@@ -87,8 +87,8 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
         this.data.item && this.data.item.fontSize.toString() || this._DEFAULT_FONT_SIZE.toString(),
         Validators.required
       ],
-      position: [
-        this.data.item && this.data.item.position || this._DEFAULT_POSITION,
+      order: [
+        this.data.item && this.data.item.order || this._DEFAULT_ORDER,
         [Validators.required, Validators.maxLength(10), Validators.pattern(/\S+/)]
       ],
       color: [this.data.item && this.data.item.color || BreakerColor.RED, Validators.required],
@@ -129,7 +129,7 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
     }
 
     return this.data.action$(this.data.item
-      ? { ...this.form.value, id: this.data.item.id}
+      ? { ...this.form.value, ...this.data.item }
       : this.form.value);
   }
 }

@@ -1,4 +1,4 @@
-import { LabelFont, LabelPosition, LanguageKey, SwitcherType } from '../app/enums/settings.enum';
+import { LabelFont, LabelPosition, SwitcherType } from '../app/enums/settings.enum';
 
 export interface IProjectSettings {
   areLabelsSeperated: boolean;
@@ -8,6 +8,7 @@ export interface IProjectSettings {
   id: number;
   isItemSize: boolean;
   labelHeight: number;
+  isBookOrientation: boolean;
   position: LabelPosition;
   title: string;
   type: SwitcherType;
