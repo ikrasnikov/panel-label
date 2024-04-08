@@ -33,8 +33,10 @@ export class PrintContentComponent extends BaseComponent implements AfterViewIni
   public labelHeight: string = '';
   public isHtmlShown: boolean = true;
 
-  // rail width is 210mm (A4 width) - 2*10mm (side margin) - 2*2mm (rail side margin)
-  private readonly _RAIL_WIDTH_MM: number = 186;
+  // rail width is 210mm (A4 book width) - 2*10mm (side margin) - 2*2mm (rail side margin)
+  private readonly _RAIL_BOOK_WIDTH_MM: number = 186;
+  // rail width is 297mm (A4 album width) - 2*10mm (side margin) - 2*2mm (rail side margin)
+  private readonly _RAIL_ALBUM_WIDTH_MM: number = 273;
   private readonly _PX_TO_MM_COEFFICIENT: number = 0.26458333333333;
 
   private _singleLabelWidth: number = 0;
@@ -74,7 +76,7 @@ export class PrintContentComponent extends BaseComponent implements AfterViewIni
 
   public getLabelPercentageWidth(breakerSize: number): string {
     return (((this._singleLabelWidth * breakerSize)
-      / this._RAIL_WIDTH_MM) * 100) + '%';
+      / (this.settings.isBookOrientation ? this._RAIL_BOOK_WIDTH_MM : this._RAIL_ALBUM_WIDTH_MM)) * 100) + '%';
   }
 
   public getFontSize(fontSize: number): string {
