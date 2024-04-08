@@ -5,6 +5,8 @@
   <div
     class="print-content__container"
     [class.print-content__container--preview]="isPreview"
+    [class.print-content__container--preview-album]="isPreview && !settings.isBookOrientation"
+    [class.print-content__container--preview-book]="isPreview && settings.isBookOrientation"
     [tourAnchor]="TOUR_ANCHOR_PREVIEW"
     #printContentContainer
   >

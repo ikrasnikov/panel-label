@@ -26,7 +26,21 @@
     height: 100%;
 
     &--preview {
-      // 4.7619% is 1.5*10mm margin of A4 paper sheet
+      height: auto;
+      box-shadow: 0 0 2px 0 $color-dark-20,
+      0 2px 2px 0 $color-dark-10;
+    }
+
+    &--preview-album {
+      // 3.367% is 1.5*10mm margin of A4 album paper sheet
+      padding: 3.367%;
+      height: auto;
+      box-shadow: 0 0 2px 0 $color-dark-20,
+      0 2px 2px 0 $color-dark-10;
+    }
+
+    &--preview-book {
+      // 4.7619% is 1.5*10mm margin of A4 book paper sheet
       padding: 4.7619%;
       height: auto;
       box-shadow: 0 0 2px 0 $color-dark-20,

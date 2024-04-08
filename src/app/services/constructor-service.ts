@@ -143,15 +143,35 @@ export class ConstructorService {
           this._rows = this._getUpdatedBreakerRows(
             rowId,
             this._rows,
-            (items: ISwitcherItem[], order: number, position: number) => [
-              ...items,
-              {
-                ...this._DEFAULT_NEW_BREAKER,
-                id: Number(new Date()),
-                order,
-                position,
-              }
-            ],
+            (items: ISwitcherItem[]) => {
+              const order: number = items.length
+                ? Number(
+                  items.reduce((biggestOrder: number, item: ISwitcherItem) => {
+                    if (!isNaN(Number(item.order)) && Number(item.order) > biggestOrder) {
+                      return Number(item.order);
+                    }
+
+                    return biggestOrder;
+                  }, 1) + 1
+                )
+                : 1;
+
+              const position: number = items.length
+                ? (items.find((item: ISwitcherItem, i: number) =>
+                item.position !== i || i === items.length - 1
+              )?.position as number) + 1
+                : 0;
+
+              return [
+                ...items,
+                {
+                  ...this._DEFAULT_NEW_BREAKER,
+                  id: Number(new Date()),
+                  order,
+                  position,
+                }
+              ]
+            },
           );
 
           this._rows$$.next(this._rows);
@@ -215,33 +235,15 @@ export class ConstructorService {
   private _getUpdatedBreakerRows(
     rowId: number,
     rows: ISwitcherRow[],
-    updateCallBack: (items: ISwitcherItem[], order: number, position: number) => ISwitcherItem[],
+    updateCallBack: (items: ISwitcherItem[]) => ISwitcherItem[],
   ): ISwitcherRow[] {
     return rows.map((row: ISwitcherRow) => {
       let updatedRow: ISwitcherRow = row;
 
       if (row.id === rowId) {
-        const nextOrder: number = row.items.length
-          ? Number(
-            row.items.reduce((biggestOrder: number, item: ISwitcherItem) => {
-                if (!isNaN(Number(item.order)) && Number(item.order) > biggestOrder) {
-                  return Number(item.order);
-                }
-
-                return biggestOrder;
-              }, 1) + 1
-            )
-          : 1;
-
-        const nextFreePosition: number = row.items.length
-          ? (row.items.find((item: ISwitcherItem, i: number) =>
-              item.position !== i || i === row.items.length - 1
-            )?.position as number) + 1
-          : 0;
-
         updatedRow = {
           ...row,
-          items: updateCallBack(row.items, nextOrder, nextFreePosition)
+          items: updateCallBack(row.items)
         };
       }
 

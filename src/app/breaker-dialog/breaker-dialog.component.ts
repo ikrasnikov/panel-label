@@ -129,7 +129,7 @@ export class BreakerDialogComponent extends BaseDialogComponent<void> {
     }
 
     return this.data.action$(this.data.item
-      ? { ...this.form.value, ...this.data.item }
+      ? { ...this.data.item, ...this.form.value }
       : this.form.value);
   }
 }
